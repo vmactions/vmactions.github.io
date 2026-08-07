@@ -196,47 +196,62 @@
 
     <div class="how-cols">
       <div class="diagram">
-        <svg viewBox="0 0 520 300" role="img">
-          <title lang="en">A QEMU guest running inside the ubuntu-latest runner, with the workspace synced between them</title>
-          <title lang="zh">ubuntu-latest runner 内部运行的 QEMU 客户机，工作目录在两者之间同步</title>
+        <svg viewBox="0 0 520 340" role="img">
+          <title lang="en">A QEMU guest running inside the ubuntu-latest runner: the workspace syncs between them, and an x86_64 guest is accelerated by the runner's /dev/kvm while every other architecture is emulated</title>
+          <title lang="zh">ubuntu-latest runner 内部运行的 QEMU 客户机：工作目录在两者之间同步；x86_64 客户机由 runner 的 /dev/kvm 硬件加速，其他架构则是软件模拟</title>
 
-          <rect x="8" y="26" width="504" height="266" rx="10"
+          <rect x="8" y="26" width="504" height="300" rx="10"
                 fill="none" stroke="currentColor" stroke-width="1.5" opacity=".35"/>
           <text x="22" y="18" font-family="ui-monospace, monospace" font-size="13"
                 fill="currentColor" opacity=".7">runs-on: ubuntu-latest</text>
 
-          <rect x="30" y="60" width="180" height="90" rx="8"
+          <rect x="30" y="60" width="180" height="98" rx="8"
                 fill="none" stroke="currentColor" stroke-width="1.5" opacity=".55"/>
-          <text x="46" y="90" font-family="ui-monospace, monospace" font-size="13" fill="currentColor">host</text>
-          <text x="46" y="112" font-family="ui-monospace, monospace" font-size="12"
+          <text x="46" y="88" font-family="ui-monospace, monospace" font-size="13" fill="currentColor">host</text>
+          <text x="46" y="110" font-family="ui-monospace, monospace" font-size="12"
                 fill="currentColor" opacity=".65">$GITHUB_WORKSPACE</text>
-          <text x="46" y="131" font-family="ui-monospace, monospace" font-size="12"
+          <text x="46" y="129" font-family="ui-monospace, monospace" font-size="12"
                 fill="currentColor" opacity=".65">actions/checkout</text>
+          <text x="46" y="148" font-family="ui-monospace, monospace" font-size="12"
+                fill="var(--pass)">/dev/kvm</text>
 
-          <rect x="300" y="60" width="182" height="90" rx="8"
+          <rect x="300" y="60" width="182" height="98" rx="8"
                 fill="none" stroke="var(--pass)" stroke-width="1.8"/>
-          <text x="316" y="90" font-family="ui-monospace, monospace" font-size="13" fill="currentColor">QEMU guest</text>
-          <text x="316" y="112" font-family="ui-monospace, monospace" font-size="12"
+          <text x="316" y="88" font-family="ui-monospace, monospace" font-size="13" fill="currentColor">QEMU guest</text>
+          <text x="316" y="110" font-family="ui-monospace, monospace" font-size="12"
                 fill="currentColor" opacity=".65">same path, same env</text>
-          <text x="316" y="131" font-family="ui-monospace, monospace" font-size="12"
+          <text x="316" y="129" font-family="ui-monospace, monospace" font-size="12"
                 fill="currentColor" opacity=".65">prepare + run</text>
+          <text x="316" y="148" font-family="ui-monospace, monospace" font-size="12"
+                fill="var(--pass)">accel=kvm</text>
 
-          <path d="M214 96h82" stroke="currentColor" stroke-width="1.5" opacity=".6" marker-end="url(#a)"/>
-          <path d="M296 122h-78" stroke="currentColor" stroke-width="1.5" opacity=".6" marker-end="url(#a)"/>
-          <text x="222" y="88" font-family="ui-monospace, monospace" font-size="11"
+          <path d="M214 100h82" stroke="currentColor" stroke-width="1.5" opacity=".6" marker-end="url(#a)"/>
+          <path d="M296 126h-78" stroke="currentColor" stroke-width="1.5" opacity=".6" marker-end="url(#a)"/>
+          <text x="222" y="94" font-family="ui-monospace, monospace" font-size="11"
                 fill="currentColor" opacity=".75">rsync</text>
-          <text x="222" y="145" font-family="ui-monospace, monospace" font-size="11"
+          <text x="222" y="144" font-family="ui-monospace, monospace" font-size="11"
                 fill="currentColor" opacity=".75">copyback</text>
 
-          <rect x="30" y="190" width="452" height="74" rx="8"
+          <rect x="30" y="176" width="452" height="58" rx="8"
+                fill="none" stroke="var(--pass)" stroke-width="1.4" opacity=".75"/>
+          <text x="46" y="200" font-family="ui-monospace, monospace" font-size="12"
+                fill="currentColor" opacity=".7">accel</text>
+          <text x="104" y="200" font-family="ui-monospace, monospace" font-size="12"
+                fill="var(--pass)">x86_64 -&gt; kvm</text>
+          <text x="230" y="200" font-family="ui-monospace, monospace" font-size="11"
+                fill="currentColor" opacity=".6">near-native</text>
+          <text x="104" y="222" font-family="ui-monospace, monospace" font-size="12"
+                fill="currentColor" opacity=".75">other arches -&gt; tcg</text>
+          <text x="252" y="222" font-family="ui-monospace, monospace" font-size="11"
+                fill="currentColor" opacity=".6">emulated, much slower</text>
+
+          <rect x="30" y="250" width="452" height="56" rx="8"
                 fill="none" stroke="currentColor" stroke-width="1.2" opacity=".3"
                 stroke-dasharray="4 4"/>
-          <text x="46" y="216" font-family="ui-monospace, monospace" font-size="12"
+          <text x="46" y="274" font-family="ui-monospace, monospace" font-size="12"
                 fill="currentColor" opacity=".7">sync: rsync | sshfs | nfs | scp</text>
-          <text x="46" y="238" font-family="ui-monospace, monospace" font-size="12"
+          <text x="46" y="294" font-family="ui-monospace, monospace" font-size="12"
                 fill="currentColor" opacity=".7">nat: "8080": "80"</text>
-          <text x="46" y="256" font-family="ui-monospace, monospace" font-size="12"
-                fill="currentColor" opacity=".7">arch: x86_64 | aarch64 | riscv64 | ...</text>
 
           <defs>
             <marker id="a" viewBox="0 0 10 10" refX="9" refY="5"
@@ -269,6 +284,23 @@
           <span lang="zh">虚拟机里的工作目录和宿主机一致。所有
             <code>GITHUB_*</code> 变量和 <code>CI=true</code> 都会带进去；你自己的
             secret 则通过 <code>envs</code> 指定哪些跟着进去。</span>
+        </li>
+        <li>
+          <strong lang="en">x86_64 runs on the metal; everything else is emulated.</strong>
+          <strong lang="zh">x86_64 跑在硬件上，其他架构是模拟出来的。</strong>
+          <span lang="en">The runner's <code>/dev/kvm</code> is handed to the VM,
+            so an x86_64 guest runs at close to native speed. Every other
+            architecture -- <code>aarch64</code>, <code>riscv64</code>,
+            <code>powerpc64</code>, <code>sparc64</code>, <code>i386</code>,
+            <code>loongarch64</code> -- is fully emulated by QEMU and is
+            dramatically slower. Keep those jobs small and give them a generous
+            <code>timeout-minutes</code>.</span>
+          <span lang="zh">runner 的 <code>/dev/kvm</code> 会交给虚拟机，所以
+            x86_64 客户机的速度接近原生。其他架构 —— <code>aarch64</code>、
+            <code>riscv64</code>、<code>powerpc64</code>、<code>sparc64</code>、
+            <code>i386</code>、<code>loongarch64</code> —— 全部由 QEMU 软件模拟，
+            慢得多。这类任务要控制规模，并给足
+            <code>timeout-minutes</code>。</span>
         </li>
         <li>
           <strong lang="en">It is a real machine, so you can look inside.</strong>
@@ -538,7 +570,7 @@
       <h3><span class="dot"></span>MidnightBSD</h3>
       <p class="uses"><code>vmactions/midnightbsd-vm@v1</code></p>
       <dl>
-      <div class="row"><dt><span lang="en">Default release</span><span lang="zh">默认版本</span></dt><dd><code>4.0.6</code> <span class="dim">(4 <span lang="en">releases</span><span lang="zh">个版本</span>)</span></dd></div>
+      <div class="row"><dt><span lang="en">Default release</span><span lang="zh">默认版本</span></dt><dd><code>4.0.7</code> <span class="dim">(5 <span lang="en">releases</span><span lang="zh">个版本</span>)</span></dd></div>
       <div class="row"><dt><span lang="en">Architectures</span><span lang="zh">支持架构</span></dt><dd><code>x86_64</code></dd></div>
       <div class="row"><dt><span lang="en">Sync</span><span lang="zh">同步方式</span></dt><dd><span class="sync"><code>x86_64</code> rsync, scp, sshfs, nfs</span></dd></div>
       <div class="row"><dt><span lang="en">Shell</span><span lang="zh">默认 shell</span></dt><dd>The default shell in MidnightBSD is <code>tcsh</code>, if you want to use <code>sh</code> to execute the <code>run</code> script, please set <code>usesh</code> to <code>true</code>.</dd></div>
