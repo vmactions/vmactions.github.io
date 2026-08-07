@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en" data-lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Not found -- VM Actions</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect x='3' y='6' width='20' height='16' rx='3' fill='none' stroke='%23888' stroke-width='2'/%3E%3Crect x='11' y='12' width='18' height='14' rx='3' fill='%230f1418' stroke='%234fd489' stroke-width='2'/%3E%3Cpath d='M15 19l3 3 6-6' fill='none' stroke='%234fd489' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="/assets/style.css">
+<script>
+(function () {
+  try {
+    var d = document.documentElement;
+    var t = localStorage.getItem('vma-theme');
+    if (t === 'light' || t === 'dark') d.setAttribute('data-theme', t);
+    var l = localStorage.getItem('vma-lang');
+    if (l === 'en' || l === 'zh') { d.setAttribute('data-lang', l); d.setAttribute('lang', l); }
+  } catch (e) {}
+})();
+</script>
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav-in">
+    <a class="brand" href="/">
+      <svg viewBox="0 0 32 32" aria-hidden="true">
+        <rect x="3" y="6" width="20" height="16" rx="3" fill="none" stroke="currentColor" stroke-width="2" opacity=".45"/>
+        <rect x="11" y="12" width="18" height="14" rx="3" fill="var(--ground)" stroke="currentColor" stroke-width="2"/>
+        <path d="M15 19l3 3 6-6" fill="none" stroke="var(--pass)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <span>VM Actions</span>
+    </a>
+    <div class="switches" style="margin-left:auto">
+      <button class="switch" id="lang-switch" type="button">
+        <span lang="en">中文</span><span lang="zh">English</span>
+      </button>
+      <button class="switch" id="theme-switch" type="button" aria-label="Toggle colour theme">
+        <span data-theme-label>Theme</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main class="wrap" style="padding-top:80px;padding-bottom:120px">
+  <p class="eyebrow">404</p>
+  <h1 lang="en">That page is not here.</h1>
+  <h1 lang="zh">这个页面不在这儿。</h1>
+  <p class="lede" lang="en">
+    Try the <a href="/">front page</a> for the coverage matrix, or the
+    <a href="/docs/inputs.html">input reference</a>.
+  </p>
+  <p class="lede" lang="zh">
+    去<a href="/">首页</a>看覆盖矩阵，或者看<a href="/docs/inputs.html">参数参考</a>。
+  </p>
+</main>
+
+<footer class="footer">
+  <div class="footer-in">
+    <a href="https://github.com/vmactions">GitHub</a>
+    <span class="spacer" lang="en">Images built and booted by <a href="https://anyvm.org">AnyVM</a>.</span>
+    <span class="spacer" lang="zh">镜像由 <a href="https://anyvm.org">AnyVM</a> 构建和启动。</span>
+  </div>
+</footer>
+
+<script src="/assets/site.js" defer></script>
+</body>
+</html>

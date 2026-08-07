@@ -1,0 +1,452 @@
+<!doctype html>
+<html lang="en" data-lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Inputs -- VM Actions</title>
+<meta name="description" content="Every input accepted by the vmactions VM actions: prepare, run, release, arch, envs, sync, nat, mem, cpu, cache-after-prepare, debug-on-error and the rest.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect x='3' y='6' width='20' height='16' rx='3' fill='none' stroke='%23888' stroke-width='2'/%3E%3Crect x='11' y='12' width='18' height='14' rx='3' fill='%230f1418' stroke='%234fd489' stroke-width='2'/%3E%3Cpath d='M15 19l3 3 6-6' fill='none' stroke='%234fd489' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="/assets/style.css">
+<script>
+/* Applies the stored theme and language before first paint. */
+(function () {
+  try {
+    var d = document.documentElement;
+    var t = localStorage.getItem('vma-theme');
+    if (t === 'light' || t === 'dark') d.setAttribute('data-theme', t);
+    var l = localStorage.getItem('vma-lang');
+    if (l === 'en' || l === 'zh') { d.setAttribute('data-lang', l); d.setAttribute('lang', l); }
+  } catch (e) {}
+})();
+</script>
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav-in">
+    <a class="brand" href="/">
+      <svg viewBox="0 0 32 32" aria-hidden="true">
+        <rect x="3" y="6" width="20" height="16" rx="3" fill="none" stroke="currentColor" stroke-width="2" opacity=".45"/>
+        <rect x="11" y="12" width="18" height="14" rx="3" fill="var(--ground)" stroke="currentColor" stroke-width="2"/>
+        <path d="M15 19l3 3 6-6" fill="none" stroke="var(--pass)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <span>VM Actions</span>
+    </a>
+
+    <nav class="nav-links" aria-label="Main">
+      <a href="/#coverage"><span lang="en">Coverage</span><span lang="zh">覆盖矩阵</span></a>
+      <a href="/#systems"><span lang="en">Systems</span><span lang="zh">系统</span></a>
+      <a href="https://github.com/vmactions">GitHub</a>
+    </nav>
+
+    <div class="switches">
+      <button class="switch" id="lang-switch" type="button">
+        <span lang="en">中文</span><span lang="zh">English</span>
+      </button>
+      <button class="switch" id="theme-switch" type="button" aria-label="Toggle colour theme">
+        <span data-theme-label>Theme</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+<div class="docs">
+
+  <aside class="toc">
+    <p class="eyebrow"><span lang="en">Inputs</span><span lang="zh">参数</span></p>
+    <ol>
+      <li><a href="#prepare">prepare</a></li>
+      <li><a href="#run">run</a></li>
+      <li><a href="#release">release</a></li>
+      <li><a href="#arch">arch</a></li>
+      <li><a href="#envs">envs</a></li>
+      <li><a href="#usesh">usesh</a></li>
+      <li><a href="#sync">sync</a></li>
+      <li><a href="#copyback">copyback</a></li>
+      <li><a href="#nat">nat</a></li>
+      <li><a href="#mem">mem</a></li>
+      <li><a href="#cpu">cpu</a></li>
+      <li><a href="#sync-time">sync-time</a></li>
+      <li><a href="#disable-cache">disable-cache</a></li>
+      <li><a href="#cache-after-prepare">cache-after-prepare</a></li>
+      <li><a href="#debug-on-error">debug-on-error</a></li>
+      <li><a href="#vnc-password">vnc-password</a></li>
+      <li><a href="#custom-shell-name">custom-shell-name</a></li>
+      <li><a href="#data-dir">data-dir</a></li>
+      <li><a href="#cache-dir">cache-dir</a></li>
+      <li><a href="#debug">debug</a></li>
+      <li><a href="#osname">osname</a></li>
+      <li><a href="#outputs">outputs</a></li>
+      <li><a href="#custom-shell">custom shell</a></li>
+    </ol>
+  </aside>
+
+  <div>
+    <h1 lang="en">Inputs</h1>
+    <h1 lang="zh">参数</h1>
+
+    <p class="lede" lang="en">
+      Every <code>with:</code> input the VM actions accept. They are the same
+      across all of them -- swapping <code>freebsd-vm</code> for
+      <code>netbsd-vm</code> changes the guest, not the interface.
+    </p>
+    <p class="lede" lang="zh">
+      这些 action 接受的全部 <code>with:</code> 参数。所有 action 的参数完全一致 ——
+      把 <code>freebsd-vm</code> 换成 <code>netbsd-vm</code>，换的是客户机，不是接口。
+    </p>
+
+    <section class="opt" id="prepare">
+      <h3>prepare</h3>
+      <p class="opt-meta"><span>optional</span><span>no default</span></p>
+      <p lang="en">Commands run inside the VM before <code>run</code>, for
+        installing tools and dependencies. Each system has its own package
+        manager; the cards on the front page show the one each action's own
+        example uses.</p>
+      <p lang="zh">在 <code>run</code> 之前于虚拟机内执行的命令，用来装工具和依赖。
+        每个系统的包管理器不同，首页的系统卡片上标着各 action 自带示例用的那个。</p>
+<pre><code>prepare: |
+  pkg install -y gmake</code></pre>
+    </section>
+
+    <section class="opt" id="run">
+      <h3>run</h3>
+      <p class="opt-meta"><span>optional</span><span>no default</span></p>
+      <p lang="en">The CI script, executed inside the VM. The working directory
+        matches the host, so relative paths behave the same as in a normal
+        step.</p>
+      <p lang="zh">在虚拟机内执行的 CI 脚本。工作目录和宿主机一致，相对路径的行为
+        和普通 step 一样。</p>
+<pre><code>run: |
+  ./configure
+  gmake
+  gmake check</code></pre>
+    </section>
+
+    <section class="opt" id="release">
+      <h3>release</h3>
+      <p class="opt-meta"><span>optional</span><span lang="en">defaults to the action's own default release</span><span lang="zh">默认为该 action 自己的默认版本</span></p>
+      <p lang="en">Which release to boot. Giving only the leading,
+        <code>.</code>-separated part is enough: <code>release: "13"</code> runs
+        the newest <code>13.x</code> that action ships, so the workflow does not
+        need editing for every point release. Each part must match in full -- a
+        release that does not exist fails the job rather than quietly falling
+        back to another one.</p>
+      <p lang="zh">启动哪个版本。只写前面用 <code>.</code> 分隔的部分就够了：
+        <code>release: "13"</code> 会用该 action 提供的最新 <code>13.x</code>，
+        这样每出一个小版本不用改 workflow。每一段都必须完整匹配 ——
+        写一个不存在的版本会让任务失败，而不是悄悄退回到别的版本。</p>
+<pre><code>release: "13"</code></pre>
+    </section>
+
+    <section class="opt" id="arch">
+      <h3>arch</h3>
+      <p class="opt-meta"><span>optional</span><span>x86_64</span></p>
+      <p lang="en">The guest CPU architecture. Which values an action accepts
+        depends on the system and the release -- see the coverage matrix. The
+        runner stays <code>ubuntu-latest</code> whatever you pick; using an
+        <code>arm</code> runner instead is much slower.</p>
+      <p lang="zh">客户机的 CPU 架构。每个 action 支持哪些取值取决于系统和版本，见覆盖矩阵。
+        无论选哪个，runner 都保持 <code>ubuntu-latest</code>；换成
+        <code>arm</code> runner 反而慢得多。</p>
+<pre><code>arch: aarch64</code></pre>
+    </section>
+
+    <section class="opt" id="envs">
+      <h3>envs</h3>
+      <p class="opt-meta"><span>optional</span><span>no default</span></p>
+      <p lang="en">Names of the environment variables to carry into the VM,
+        space separated. Every <code>GITHUB_*</code> variable and
+        <code>CI=true</code> go in regardless; this input is how your own values
+        and secrets follow.</p>
+      <p lang="zh">要带进虚拟机的环境变量名，空格分隔。所有 <code>GITHUB_*</code>
+        变量和 <code>CI=true</code> 无条件带入；你自己的值和 secret 要靠这个参数指定。</p>
+<pre><code>env:
+  MYTOKEN: ${{ secrets.MYTOKEN }}
+  MYTOKEN2: "value2"
+# ...
+with:
+  envs: 'MYTOKEN MYTOKEN2'</code></pre>
+    </section>
+
+    <section class="opt" id="usesh">
+      <h3>usesh</h3>
+      <p class="opt-meta"><span>optional</span><span>false</span></p>
+      <p lang="en">Run the <code>run</code> script with <code>sh</code> instead
+        of the guest's default shell. Several systems default to something other
+        than a POSIX shell -- FreeBSD and MidnightBSD to <code>tcsh</code>,
+        OpenBSD to <code>ksh</code>, BlissOS to Android's <code>mksh</code> --
+        so a script written for <code>sh</code> needs this.</p>
+      <p lang="zh">用 <code>sh</code> 而不是客户机默认 shell 来跑 <code>run</code>
+        脚本。有几个系统的默认 shell 不是 POSIX shell —— FreeBSD 和 MidnightBSD 是
+        <code>tcsh</code>，OpenBSD 是 <code>ksh</code>，BlissOS 是 Android 的
+        <code>mksh</code> —— 按 <code>sh</code> 写的脚本需要打开它。</p>
+<pre><code>usesh: true</code></pre>
+    </section>
+
+    <section class="opt" id="sync">
+      <h3>sync</h3>
+      <p class="opt-meta"><span>optional</span><span>rsync</span></p>
+      <p lang="en">How the source tree is shared with the VM:
+        <code>rsync</code>, <code>sshfs</code>, <code>nfs</code>,
+        <code>scp</code>, or <code>no</code> to share nothing. Not every method
+        works on every system and architecture; the coverage matrix lists what
+        each combination supports, and the first one listed is that
+        combination's default.</p>
+      <p lang="zh">源码树用哪种方式共享给虚拟机：<code>rsync</code>、
+        <code>sshfs</code>、<code>nfs</code>、<code>scp</code>，或者
+        <code>no</code> 表示不共享。不是每种方式在每个系统和架构上都能用；覆盖矩阵
+        列出了每个组合支持哪些，其中列在最前面的就是该组合的默认值。</p>
+<pre><code>sync: nfs</code></pre>
+    </section>
+
+    <section class="opt" id="copyback">
+      <h3>copyback</h3>
+      <p class="opt-meta"><span>optional</span><span>true</span></p>
+      <p lang="en">Whether build results are copied out of the VM back to the
+        host when the step finishes. Applies to <code>rsync</code> and
+        <code>scp</code>; <code>sshfs</code> and <code>nfs</code> are live
+        mounts, so both sides already see the same files.</p>
+      <p lang="zh">step 结束时是否把构建产物从虚拟机拷回宿主机。对
+        <code>rsync</code> 和 <code>scp</code> 有效；<code>sshfs</code> 和
+        <code>nfs</code> 是实时挂载，两边本来就是同一份文件。</p>
+<pre><code>sync: rsync
+copyback: false</code></pre>
+    </section>
+
+    <section class="opt" id="nat">
+      <h3>nat</h3>
+      <p class="opt-meta"><span>optional</span><span>no default</span></p>
+      <p lang="en">Ports to forward from the runner into the VM. Prefix a
+        mapping with <code>udp:</code> for UDP.</p>
+      <p lang="zh">从 runner 转发进虚拟机的端口。UDP 端口在映射前加
+        <code>udp:</code> 前缀。</p>
+<pre><code>nat: |
+  "8080": "80"
+  "8443": "443"
+  udp:"8081": "80"</code></pre>
+    </section>
+
+    <section class="opt" id="mem">
+      <h3>mem</h3>
+      <p class="opt-meta"><span>optional</span><span>6144</span></p>
+      <p lang="en">Memory for the VM, in MB.</p>
+      <p lang="zh">虚拟机内存，单位 MB。</p>
+<pre><code>mem: 4096</code></pre>
+    </section>
+
+    <section class="opt" id="cpu">
+      <h3>cpu</h3>
+      <p class="opt-meta"><span>optional</span><span lang="en">every core of the host</span><span lang="zh">宿主机的全部核心</span></p>
+      <p lang="en">Number of CPU cores given to the VM.</p>
+      <p lang="zh">分配给虚拟机的 CPU 核心数。</p>
+<pre><code>cpu: 3</code></pre>
+    </section>
+
+    <section class="opt" id="sync-time">
+      <h3>sync-time</h3>
+      <p class="opt-meta"><span>optional</span><span>false</span></p>
+      <p lang="en">Synchronize the guest clock with NTP at boot. Worth setting
+        if something inside the VM is sensitive to the wall clock.</p>
+      <p lang="zh">启动时用 NTP 校准客户机时钟。虚拟机里有对系统时间敏感的东西时值得打开。</p>
+<pre><code>sync-time: true</code></pre>
+    </section>
+
+    <section class="opt" id="disable-cache">
+      <h3>disable-cache</h3>
+      <p class="opt-meta"><span>optional</span><span>false</span></p>
+      <p lang="en">Turn off caching of apt packages on the host and of VM images
+        and artifacts.</p>
+      <p lang="zh">关闭宿主机上 apt 包以及虚拟机镜像和产物的缓存。</p>
+<pre><code>disable-cache: true</code></pre>
+    </section>
+
+    <section class="opt" id="cache-after-prepare">
+      <h3>cache-after-prepare</h3>
+      <p class="opt-meta"><span>optional</span><span>false</span></p>
+      <p lang="en">Shut the VM down cleanly once <code>prepare</code> has
+        finished, cache that prepared image, and boot again before
+        <code>run</code>. Later runs with the same <code>prepare</code> script
+        restore the prepared image and start directly at <code>run</code>.</p>
+      <p lang="zh">在 <code>prepare</code> 跑完后干净地关机、缓存这个已准备好的镜像，
+        然后在 <code>run</code> 之前重新启动。之后使用相同 <code>prepare</code>
+        脚本的构建会直接恢复该镜像并从 <code>run</code> 开始。</p>
+      <ul>
+        <li lang="en">The cache key includes a hash of the <code>prepare</code>
+          script and the <code>sync</code> method, so changing either rebuilds
+          the prepared image from the base image.</li>
+        <li lang="zh">缓存 key 包含 <code>prepare</code> 脚本和 <code>sync</code>
+          方式的哈希，改动其中任何一个都会从基础镜像重新构建。</li>
+        <li lang="en">The source tree is still synchronized on every run; only
+          <code>prepare</code> is skipped.</li>
+        <li lang="zh">源码树每次仍然会同步，跳过的只有 <code>prepare</code>。</li>
+        <li lang="en">The first run is slower: the VM is shut down after
+          <code>prepare</code>, the image is cached, and the VM boots again.</li>
+        <li lang="zh">第一次会更慢：<code>prepare</code> 之后关机、缓存镜像、再启动一次。</li>
+        <li lang="en">Ignored when <code>disable-cache: true</code> is set or
+          <code>prepare</code> is empty.</li>
+        <li lang="zh">设置了 <code>disable-cache: true</code> 或者
+          <code>prepare</code> 为空时，该参数被忽略。</li>
+      </ul>
+<pre><code>cache-after-prepare: true
+prepare: |
+  pkg install -y gmake</code></pre>
+    </section>
+
+    <section class="opt" id="debug-on-error">
+      <h3>debug-on-error</h3>
+      <p class="opt-meta"><span>optional</span><span>false</span></p>
+      <p lang="en">When <code>prepare</code> or <code>run</code> fails, enable a
+        remote VNC link and wait instead of tearing the machine down. Connect,
+        look around, and run <code>touch ~/continue</code> inside the VM to let
+        the action finish.</p>
+      <p lang="zh">当 <code>prepare</code> 或 <code>run</code> 失败时，开启一个远程
+        VNC 链接并等待，而不是直接销毁机器。连进去看现场，然后在虚拟机里执行
+        <code>touch ~/continue</code> 让 action 继续。</p>
+      <p lang="en">Drive it from a repository variable so it is not left on by
+        accident.</p>
+      <p lang="zh">用仓库变量控制它，免得不小心一直开着。</p>
+<pre><code>debug-on-error: ${{ vars.DEBUG_ON_ERROR }}</code></pre>
+      <p><a href="https://github.com/vmactions/.github/wiki/debug%E2%80%90on%E2%80%90error"><span lang="en">More on debug on error</span><span lang="zh">失败调试的详细说明</span></a></p>
+    </section>
+
+    <section class="opt" id="vnc-password">
+      <h3>vnc-password</h3>
+      <p class="opt-meta"><span>optional</span><span lang="en">empty</span><span lang="zh">空</span></p>
+      <p lang="en">Protects the VNC link opened by <code>debug-on-error</code>.
+        The username can be anything; the password is this value.</p>
+      <p lang="zh">保护 <code>debug-on-error</code> 打开的 VNC 链接。用户名可以随便填，
+        密码就是这个值。</p>
+<pre><code>debug-on-error: ${{ vars.DEBUG_ON_ERROR }}
+vnc-password: ${{ secrets.VNC_PASSWORD }}</code></pre>
+    </section>
+
+    <section class="opt" id="custom-shell-name">
+      <h3>custom-shell-name</h3>
+      <p class="opt-meta"><span>optional</span><span lang="en">the OS name</span><span lang="zh">系统名</span></p>
+      <p lang="en">Names the shell wrapper that lets later workflow steps run
+        inside the VM. See <a href="#custom-shell">custom shell</a>.</p>
+      <p lang="zh">给那个让后续 workflow step 在虚拟机里执行的 shell 包装脚本命名。
+        见 <a href="#custom-shell">自定义 shell</a>。</p>
+<pre><code>custom-shell-name: vmsh</code></pre>
+    </section>
+
+    <section class="opt" id="data-dir">
+      <h3>data-dir</h3>
+      <p class="opt-meta"><span>optional</span><span lang="en">chosen by the action</span><span lang="zh">由 action 决定</span></p>
+      <p lang="en">Where VM data and images are stored. Worth pointing at a
+        larger filesystem when the default one runs out of room.</p>
+      <p lang="zh">虚拟机数据和镜像的存放位置。默认位置空间不够时可以指到更大的文件系统。</p>
+    </section>
+
+    <section class="opt" id="cache-dir">
+      <h3>cache-dir</h3>
+      <p class="opt-meta"><span>optional</span><span lang="en">a temporary path</span><span lang="zh">临时路径</span></p>
+      <p lang="en">Overrides where the cache is kept.</p>
+      <p lang="zh">覆盖缓存的存放位置。</p>
+    </section>
+
+    <section class="opt" id="debug">
+      <h3>debug</h3>
+      <p class="opt-meta"><span>optional</span><span>false</span></p>
+      <p lang="en">Print debug output from the action itself. Unrelated to
+        <a href="#debug-on-error">debug-on-error</a>, which opens a shell into
+        the machine.</p>
+      <p lang="zh">打印 action 自身的调试信息。和
+        <a href="#debug-on-error">debug-on-error</a> 无关 —— 那个是开一个进机器的
+        会话。</p>
+    </section>
+
+    <section class="opt" id="osname">
+      <h3>osname</h3>
+      <p class="opt-meta"><span lang="en">set by the action</span><span lang="zh">由 action 自行设置</span></p>
+      <p lang="en">The guest OS name. Each action supplies its own; there is no
+        reason to set it yourself.</p>
+      <p lang="zh">客户机系统名。每个 action 会自己填好，不需要你设置。</p>
+    </section>
+
+    <h2 id="outputs"><span lang="en">Outputs</span><span lang="zh">输出</span></h2>
+
+    <section class="opt">
+      <h3>cache-after-prepare-hit</h3>
+      <p lang="en"><code>true</code> when a prepared VM image was restored and
+        the <code>prepare</code> step was skipped, <code>false</code>
+        otherwise.</p>
+      <p lang="zh">当成功恢复了已准备好的虚拟机镜像、跳过了 <code>prepare</code>
+        步骤时为 <code>true</code>，否则为 <code>false</code>。</p>
+<pre><code>- uses: vmactions/freebsd-vm@v1
+  id: vm
+  with:
+    cache-after-prepare: true
+    prepare: |
+      pkg install -y gmake
+- run: echo "${{ steps.vm.outputs.cache-after-prepare-hit }}"</code></pre>
+    </section>
+
+    <h2 id="custom-shell"><span lang="en">Custom shell</span><span lang="zh">自定义 shell</span></h2>
+
+    <p lang="en">
+      Start the VM in one step, then run any number of later steps inside it by
+      setting <code>shell:</code>. The wrapper changes into
+      <code>$GITHUB_WORKSPACE</code> first, if it exists.
+    </p>
+    <p lang="zh">
+      用一个 step 启动虚拟机，之后任意多个 step 通过设置 <code>shell:</code>
+      在里面执行。包装脚本会先 <code>cd</code> 进 <code>$GITHUB_WORKSPACE</code>（如果存在）。
+    </p>
+
+<pre><code>steps:
+  - uses: actions/checkout@v7
+  - name: Start VM
+    id: vm
+    uses: vmactions/freebsd-vm@v1
+    with:
+      sync: nfs
+      custom-shell-name: vmsh
+  - name: Step one, inside the VM
+    shell: vmsh {0}
+    run: |
+      pwd
+      uname -a
+  - name: Step two, also inside the VM
+    shell: vmsh {0}
+    run: |
+      gmake check</code></pre>
+
+    <p lang="en">
+      How file changes propagate between host and guest depends on
+      <a href="#sync">sync</a>:
+    </p>
+    <p lang="zh">
+      文件改动怎么在宿主机和客户机之间传播，取决于 <a href="#sync">sync</a>：
+    </p>
+    <ul>
+      <li lang="en"><code>nfs</code> or <code>sshfs</code>: the workspace is a
+        live mount, so changes are visible on both sides immediately.</li>
+      <li lang="zh"><code>nfs</code> 或 <code>sshfs</code>：工作目录是实时挂载，
+        改动两边立刻都能看到。</li>
+      <li lang="en"><code>rsync</code> or <code>scp</code>: the wrapper syncs
+        the workspace into the VM before each step and back afterwards.
+        <code>rsync</code> transfers incrementally; <code>scp</code> copies the
+        whole workspace every time, which gets slow on a large tree.</li>
+      <li lang="zh"><code>rsync</code> 或 <code>scp</code>：包装脚本在每个 step
+        之前把工作目录同步进虚拟机、之后再同步回来。<code>rsync</code> 是增量传输；
+        <code>scp</code> 每次都拷整个工作目录，目录大了会很慢。</li>
+    </ul>
+
+  </div>
+</div>
+</main>
+
+<footer class="footer">
+  <div class="footer-in">
+    <a href="/"><span lang="en">Home</span><span lang="zh">首页</span></a>
+    <a href="https://github.com/vmactions">GitHub</a>
+    <span class="spacer" lang="en">Images built and booted by <a href="https://anyvm.org">AnyVM</a>.</span>
+    <span class="spacer" lang="zh">镜像由 <a href="https://anyvm.org">AnyVM</a> 构建和启动。</span>
+  </div>
+</footer>
+
+<script src="/assets/site.js" defer></script>
+</body>
+</html>

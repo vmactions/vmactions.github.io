@@ -1,0 +1,741 @@
+/* vmactions.org -- the only stylesheet.
+ *
+ * Rules that must survive edits:
+ *   - No external resources. No web fonts, no CDN, no remote images.
+ *   - Both themes are first class. Dark follows prefers-color-scheme by
+ *     default; [data-theme] on <html> overrides it in BOTH directions.
+ *   - Colour carries exactly one meaning at a time: --pass means "this run
+ *     succeeded", --debug means "this is the debug path", and --os-* means
+ *     "this is that system". Buttons, links and focus rings stay neutral.
+ *   - Responsive to 375px. Wide content scrolls inside .scroll-x; the body
+ *     never scrolls sideways.
+ */
+
+/* ------------------------------------------------------------ tokens */
+
+:root {
+  color-scheme: light dark;
+
+  --sans: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue",
+          Arial, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei",
+          "Noto Sans CJK SC", sans-serif;
+  --mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas,
+          "Liberation Mono", "Courier New", monospace;
+
+  --page: 1180px;
+  --radius: 10px;
+  --gap: 20px;
+
+  /* Light theme -- warm paper, so it does not read as a washed-out dark. */
+  --ground:    #fbfaf7;
+  --surface:   #ffffff;
+  --surface-2: #f3f1eb;
+  --ink:       #191f24;
+  --ink-dim:   #55636f;
+  --rule:      #ddd9d0;
+  --pass:      #0d6b39;
+  --debug:     #8a5200;
+  --shadow:    0 1px 2px rgba(25, 31, 36, .06), 0 8px 24px rgba(25, 31, 36, .06);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --ground:    #0f1418;
+    --surface:   #161d23;
+    --surface-2: #1d262d;
+    --ink:       #e7eef4;
+    --ink-dim:   #9aabb9;
+    --rule:      #2a353e;
+    --pass:      #4fd489;
+    --debug:     #ffb454;
+    --shadow:    0 1px 2px rgba(0, 0, 0, .4), 0 8px 24px rgba(0, 0, 0, .3);
+  }
+}
+
+/* The toggle must beat the media query in both directions, so both themes
+ * are restated here. Do not "simplify" either block away. */
+:root[data-theme="light"] {
+  --ground:    #fbfaf7;
+  --surface:   #ffffff;
+  --surface-2: #f3f1eb;
+  --ink:       #191f24;
+  --ink-dim:   #55636f;
+  --rule:      #ddd9d0;
+  --pass:      #0d6b39;
+  --debug:     #8a5200;
+  --shadow:    0 1px 2px rgba(25, 31, 36, .06), 0 8px 24px rgba(25, 31, 36, .06);
+}
+
+:root[data-theme="dark"] {
+  --ground:    #0f1418;
+  --surface:   #161d23;
+  --surface-2: #1d262d;
+  --ink:       #e7eef4;
+  --ink-dim:   #9aabb9;
+  --rule:      #2a353e;
+  --pass:      #4fd489;
+  --debug:     #ffb454;
+  --shadow:    0 1px 2px rgba(0, 0, 0, .4), 0 8px 24px rgba(0, 0, 0, .3);
+}
+
+/* System colours. Each was sampled from that project's own site or logo, and
+ * the source is recorded beside the value. Never write one of these from
+ * memory: a new system means going to that project's site, sampling, and
+ * recording where it came from. The two marked DERIVED have no published
+ * palette and must never be presented anywhere as official.
+ *
+ * There are TWO sets, because one set cannot serve both grounds. A colour
+ * picked for a white page disappears on ink, and the reverse. Each set clears
+ * 3:1 against its own surface -- verified by tools/check-contrast.js, which is
+ * how these values were chosen. Only lightness moves between the sets; hue and
+ * saturation are the project's own.
+ *
+ * Light: the project's published value, darkened only where the published
+ * value itself falls under 3:1 on white.
+ * Dark: the value lifted for the ink ground, carried over from
+ * anyvm-org.github.io/assets/style.css. */
+:root {
+  --os-freebsd:      #ab2b28;  /* freebsd.org main.min.css, as published */
+  --os-openbsd:      #e05434;  /* openbsd.org --red, as-is */
+  --os-netbsd:       #d43900;  /* netbsd.org global.css, as published */
+  --os-dragonflybsd: #7a9c00;  /* logo disc small_logo.png #cfff22, darkened */
+  --os-midnightbsd:  #7d88de;  /* DERIVED -- no published palette */
+  --os-ghostbsd:     #009cb5;  /* site logo ghostbsd.png, as published */
+  --os-solaris:      #c74634;  /* oracle.com, as published */
+  --os-omnios:       #d67800;  /* omnios.org app.css #ff8f00, darkened */
+  --os-openindiana:  #6a9e1e;  /* oibird.svg #95d834, darkened */
+  --os-tribblix:     #006600;  /* tribblix.css, as published */
+  --os-haiku:        #cf7e00;  /* haiku-os.org accent #ff9c00, darkened */
+  --os-hurd:         #9b84cb;  /* DERIVED -- logo is monochrome */
+  --os-openeuler:    #204bb9;  /* official logo png, as published */
+  --os-blissos:      #0080ff;  /* blissos.org neon.css, as-is */
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --os-freebsd:      #e2504a;  /* #ab2b28 lifted */
+    --os-openbsd:      #e05434;  /* as-is */
+    --os-netbsd:       #f2551b;  /* #d43900 lifted */
+    --os-dragonflybsd: #cfff22;  /* as-is */
+    --os-midnightbsd:  #7d88de;  /* DERIVED */
+    --os-ghostbsd:     #22bcd4;  /* #009cb5 lifted */
+    --os-solaris:      #e05a48;  /* #c74634 lifted */
+    --os-omnios:       #ff8f00;  /* as-is */
+    --os-openindiana:  #95d834;  /* as-is */
+    --os-tribblix:     #3fae3f;  /* #006600 lifted hard */
+    --os-haiku:        #ff9c00;  /* as-is */
+    --os-hurd:         #a48fd0;  /* DERIVED */
+    --os-openeuler:    #5b8cf0;  /* #204bb9 lifted */
+    --os-blissos:      #0080ff;  /* as-is */
+  }
+}
+
+:root[data-theme="light"] {
+  --os-freebsd:      #ab2b28;
+  --os-openbsd:      #e05434;
+  --os-netbsd:       #d43900;
+  --os-dragonflybsd: #7a9c00;
+  --os-midnightbsd:  #7d88de;
+  --os-ghostbsd:     #009cb5;
+  --os-solaris:      #c74634;
+  --os-omnios:       #d67800;
+  --os-openindiana:  #6a9e1e;
+  --os-tribblix:     #006600;
+  --os-haiku:        #cf7e00;
+  --os-hurd:         #9b84cb;
+  --os-openeuler:    #204bb9;
+  --os-blissos:      #0080ff;
+}
+
+:root[data-theme="dark"] {
+  --os-freebsd:      #e2504a;
+  --os-openbsd:      #e05434;
+  --os-netbsd:       #f2551b;
+  --os-dragonflybsd: #cfff22;
+  --os-midnightbsd:  #7d88de;
+  --os-ghostbsd:     #22bcd4;
+  --os-solaris:      #e05a48;
+  --os-omnios:       #ff8f00;
+  --os-openindiana:  #95d834;
+  --os-tribblix:     #3fae3f;
+  --os-haiku:        #ff9c00;
+  --os-hurd:         #a48fd0;
+  --os-openeuler:    #5b8cf0;
+  --os-blissos:      #0080ff;
+}
+
+[data-os="freebsd"]      { --os-color: var(--os-freebsd); }
+[data-os="openbsd"]      { --os-color: var(--os-openbsd); }
+[data-os="netbsd"]       { --os-color: var(--os-netbsd); }
+[data-os="dragonflybsd"] { --os-color: var(--os-dragonflybsd); }
+[data-os="midnightbsd"]  { --os-color: var(--os-midnightbsd); }
+[data-os="ghostbsd"]     { --os-color: var(--os-ghostbsd); }
+[data-os="solaris"]      { --os-color: var(--os-solaris); }
+[data-os="omnios"]       { --os-color: var(--os-omnios); }
+[data-os="openindiana"]  { --os-color: var(--os-openindiana); }
+[data-os="tribblix"]     { --os-color: var(--os-tribblix); }
+[data-os="haiku"]        { --os-color: var(--os-haiku); }
+[data-os="hurd"]         { --os-color: var(--os-hurd); }
+[data-os="openeuler"]    { --os-color: var(--os-openeuler); }
+[data-os="blissos"]      { --os-color: var(--os-blissos); }
+
+/* ------------------------------------------------------------ language
+ *
+ * Both languages live in the markup; CSS shows one. The selectors are scoped
+ * to `body` on purpose: <html> carries lang= too, and an unscoped
+ * [lang="en"] rule would hide the entire document.
+ *
+ * They are written [lang="zh"][lang] rather than [lang="zh"] because a single
+ * attribute selector ties with a class, and component rules further down this
+ * file set `display`. The doubled selector outranks them. Do not simplify. */
+
+body [lang="zh"][lang] { display: none; }
+
+html[data-lang="zh"] body [lang="zh"][lang] { display: revert; }
+html[data-lang="zh"] body [lang="en"][lang] { display: none; }
+
+/* ------------------------------------------------------------ base */
+
+* { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: var(--ground);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 16px;
+  line-height: 1.65;
+  overflow-x: hidden;
+}
+
+h1, h2, h3 { line-height: 1.25; margin: 0 0 .5em; font-weight: 650; }
+h1 { font-size: clamp(1.9rem, 1.2rem + 2.6vw, 3.1rem); letter-spacing: -.02em; }
+h2 { font-size: clamp(1.45rem, 1.1rem + 1.3vw, 2.05rem); letter-spacing: -.015em; }
+h3 { font-size: 1.05rem; }
+
+p { margin: 0 0 1em; }
+
+a { color: var(--ink); text-decoration-color: var(--rule); text-underline-offset: 3px; }
+a:hover { text-decoration-color: currentColor; }
+
+code, kbd, pre { font-family: var(--mono); }
+
+code {
+  font-size: .875em;
+  background: var(--surface-2);
+  border: 1px solid var(--rule);
+  border-radius: 5px;
+  padding: .08em .38em;
+  white-space: nowrap;
+}
+
+/* Inside a <pre> the code is a block, not a token: it keeps its own newlines,
+ * loses the inline chrome, and must NOT inherit the nowrap above -- that
+ * collapses a whole listing onto one 2000px line and pushes the page sideways. */
+pre code {
+  white-space: pre;
+  background: none;
+  border: 0;
+  border-radius: 0;
+  padding: 0;
+  font-size: inherit;
+}
+
+:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 2px;
+  border-radius: 3px;
+}
+
+.wrap { max-width: var(--page); margin: 0 auto; padding: 0 24px; }
+
+.section { padding: clamp(48px, 7vw, 88px) 0; border-top: 1px solid var(--rule); }
+.section-alt { background: var(--surface); }
+
+.eyebrow {
+  font-family: var(--mono);
+  font-size: .74rem;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--ink-dim);
+  margin: 0 0 .6em;
+}
+
+.lede { font-size: 1.08rem; color: var(--ink-dim); max-width: 62ch; }
+
+.note { font-size: .86rem; color: var(--ink-dim); margin-top: .9em; }
+
+.dim { color: var(--ink-dim); }
+
+/* Wide content scrolls in here, never on the body. */
+.scroll-x {
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+  background: var(--surface);
+}
+
+/* ------------------------------------------------------------ nav */
+
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background: color-mix(in srgb, var(--ground) 88%, transparent);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--rule);
+}
+
+.nav-in {
+  max-width: var(--page);
+  margin: 0 auto;
+  padding: 10px 24px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  font-weight: 650;
+  letter-spacing: -.01em;
+  text-decoration: none;
+}
+
+.brand svg { width: 26px; height: 26px; display: block; }
+
+.nav-links { display: flex; gap: 18px; margin-left: auto; }
+
+.nav-links a {
+  font-size: .9rem;
+  color: var(--ink-dim);
+  text-decoration: none;
+}
+
+.nav-links a:hover { color: var(--ink); }
+
+.switches { display: flex; gap: 8px; }
+
+.switch {
+  font: inherit;
+  font-family: var(--mono);
+  font-size: .78rem;
+  color: var(--ink-dim);
+  background: var(--surface);
+  border: 1px solid var(--rule);
+  border-radius: 999px;
+  padding: 4px 11px;
+  cursor: pointer;
+  line-height: 1.5;
+}
+
+.switch:hover { color: var(--ink); border-color: var(--ink-dim); }
+
+@media (max-width: 720px) {
+  .nav-links { display: none; }
+}
+
+/* ------------------------------------------------------------ hero */
+
+.hero { padding: clamp(40px, 6vw, 76px) 0 clamp(36px, 5vw, 64px); }
+
+.hero h1 { max-width: 18ch; }
+
+.hero .lede { margin-bottom: 28px; }
+
+.hero-cols {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, .95fr);
+  gap: clamp(20px, 3vw, 40px);
+  align-items: start;
+  margin-top: 34px;
+}
+
+@media (max-width: 900px) {
+  .hero-cols { grid-template-columns: minmax(0, 1fr); }
+}
+
+/* Code block with a copy button. */
+
+.codeblock {
+  position: relative;
+  background: var(--surface);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+
+.codeblock-head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  border-bottom: 1px solid var(--rule);
+  background: var(--surface-2);
+  font-family: var(--mono);
+  font-size: .76rem;
+  color: var(--ink-dim);
+}
+
+.codeblock pre {
+  margin: 0;
+  padding: 16px;
+  overflow-x: auto;
+  font-size: .82rem;
+  line-height: 1.6;
+  tab-size: 2;
+}
+
+.copy {
+  margin-left: auto;
+  font: inherit;
+  font-family: var(--mono);
+  font-size: .74rem;
+  color: var(--ink-dim);
+  background: var(--ground);
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  padding: 2px 9px;
+  cursor: pointer;
+}
+
+.copy:hover { color: var(--ink); border-color: var(--ink-dim); }
+
+/* The simulated run. Decorative: aria-hidden in the markup. */
+
+.run {
+  background: var(--surface);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+
+.run-head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  border-bottom: 1px solid var(--rule);
+  background: var(--surface-2);
+  font-family: var(--mono);
+  font-size: .76rem;
+  color: var(--ink-dim);
+}
+
+.run-list { list-style: none; margin: 0; padding: 6px 0; }
+
+.run-list li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 7px 14px;
+  font-family: var(--mono);
+  font-size: .82rem;
+  border-left: 2px solid transparent;
+}
+
+.run-list li[data-os] { border-left-color: var(--os-color); }
+
+.run-list .tick {
+  width: 15px;
+  height: 15px;
+  flex: none;
+  border-radius: 50%;
+  border: 1.5px solid var(--pass);
+  color: var(--pass);
+  display: grid;
+  place-items: center;
+  font-size: 9px;
+  line-height: 1;
+}
+
+.run-list .dur { margin-left: auto; color: var(--ink-dim); font-size: .76rem; }
+
+.run-list li.pending .tick { border-color: var(--ink-dim); color: transparent; }
+.run-list li.pending { color: var(--ink-dim); }
+
+/* Counters. */
+
+.stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: clamp(20px, 4vw, 52px);
+  margin-top: 34px;
+  padding-top: 26px;
+  border-top: 1px solid var(--rule);
+}
+
+.stat-n {
+  display: block;
+  font-family: var(--mono);
+  font-size: clamp(1.8rem, 1.2rem + 2vw, 2.6rem);
+  font-weight: 600;
+  letter-spacing: -.03em;
+  line-height: 1.1;
+}
+
+.stat-l {
+  font-family: var(--mono);
+  font-size: .78rem;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--ink-dim);
+}
+
+html[data-lang="zh"] .stat-l { text-transform: none; letter-spacing: .02em; }
+
+/* ------------------------------------------------------------ diagram */
+
+.diagram { margin: 8px 0 0; }
+.diagram svg { width: 100%; height: auto; display: block; }
+
+.how-cols {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: clamp(20px, 3vw, 44px);
+  align-items: center;
+}
+
+@media (max-width: 860px) {
+  .how-cols { grid-template-columns: minmax(0, 1fr); }
+}
+
+.how-points { list-style: none; margin: 0; padding: 0; }
+
+.how-points li {
+  padding: 12px 0;
+  border-top: 1px solid var(--rule);
+}
+
+.how-points li:first-child { border-top: 0; }
+
+.how-points strong { display: block; }
+
+/* ------------------------------------------------------------ matrix */
+
+.matrix { border-collapse: collapse; width: 100%; font-size: .84rem; }
+
+.matrix th, .matrix td {
+  padding: 9px 12px;
+  text-align: left;
+  border-bottom: 1px solid var(--rule);
+  white-space: nowrap;
+}
+
+.matrix thead th {
+  position: sticky;
+  top: 0;
+  background: var(--surface-2);
+  font-family: var(--mono);
+  font-size: .76rem;
+  font-weight: 600;
+  color: var(--ink-dim);
+  z-index: 1;
+}
+
+.matrix tbody th {
+  font-weight: 600;
+  border-left: 3px solid var(--os-color, var(--rule));
+}
+
+.matrix tbody tr:last-child th,
+.matrix tbody tr:last-child td { border-bottom: 0; }
+
+.matrix .dot {
+  display: none;
+}
+
+.matrix td.yes code {
+  background: transparent;
+  border: 0;
+  padding: 0;
+  margin-right: .5em;
+  font-size: .78rem;
+  color: var(--ink-dim);
+}
+
+.matrix td.no { color: var(--rule); text-align: center; }
+
+.matrix .warn { color: var(--debug); font-family: var(--mono); }
+
+/* ------------------------------------------------------------ cards */
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(276px, 1fr));
+  gap: var(--gap);
+}
+
+.card {
+  background: var(--surface);
+  border: 1px solid var(--rule);
+  border-left: 3px solid var(--os-color, var(--rule));
+  border-radius: var(--radius);
+  padding: 16px 18px;
+}
+
+.card h3 { display: flex; align-items: center; gap: 8px; margin-bottom: .35em; }
+
+.card .dot {
+  width: 9px;
+  height: 9px;
+  flex: none;
+  border-radius: 50%;
+  background: var(--os-color, var(--ink-dim));
+}
+
+.card .uses { margin: 0 0 12px; }
+.card .uses code { font-size: .78rem; white-space: normal; }
+
+.card dl { margin: 0; font-size: .84rem; }
+
+.card .row {
+  display: grid;
+  grid-template-columns: 8.5em minmax(0, 1fr);
+  gap: 8px;
+  padding: 5px 0;
+  border-top: 1px solid var(--rule);
+}
+
+.card dt { color: var(--ink-dim); font-family: var(--mono); font-size: .76rem; }
+.card dd { margin: 0; }
+
+.card dd code { font-size: .76rem; white-space: normal; }
+
+.card .sync {
+  display: block;
+  font-family: var(--mono);
+  font-size: .74rem;
+  color: var(--ink-dim);
+}
+
+.card .sync code { margin-right: .5em; color: var(--ink); }
+
+.card .links { display: flex; gap: 14px; margin: 14px 0 0; font-size: .82rem; }
+
+html[data-lang="zh"] .card .row { grid-template-columns: 7em minmax(0, 1fr); }
+
+/* ------------------------------------------------------------ features */
+
+.features {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: var(--gap);
+}
+
+.feature {
+  background: var(--surface);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+  padding: 16px 18px;
+}
+
+.feature h3 { font-family: var(--mono); font-size: .88rem; }
+.feature p { margin: 0; font-size: .88rem; color: var(--ink-dim); }
+.feature.is-debug { border-color: color-mix(in srgb, var(--debug) 45%, var(--rule)); }
+.feature.is-debug h3 { color: var(--debug); }
+
+/* ------------------------------------------------------------ skill */
+
+.skill {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: clamp(20px, 3vw, 40px);
+  align-items: center;
+}
+
+@media (max-width: 860px) {
+  .skill { grid-template-columns: minmax(0, 1fr); }
+}
+
+/* ------------------------------------------------------------ footer */
+
+.footer {
+  border-top: 1px solid var(--rule);
+  padding: 40px 0;
+  font-size: .88rem;
+  color: var(--ink-dim);
+}
+
+.footer-in {
+  max-width: var(--page);
+  margin: 0 auto;
+  padding: 0 24px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 24px;
+  align-items: center;
+}
+
+.footer a { color: var(--ink-dim); }
+.footer a:hover { color: var(--ink); }
+.footer .spacer { margin-left: auto; }
+
+/* ------------------------------------------------------------ docs */
+
+.docs {
+  display: grid;
+  grid-template-columns: 220px minmax(0, 1fr);
+  gap: clamp(24px, 4vw, 56px);
+  align-items: start;
+  padding: 40px 0 80px;
+}
+
+/* A grid item defaults to min-width:auto, so it refuses to shrink below its
+ * widest child and overflows the track no matter what the track says. */
+.docs > * { min-width: 0; }
+
+@media (max-width: 900px) {
+  .docs { grid-template-columns: minmax(0, 1fr); }
+  .toc { position: static !important; }
+}
+
+.toc { position: sticky; top: 72px; font-size: .86rem; }
+.toc ol { list-style: none; margin: 0; padding: 0; }
+.toc li { margin: 0 0 2px; }
+
+.toc a {
+  display: block;
+  padding: 3px 10px;
+  color: var(--ink-dim);
+  text-decoration: none;
+  border-left: 2px solid var(--rule);
+}
+
+.toc a:hover { color: var(--ink); }
+.toc a.on { color: var(--ink); border-left-color: var(--ink); }
+
+.opt { padding: 20px 0; border-top: 1px solid var(--rule); scroll-margin-top: 76px; }
+.opt:first-of-type { border-top: 0; }
+.opt h3 { font-family: var(--mono); font-size: 1rem; }
+
+.opt-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 14px;
+  font-family: var(--mono);
+  font-size: .76rem;
+  color: var(--ink-dim);
+  margin: 0 0 .8em;
+}
+
+.opt pre {
+  margin: 12px 0 0;
+  padding: 14px;
+  overflow-x: auto;
+  font-size: .8rem;
+  background: var(--surface);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { animation: none !important; transition: none !important; }
+}

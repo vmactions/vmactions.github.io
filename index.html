@@ -1,0 +1,759 @@
+<!doctype html>
+<html lang="en" data-lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>VM Actions -- run your CI on the systems GitHub does not offer</title>
+<meta name="description" content="GitHub Actions for FreeBSD, OpenBSD, NetBSD, Solaris, Haiku, GNU Hurd and more. Boot a real operating system under QEMU inside an ordinary ubuntu-latest runner, on x86_64, aarch64, riscv64, powerpc64, sparc64, i386 and loongarch64.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect x='3' y='6' width='20' height='16' rx='3' fill='none' stroke='%23888' stroke-width='2'/%3E%3Crect x='11' y='12' width='18' height='14' rx='3' fill='%230f1418' stroke='%234fd489' stroke-width='2'/%3E%3Cpath d='M15 19l3 3 6-6' fill='none' stroke='%234fd489' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="/assets/style.css">
+<script>
+/* Applies the stored theme and language before first paint. Without this a
+   reader who chose dark gets a white flash on every navigation. This is the
+   only inline script. */
+(function () {
+  try {
+    var d = document.documentElement;
+    var t = localStorage.getItem('vma-theme');
+    if (t === 'light' || t === 'dark') d.setAttribute('data-theme', t);
+    var l = localStorage.getItem('vma-lang');
+    if (l === 'en' || l === 'zh') { d.setAttribute('data-lang', l); d.setAttribute('lang', l); }
+  } catch (e) {}
+})();
+</script>
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav-in">
+    <a class="brand" href="/">
+      <svg viewBox="0 0 32 32" aria-hidden="true">
+        <rect x="3" y="6" width="20" height="16" rx="3" fill="none" stroke="currentColor" stroke-width="2" opacity=".45"/>
+        <rect x="11" y="12" width="18" height="14" rx="3" fill="var(--ground)" stroke="currentColor" stroke-width="2"/>
+        <path d="M15 19l3 3 6-6" fill="none" stroke="var(--pass)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <span>VM Actions</span>
+    </a>
+
+    <nav class="nav-links" aria-label="Main">
+      <a href="#how"><span lang="en">How it works</span><span lang="zh">工作原理</span></a>
+      <a href="#coverage"><span lang="en">Coverage</span><span lang="zh">覆盖矩阵</span></a>
+      <a href="#systems"><span lang="en">Systems</span><span lang="zh">系统</span></a>
+      <a href="/docs/inputs.html"><span lang="en">Reference</span><span lang="zh">参数参考</span></a>
+      <a href="https://github.com/vmactions">GitHub</a>
+    </nav>
+
+    <div class="switches">
+      <button class="switch" id="lang-switch" type="button">
+        <span lang="en">中文</span><span lang="zh">English</span>
+      </button>
+      <button class="switch" id="theme-switch" type="button" aria-label="Toggle colour theme">
+        <span data-theme-label>Theme</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main>
+
+<section class="hero">
+  <div class="wrap">
+    <p class="eyebrow">GitHub Actions</p>
+
+    <h1 lang="en">Run your CI on the systems GitHub does not offer.</h1>
+    <h1 lang="zh">在 GitHub 不提供的系统上跑 CI。</h1>
+
+    <p class="lede" lang="en">
+      Hosted runners give you Ubuntu, Windows and macOS. These actions boot a
+      real, fully installed operating system under QEMU inside an ordinary
+      <code>ubuntu-latest</code> runner, sync your checked-out source tree into
+      it, and run your build and test commands there. No self-hosted runner, no
+      container trickery, no cross-compilation guesswork.
+    </p>
+    <p class="lede" lang="zh">
+      官方 runner 只有 Ubuntu、Windows 和 macOS。这些 action 在一台普通的
+      <code>ubuntu-latest</code> runner 里用 QEMU 启动一台真实、装好的操作系统，
+      把你 checkout 出来的源码同步进去，在里面跑构建和测试。不需要 self-hosted
+      runner，不靠容器取巧，也不用交叉编译连蒙带猜。
+    </p>
+
+    <div class="hero-cols">
+      <div class="codeblock">
+        <div class="codeblock-head">
+          <span>.github/workflows/test.yml</span>
+          <button class="copy" type="button" data-copy="#workflow">
+            <span lang="en">Copy</span><span lang="zh">复制</span>
+          </button>
+        </div>
+        <pre id="workflow"><code>jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: vmactions/freebsd-vm@v1
+        with:
+          usesh: true
+          prepare: |
+            pkg install -y gmake
+          run: |
+            ./configure
+            gmake
+            gmake check</code></pre>
+      </div>
+
+      <div class="run" aria-hidden="true">
+        <div class="run-head">
+          <span>Actions</span>
+          <span class="dim" style="margin-left:auto">14 jobs</span>
+        </div>
+        <ul class="run-list" id="run-list">
+<!-- BEGIN generated:run -->
+      <li data-os="freebsd">
+        <span class="tick">&#10003;</span>
+        <code>vmactions/freebsd-vm@v1</code>
+      </li>
+      <li data-os="openbsd">
+        <span class="tick">&#10003;</span>
+        <code>vmactions/openbsd-vm@v1</code>
+      </li>
+      <li data-os="netbsd">
+        <span class="tick">&#10003;</span>
+        <code>vmactions/netbsd-vm@v1</code>
+      </li>
+      <li data-os="dragonflybsd">
+        <span class="tick">&#10003;</span>
+        <code>vmactions/dragonflybsd-vm@v1</code>
+      </li>
+      <li data-os="ghostbsd">
+        <span class="tick">&#10003;</span>
+        <code>vmactions/ghostbsd-vm@v1</code>
+      </li>
+      <li data-os="midnightbsd">
+        <span class="tick">&#10003;</span>
+        <code>vmactions/midnightbsd-vm@v1</code>
+      </li>
+      <li data-os="solaris">
+        <span class="tick">&#10003;</span>
+        <code>vmactions/solaris-vm@v1</code>
+      </li>
+      <li data-os="omnios">
+        <span class="tick">&#10003;</span>
+        <code>vmactions/omnios-vm@v1</code>
+      </li>
+      <li data-os="openindiana">
+        <span class="tick">&#10003;</span>
+        <code>vmactions/openindiana-vm@v1</code>
+      </li>
+      <li data-os="tribblix">
+        <span class="tick">&#10003;</span>
+        <code>vmactions/tribblix-vm@v1</code>
+      </li>
+      <li data-os="haiku">
+        <span class="tick">&#10003;</span>
+        <code>vmactions/haiku-vm@v1</code>
+      </li>
+      <li data-os="hurd">
+        <span class="tick">&#10003;</span>
+        <code>vmactions/hurd-vm@v1</code>
+      </li>
+      <li data-os="openeuler">
+        <span class="tick">&#10003;</span>
+        <code>vmactions/openeuler-vm@v1</code>
+      </li>
+      <li data-os="blissos">
+        <span class="tick">&#10003;</span>
+        <code>vmactions/blissos-vm@v1</code>
+      </li>
+<!-- END generated:run -->
+        </ul>
+      </div>
+    </div>
+
+    <div class="stats">
+<!-- BEGIN generated:counts -->
+    <div class="stat">
+      <span class="stat-n">14</span>
+      <span class="stat-l"><span lang="en">systems</span><span lang="zh">个系统</span></span>
+    </div>
+    <div class="stat">
+      <span class="stat-n">7</span>
+      <span class="stat-l"><span lang="en">architectures</span><span lang="zh">种架构</span></span>
+    </div>
+    <div class="stat">
+      <span class="stat-n">27</span>
+      <span class="stat-l"><span lang="en">OS-arch combinations</span><span lang="zh">个系统-架构组合</span></span>
+    </div>
+<!-- END generated:counts -->
+    </div>
+  </div>
+</section>
+
+<section class="section section-alt" id="how">
+  <div class="wrap">
+    <p class="eyebrow"><span lang="en">How it works</span><span lang="zh">工作原理</span></p>
+    <h2 lang="en">A whole machine, inside the runner you already have</h2>
+    <h2 lang="zh">在你已有的 runner 里，跑一整台机器</h2>
+
+    <div class="how-cols">
+      <div class="diagram">
+        <svg viewBox="0 0 520 300" role="img">
+          <title lang="en">A QEMU guest running inside the ubuntu-latest runner, with the workspace synced between them</title>
+          <title lang="zh">ubuntu-latest runner 内部运行的 QEMU 客户机，工作目录在两者之间同步</title>
+
+          <rect x="8" y="26" width="504" height="266" rx="10"
+                fill="none" stroke="currentColor" stroke-width="1.5" opacity=".35"/>
+          <text x="22" y="18" font-family="ui-monospace, monospace" font-size="13"
+                fill="currentColor" opacity=".7">runs-on: ubuntu-latest</text>
+
+          <rect x="30" y="60" width="180" height="90" rx="8"
+                fill="none" stroke="currentColor" stroke-width="1.5" opacity=".55"/>
+          <text x="46" y="90" font-family="ui-monospace, monospace" font-size="13" fill="currentColor">host</text>
+          <text x="46" y="112" font-family="ui-monospace, monospace" font-size="12"
+                fill="currentColor" opacity=".65">$GITHUB_WORKSPACE</text>
+          <text x="46" y="131" font-family="ui-monospace, monospace" font-size="12"
+                fill="currentColor" opacity=".65">actions/checkout</text>
+
+          <rect x="300" y="60" width="182" height="90" rx="8"
+                fill="none" stroke="var(--pass)" stroke-width="1.8"/>
+          <text x="316" y="90" font-family="ui-monospace, monospace" font-size="13" fill="currentColor">QEMU guest</text>
+          <text x="316" y="112" font-family="ui-monospace, monospace" font-size="12"
+                fill="currentColor" opacity=".65">same path, same env</text>
+          <text x="316" y="131" font-family="ui-monospace, monospace" font-size="12"
+                fill="currentColor" opacity=".65">prepare + run</text>
+
+          <path d="M214 96h82" stroke="currentColor" stroke-width="1.5" opacity=".6" marker-end="url(#a)"/>
+          <path d="M296 122h-78" stroke="currentColor" stroke-width="1.5" opacity=".6" marker-end="url(#a)"/>
+          <text x="222" y="88" font-family="ui-monospace, monospace" font-size="11"
+                fill="currentColor" opacity=".75">rsync</text>
+          <text x="222" y="145" font-family="ui-monospace, monospace" font-size="11"
+                fill="currentColor" opacity=".75">copyback</text>
+
+          <rect x="30" y="190" width="452" height="74" rx="8"
+                fill="none" stroke="currentColor" stroke-width="1.2" opacity=".3"
+                stroke-dasharray="4 4"/>
+          <text x="46" y="216" font-family="ui-monospace, monospace" font-size="12"
+                fill="currentColor" opacity=".7">sync: rsync | sshfs | nfs | scp</text>
+          <text x="46" y="238" font-family="ui-monospace, monospace" font-size="12"
+                fill="currentColor" opacity=".7">nat: "8080": "80"</text>
+          <text x="46" y="256" font-family="ui-monospace, monospace" font-size="12"
+                fill="currentColor" opacity=".7">arch: x86_64 | aarch64 | riscv64 | ...</text>
+
+          <defs>
+            <marker id="a" viewBox="0 0 10 10" refX="9" refY="5"
+                    markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+              <path d="M0 0L10 5L0 10z" fill="currentColor" opacity=".6"/>
+            </marker>
+          </defs>
+        </svg>
+      </div>
+
+      <ul class="how-points">
+        <li>
+          <strong lang="en">Your workspace goes in, and comes back out.</strong>
+          <strong lang="zh">工作目录同步进去，再同步回来。</strong>
+          <span lang="en">The whole checked-out tree is shared into the guest,
+            and changes made inside come back to the host. Pick
+            <code>rsync</code>, <code>sshfs</code>, <code>nfs</code> or
+            <code>scp</code> -- or turn syncing off entirely.</span>
+          <span lang="zh">整棵 checkout 出来的目录树都会共享进客户机，在里面产生的改动
+            也会同步回宿主机。可以选 <code>rsync</code>、<code>sshfs</code>、
+            <code>nfs</code> 或 <code>scp</code>，也可以完全关掉同步。</span>
+        </li>
+        <li>
+          <strong lang="en">Same directory, same environment.</strong>
+          <strong lang="zh">同样的目录，同样的环境变量。</strong>
+          <span lang="en">The working directory inside the VM matches the host.
+            Every <code>GITHUB_*</code> variable and <code>CI=true</code> comes
+            along; you name which of your own secrets follow via
+            <code>envs</code>.</span>
+          <span lang="zh">虚拟机里的工作目录和宿主机一致。所有
+            <code>GITHUB_*</code> 变量和 <code>CI=true</code> 都会带进去；你自己的
+            secret 则通过 <code>envs</code> 指定哪些跟着进去。</span>
+        </li>
+        <li>
+          <strong lang="en">It is a real machine, so you can look inside.</strong>
+          <strong lang="zh">它是台真机器，出事能进去看。</strong>
+          <span lang="en">Forward ports with <code>nat</code>, size it with
+            <code>mem</code> and <code>cpu</code>, run later workflow steps
+            directly in the guest with a custom shell, and open a VNC session at
+            the moment a build fails.</span>
+          <span lang="zh">用 <code>nat</code> 转发端口，用 <code>mem</code> 和
+            <code>cpu</code> 调规格，用自定义 shell 让后续 step 直接在客户机里跑，
+            构建失败的那一刻还能开 VNC 进去看现场。</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="coverage">
+  <div class="wrap">
+    <p class="eyebrow"><span lang="en">Coverage</span><span lang="zh">覆盖矩阵</span></p>
+    <h2 lang="en">Every system, every architecture</h2>
+    <h2 lang="zh">所有系统，所有架构</h2>
+    <p class="lede" lang="en">
+      Generated from the action repositories themselves, so it cannot drift
+      from what actually ships.
+    </p>
+    <p class="lede" lang="zh">
+      直接从各 action 仓库生成，不会和实际发布的内容对不上。
+    </p>
+
+<!-- BEGIN generated:matrix -->
+  <div class="scroll-x">
+    <table class="matrix">
+      <thead>
+        <tr>
+          <th scope="col"><span lang="en">System</span><span lang="zh">系统</span></th>
+          <th scope="col"><code>x86_64</code></th>
+          <th scope="col"><code>aarch64</code></th>
+          <th scope="col"><code>riscv64</code></th>
+          <th scope="col"><code>powerpc64</code></th>
+          <th scope="col"><code>sparc64</code></th>
+          <th scope="col"><code>i386</code></th>
+          <th scope="col"><code>loongarch64</code></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr data-os="freebsd">
+          <th scope="row"><span class="dot"></span>FreeBSD</th>
+          <td class="yes"><code>rsync</code> <code>scp</code> <code>sshfs</code> <code>nfs</code></td>
+          <td class="yes"><code>rsync</code> <code>scp</code> <code>sshfs</code> <code>nfs</code></td>
+          <td class="yes"><code>nfs</code> <code>scp</code></td>
+          <td class="yes"><code>nfs</code> <code>scp</code></td>
+          <td class="no"><span aria-hidden="true">&middot;</span></td>
+          <td class="no"><span aria-hidden="true">&middot;</span></td>
+          <td class="no"><span aria-hidden="true">&middot;</span></td>
+        </tr>
+        <tr data-os="openbsd">
+          <th scope="row"><span class="dot"></span>OpenBSD</th>
+          <td class="yes"><code>rsync</code> <code>scp</code> <code>sshfs</code> <code>nfs</code></td>
+          <td class="yes"><code>rsync</code> <code>scp</code> <code>sshfs</code> <code>nfs</code></td>
+          <td class="yes"><code>rsync</code> <code>scp</code> <code>sshfs</code> <code>nfs</code></td>
+          <td class="no"><span aria-hidden="true">&middot;</span></td>
+          <td class="yes"><code>rsync</code> <code>scp</code> <code>sshfs</code> <code>nfs</code></td>
+          <td class="no"><span aria-hidden="true">&middot;</span></td>
+          <td class="no"><span aria-hidden="true">&middot;</span></td>
+        </tr>
+        <tr data-os="netbsd">
+          <th scope="row"><span class="dot"></span>NetBSD</th>
+          <td class="yes"><code>rsync</code> <code>scp</code> <code>sshfs</code> <code>nfs</code></td>
+          <td class="yes"><code>rsync</code> <code>scp</code> <code>sshfs</code> <code>nfs</code></td>
+          <td class="yes"><code>rsync</code> <code>scp</code> <code>sshfs</code> <code>nfs</code></td>
+          <td class="no"><span aria-hidden="true">&middot;</span></td>
+          <td class="yes"><code>scp</code> <code>sshfs</code> <code>nfs</code></td>
+          <td class="no"><span aria-hidden="true">&middot;</span></td>
+          <td class="no"><span aria-hidden="true">&middot;</span></td>
+        </tr>
+        <tr data-os="dragonflybsd">
+          <th scope="row"><span class="dot"></span>DragonFly BSD</th>
+          <td class="yes"><code>rsync</code> <code>scp</code> <code>nfs</code></td>
+          <td class="no"><span aria-hidden="true">&middot;</span></td>
+          <td class="no"><span aria-hidden="true">&middot;</span></td>
+          <td class="no"><span aria-hidden="true">&middot;</span></td>
+          <td class="no"><span aria-hidden="true">&middot;</span></td>
+          <td class="no"><span aria-hidden="true">&middot;</span></td>
+          <td class="no"><span aria-hidden="true">&middot;</span></td>
+        </tr>
+        <tr data-os="ghostbsd">
+          <th scope="row"><span class="dot"></span>GhostBSD</th>
+          <td class="yes"><code>rsync</code> <code>scp</code> <code>sshfs</code> <code>nfs</code></td>
+          <td class="no"><span aria-hidden="true">&middot;</span></td>
+          <td class="no"><span aria-hidden="true">&middot;</span></td>
+          <td class="no"><span aria-hidden="true">&middot;</span></td>
+          <td class="no"><span aria-hidden="true">&middot;</span></td>
+          <td class="no"><span aria-hidden="true">&middot;</span></td>
+          <td class="no"><span aria-hidden="true">&middot;</span></td>
+        </tr>
+        <tr data-os="midnightbsd">
+          <th scope="row"><span class="dot"></span>MidnightBSD</th>
+          <td class="yes"><code>rsync</code> <code>scp</code> <code>sshfs</code> <code>nfs</code></td>
+          <td class="no"><span aria-hidden="true">&middot;</span></td>
+          <td class="no"><span aria-hidden="true">&middot;</span></td>
+          <td class="no"><span aria-hidden="true">&middot;</span></td>
+          <td class="no"><span aria-hidden="true">&middot;</span></td>
+          <td class="no"><span aria-hidden="true">&middot;</span></td>
+          <td class="no"><span aria-hidden="true">&middot;</span></td>
+        </tr>
+        <tr data-os="solaris">
+          <th scope="row"><span class="dot"></span>Solaris</th>
+          <td class="yes"><code>rsync</code> <code>scp</code> <code>nfs</code></td>
+          <td class="no"><span aria-hidden="true">&middot;</span></td>
+          <td class="no"><span aria-hidden="true">&middot;</span></td>
+          <td class="no"><span aria-hidden="true">&middot;</span></td>
+          <td class="no"><span aria-hidden="true">&middot;</span></td>
+          <td class="no"><span aria-hidden="true">&middot;</span></td>
+          <td class="no"><span aria-hidden="true">&middot;</span></td>
+        </tr>
+        <tr data-os="omnios">
+          <th scope="row"><span class="dot"></span>OmniOS</th>
+          <td class="yes"><code>rsync</code> <code>scp</code> <code>nfs</code></td>
+          <td class="no"><span aria-hidden="true">&middot;</span></td>
+          <td class="no"><span aria-hidden="true">&middot;</span></td>
+          <td class="no"><span aria-hidden="true">&middot;</span></td>
+          <td class="no"><span aria-hidden="true">&middot;</span></td>
+          <td class="no"><span aria-hidden="true">&middot;</span></td>
+          <td class="no"><span aria-hidden="true">&middot;</span></td>
+        </tr>
+        <tr data-os="openindiana">
+          <th scope="row"><span class="dot"></span>OpenIndiana</th>
+          <td class="yes"><code>rsync</code> <code>scp</code> <code>sshfs</code> <code>nfs</code></td>
+          <td class="no"><span aria-hidden="true">&middot;</span></td>
+          <td class="no"><span aria-hidden="true">&middot;</span></td>
+          <td class="no"><span aria-hidden="true">&middot;</span></td>
+          <td class="no"><span aria-hidden="true">&middot;</span></td>
+          <td class="no"><span aria-hidden="true">&middot;</span></td>
+          <td class="no"><span aria-hidden="true">&middot;</span></td>
+        </tr>
+        <tr data-os="tribblix">
+          <th scope="row"><span class="dot"></span>Tribblix</th>
+          <td class="yes"><code>rsync</code> <code>scp</code> <code>nfs</code></td>
+          <td class="no"><span aria-hidden="true">&middot;</span></td>
+          <td class="no"><span aria-hidden="true">&middot;</span></td>
+          <td class="no"><span aria-hidden="true">&middot;</span></td>
+          <td class="no"><span aria-hidden="true">&middot;</span></td>
+          <td class="no"><span aria-hidden="true">&middot;</span></td>
+          <td class="no"><span aria-hidden="true">&middot;</span></td>
+        </tr>
+        <tr data-os="haiku">
+          <th scope="row"><span class="dot"></span>Haiku</th>
+          <td class="yes"><code>rsync</code> <code>scp</code></td>
+          <td class="no"><span aria-hidden="true">&middot;</span></td>
+          <td class="no"><span aria-hidden="true">&middot;</span></td>
+          <td class="no"><span aria-hidden="true">&middot;</span></td>
+          <td class="no"><span aria-hidden="true">&middot;</span></td>
+          <td class="no"><span aria-hidden="true">&middot;</span></td>
+          <td class="no"><span aria-hidden="true">&middot;</span></td>
+        </tr>
+        <tr data-os="hurd">
+          <th scope="row"><span class="dot"></span>GNU Hurd</th>
+          <td class="yes"><code>rsync</code> <code>scp</code> <code>nfs</code></td>
+          <td class="no"><span aria-hidden="true">&middot;</span></td>
+          <td class="no"><span aria-hidden="true">&middot;</span></td>
+          <td class="no"><span aria-hidden="true">&middot;</span></td>
+          <td class="no"><span aria-hidden="true">&middot;</span></td>
+          <td class="yes"><code>rsync</code> <code>scp</code> <code>nfs</code></td>
+          <td class="no"><span aria-hidden="true">&middot;</span></td>
+        </tr>
+        <tr data-os="openeuler">
+          <th scope="row"><span class="dot"></span>openEuler</th>
+          <td class="yes"><code>rsync</code> <code>scp</code> <code>sshfs</code> <code>nfs</code></td>
+          <td class="yes"><code>rsync</code> <code>scp</code> <code>sshfs</code> <code>nfs</code></td>
+          <td class="yes"><code>rsync</code> <code>scp</code> <code>nfs</code></td>
+          <td class="no"><span aria-hidden="true">&middot;</span></td>
+          <td class="no"><span aria-hidden="true">&middot;</span></td>
+          <td class="no"><span aria-hidden="true">&middot;</span></td>
+          <td class="yes"><code>rsync</code> <code>scp</code> <code>sshfs</code> <code>nfs</code></td>
+        </tr>
+        <tr data-os="blissos">
+          <th scope="row"><span class="dot"></span>BlissOS</th>
+          <td class="yes"><code>scp</code></td>
+          <td class="no"><span aria-hidden="true">&middot;</span></td>
+          <td class="no"><span aria-hidden="true">&middot;</span></td>
+          <td class="no"><span aria-hidden="true">&middot;</span></td>
+          <td class="no"><span aria-hidden="true">&middot;</span></td>
+          <td class="no"><span aria-hidden="true">&middot;</span></td>
+          <td class="no"><span aria-hidden="true">&middot;</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="note"><span lang="en">Each cell lists the sync methods that combination supports.</span><span lang="zh">每个格子列出该组合支持的同步方式。</span></p>
+<!-- END generated:matrix -->
+  </div>
+</section>
+
+<section class="section section-alt" id="systems">
+  <div class="wrap">
+    <p class="eyebrow"><span lang="en">Systems</span><span lang="zh">系统</span></p>
+    <h2 lang="en">Pick one and paste it in</h2>
+    <h2 lang="zh">挑一个，粘进去就能用</h2>
+    <p class="lede" lang="en">
+      Each action ships many releases; the default is listed here. See the
+      builder repository for the full release table.
+    </p>
+    <p class="lede" lang="zh">
+      每个 action 都带多个版本，这里列的是默认版本。完整版本表见对应的 builder 仓库。
+    </p>
+
+    <div class="cards">
+<!-- BEGIN generated:cards -->
+    <article class="card" data-os="freebsd">
+      <h3><span class="dot"></span>FreeBSD</h3>
+      <p class="uses"><code>vmactions/freebsd-vm@v1</code></p>
+      <dl>
+      <div class="row"><dt><span lang="en">Default release</span><span lang="zh">默认版本</span></dt><dd><code>15.1</code> <span class="dim">(12 <span lang="en">releases</span><span lang="zh">个版本</span>)</span></dd></div>
+      <div class="row"><dt><span lang="en">Architectures</span><span lang="zh">支持架构</span></dt><dd><code>x86_64</code> <code>aarch64</code> <code>riscv64</code> <code>powerpc64</code></dd></div>
+      <div class="row"><dt><span lang="en">Sync</span><span lang="zh">同步方式</span></dt><dd><span class="sync"><code>x86_64</code> rsync, scp, sshfs, nfs</span><span class="sync"><code>aarch64</code> rsync, scp, sshfs, nfs</span><span class="sync"><code>riscv64</code> nfs, scp</span><span class="sync"><code>powerpc64</code> nfs, scp</span></dd></div>
+      <div class="row"><dt><span lang="en">Shell</span><span lang="zh">默认 shell</span></dt><dd>The default shell in FreeBSD(before 14.0) is <code>tcsh</code>, if you want to use <code>sh</code> to execute the <code>run</code> script, please set <code>usesh</code> to <code>true</code>.  https://docs.freebsd.org/en/articles/linux-users/#shells</dd></div>
+      </dl>
+      <p class="links"><a href="https://github.com/vmactions/freebsd-vm"><span lang="en">Repository</span><span lang="zh">仓库</span></a><a href="https://github.com/anyvm-org/freebsd-builder"><span lang="en">Image builder</span><span lang="zh">镜像 builder</span></a></p>
+    </article>
+    <article class="card" data-os="openbsd">
+      <h3><span class="dot"></span>OpenBSD</h3>
+      <p class="uses"><code>vmactions/openbsd-vm@v1</code></p>
+      <dl>
+      <div class="row"><dt><span lang="en">Default release</span><span lang="zh">默认版本</span></dt><dd><code>7.9</code> <span class="dim">(8 <span lang="en">releases</span><span lang="zh">个版本</span>)</span></dd></div>
+      <div class="row"><dt><span lang="en">Architectures</span><span lang="zh">支持架构</span></dt><dd><code>x86_64</code> <code>aarch64</code> <code>riscv64</code> <code>sparc64</code></dd></div>
+      <div class="row"><dt><span lang="en">Sync</span><span lang="zh">同步方式</span></dt><dd><span class="sync"><code>x86_64</code> rsync, scp, sshfs, nfs</span><span class="sync"><code>aarch64</code> rsync, scp, sshfs, nfs</span><span class="sync"><code>riscv64</code> rsync, scp, sshfs, nfs</span><span class="sync"><code>sparc64</code> rsync, scp, sshfs, nfs</span></dd></div>
+      <div class="row"><dt><span lang="en">Shell</span><span lang="zh">默认 shell</span></dt><dd>The default shell in OpenBSD is <code>ksh</code>, if you want to use <code>sh</code> to execute the <code>run</code> script, please set <code>usesh</code> to <code>true</code>.</dd></div>
+      <div class="row"><dt><span lang="en">prepare example</span><span lang="zh">prepare 示例</span></dt><dd><code>pkg_add curl</code></dd></div>
+      </dl>
+      <p class="links"><a href="https://github.com/vmactions/openbsd-vm"><span lang="en">Repository</span><span lang="zh">仓库</span></a><a href="https://github.com/anyvm-org/openbsd-builder"><span lang="en">Image builder</span><span lang="zh">镜像 builder</span></a></p>
+    </article>
+    <article class="card" data-os="netbsd">
+      <h3><span class="dot"></span>NetBSD</h3>
+      <p class="uses"><code>vmactions/netbsd-vm@v1</code></p>
+      <dl>
+      <div class="row"><dt><span lang="en">Default release</span><span lang="zh">默认版本</span></dt><dd><code>11.0</code> <span class="dim">(8 <span lang="en">releases</span><span lang="zh">个版本</span>)</span></dd></div>
+      <div class="row"><dt><span lang="en">Architectures</span><span lang="zh">支持架构</span></dt><dd><code>x86_64</code> <code>aarch64</code> <code>riscv64</code> <code>sparc64</code></dd></div>
+      <div class="row"><dt><span lang="en">Sync</span><span lang="zh">同步方式</span></dt><dd><span class="sync"><code>x86_64</code> rsync, scp, sshfs, nfs</span><span class="sync"><code>aarch64</code> rsync, scp, sshfs, nfs</span><span class="sync"><code>riscv64</code> rsync, scp, sshfs, nfs</span><span class="sync"><code>sparc64</code> scp, sshfs, nfs</span></dd></div>
+      <div class="row"><dt><span lang="en">prepare example</span><span lang="zh">prepare 示例</span></dt><dd><code>/usr/sbin/pkg_add -u curl</code></dd></div>
+      </dl>
+      <p class="links"><a href="https://github.com/vmactions/netbsd-vm"><span lang="en">Repository</span><span lang="zh">仓库</span></a><a href="https://github.com/anyvm-org/netbsd-builder"><span lang="en">Image builder</span><span lang="zh">镜像 builder</span></a></p>
+    </article>
+    <article class="card" data-os="dragonflybsd">
+      <h3><span class="dot"></span>DragonFly BSD</h3>
+      <p class="uses"><code>vmactions/dragonflybsd-vm@v1</code></p>
+      <dl>
+      <div class="row"><dt><span lang="en">Default release</span><span lang="zh">默认版本</span></dt><dd><code>6.4.2</code> <span class="dim">(3 <span lang="en">releases</span><span lang="zh">个版本</span>)</span></dd></div>
+      <div class="row"><dt><span lang="en">Architectures</span><span lang="zh">支持架构</span></dt><dd><code>x86_64</code></dd></div>
+      <div class="row"><dt><span lang="en">Sync</span><span lang="zh">同步方式</span></dt><dd><span class="sync"><code>x86_64</code> rsync, scp, nfs</span></dd></div>
+      <div class="row"><dt><span lang="en">prepare example</span><span lang="zh">prepare 示例</span></dt><dd><code>pkg install -y socat</code></dd></div>
+      </dl>
+      <p class="links"><a href="https://github.com/vmactions/dragonflybsd-vm"><span lang="en">Repository</span><span lang="zh">仓库</span></a><a href="https://github.com/anyvm-org/dragonflybsd-builder"><span lang="en">Image builder</span><span lang="zh">镜像 builder</span></a></p>
+    </article>
+    <article class="card" data-os="ghostbsd">
+      <h3><span class="dot"></span>GhostBSD</h3>
+      <p class="uses"><code>vmactions/ghostbsd-vm@v1</code></p>
+      <dl>
+      <div class="row"><dt><span lang="en">Default release</span><span lang="zh">默认版本</span></dt><dd><code>26.1</code> <span class="dim">(3 <span lang="en">releases</span><span lang="zh">个版本</span>)</span></dd></div>
+      <div class="row"><dt><span lang="en">Architectures</span><span lang="zh">支持架构</span></dt><dd><code>x86_64</code></dd></div>
+      <div class="row"><dt><span lang="en">Sync</span><span lang="zh">同步方式</span></dt><dd><span class="sync"><code>x86_64</code> rsync, scp, sshfs, nfs</span></dd></div>
+      <div class="row"><dt><span lang="en">prepare example</span><span lang="zh">prepare 示例</span></dt><dd><code>pkg install -y socat</code></dd></div>
+      </dl>
+      <p class="links"><a href="https://github.com/vmactions/ghostbsd-vm"><span lang="en">Repository</span><span lang="zh">仓库</span></a><a href="https://github.com/anyvm-org/ghostbsd-builder"><span lang="en">Image builder</span><span lang="zh">镜像 builder</span></a></p>
+    </article>
+    <article class="card" data-os="midnightbsd">
+      <h3><span class="dot"></span>MidnightBSD</h3>
+      <p class="uses"><code>vmactions/midnightbsd-vm@v1</code></p>
+      <dl>
+      <div class="row"><dt><span lang="en">Default release</span><span lang="zh">默认版本</span></dt><dd><code>4.0.6</code> <span class="dim">(4 <span lang="en">releases</span><span lang="zh">个版本</span>)</span></dd></div>
+      <div class="row"><dt><span lang="en">Architectures</span><span lang="zh">支持架构</span></dt><dd><code>x86_64</code></dd></div>
+      <div class="row"><dt><span lang="en">Sync</span><span lang="zh">同步方式</span></dt><dd><span class="sync"><code>x86_64</code> rsync, scp, sshfs, nfs</span></dd></div>
+      <div class="row"><dt><span lang="en">Shell</span><span lang="zh">默认 shell</span></dt><dd>The default shell in MidnightBSD is <code>tcsh</code>, if you want to use <code>sh</code> to execute the <code>run</code> script, please set <code>usesh</code> to <code>true</code>.</dd></div>
+      <div class="row"><dt><span lang="en">prepare example</span><span lang="zh">prepare 示例</span></dt><dd><code>mport install curl || true</code></dd></div>
+      </dl>
+      <p class="links"><a href="https://github.com/vmactions/midnightbsd-vm"><span lang="en">Repository</span><span lang="zh">仓库</span></a><a href="https://github.com/anyvm-org/midnightbsd-builder"><span lang="en">Image builder</span><span lang="zh">镜像 builder</span></a></p>
+    </article>
+    <article class="card" data-os="solaris">
+      <h3><span class="dot"></span>Solaris</h3>
+      <p class="uses"><code>vmactions/solaris-vm@v1</code></p>
+      <dl>
+      <div class="row"><dt><span lang="en">Default release</span><span lang="zh">默认版本</span></dt><dd><code>11.4</code> <span class="dim">(4 <span lang="en">releases</span><span lang="zh">个版本</span>)</span></dd></div>
+      <div class="row"><dt><span lang="en">Architectures</span><span lang="zh">支持架构</span></dt><dd><code>x86_64</code></dd></div>
+      <div class="row"><dt><span lang="en">Sync</span><span lang="zh">同步方式</span></dt><dd><span class="sync"><code>x86_64</code> rsync, scp, nfs</span></dd></div>
+      <div class="row"><dt><span lang="en">prepare example</span><span lang="zh">prepare 示例</span></dt><dd><code>pkgutil -y -i socat</code></dd></div>
+      </dl>
+      <p class="links"><a href="https://github.com/vmactions/solaris-vm"><span lang="en">Repository</span><span lang="zh">仓库</span></a><a href="https://github.com/anyvm-org/solaris-builder"><span lang="en">Image builder</span><span lang="zh">镜像 builder</span></a></p>
+    </article>
+    <article class="card" data-os="omnios">
+      <h3><span class="dot"></span>OmniOS</h3>
+      <p class="uses"><code>vmactions/omnios-vm@v1</code></p>
+      <dl>
+      <div class="row"><dt><span lang="en">Default release</span><span lang="zh">默认版本</span></dt><dd><code>r151058</code> <span class="dim">(7 <span lang="en">releases</span><span lang="zh">个版本</span>)</span></dd></div>
+      <div class="row"><dt><span lang="en">Architectures</span><span lang="zh">支持架构</span></dt><dd><code>x86_64</code></dd></div>
+      <div class="row"><dt><span lang="en">Sync</span><span lang="zh">同步方式</span></dt><dd><span class="sync"><code>x86_64</code> rsync, scp, nfs</span></dd></div>
+      <div class="row"><dt><span lang="en">prepare example</span><span lang="zh">prepare 示例</span></dt><dd><code>pkg  install socat</code></dd></div>
+      </dl>
+      <p class="links"><a href="https://github.com/vmactions/omnios-vm"><span lang="en">Repository</span><span lang="zh">仓库</span></a><a href="https://github.com/anyvm-org/omnios-builder"><span lang="en">Image builder</span><span lang="zh">镜像 builder</span></a></p>
+    </article>
+    <article class="card" data-os="openindiana">
+      <h3><span class="dot"></span>OpenIndiana</h3>
+      <p class="uses"><code>vmactions/openindiana-vm@v1</code></p>
+      <dl>
+      <div class="row"><dt><span lang="en">Default release</span><span lang="zh">默认版本</span></dt><dd><code>202604</code> <span class="dim">(2 <span lang="en">releases</span><span lang="zh">个版本</span>)</span></dd></div>
+      <div class="row"><dt><span lang="en">Architectures</span><span lang="zh">支持架构</span></dt><dd><code>x86_64</code></dd></div>
+      <div class="row"><dt><span lang="en">Sync</span><span lang="zh">同步方式</span></dt><dd><span class="sync"><code>x86_64</code> rsync, scp, sshfs, nfs</span></dd></div>
+      <div class="row"><dt><span lang="en">prepare example</span><span lang="zh">prepare 示例</span></dt><dd><code>pkg install socat</code></dd></div>
+      </dl>
+      <p class="links"><a href="https://github.com/vmactions/openindiana-vm"><span lang="en">Repository</span><span lang="zh">仓库</span></a><a href="https://github.com/anyvm-org/openindiana-builder"><span lang="en">Image builder</span><span lang="zh">镜像 builder</span></a></p>
+    </article>
+    <article class="card" data-os="tribblix">
+      <h3><span class="dot"></span>Tribblix</h3>
+      <p class="uses"><code>vmactions/tribblix-vm@v1</code></p>
+      <dl>
+      <div class="row"><dt><span lang="en">Default release</span><span lang="zh">默认版本</span></dt><dd><code>0m40</code> <span class="dim">(2 <span lang="en">releases</span><span lang="zh">个版本</span>)</span></dd></div>
+      <div class="row"><dt><span lang="en">Architectures</span><span lang="zh">支持架构</span></dt><dd><code>x86_64</code></dd></div>
+      <div class="row"><dt><span lang="en">Sync</span><span lang="zh">同步方式</span></dt><dd><span class="sync"><code>x86_64</code> rsync, scp, nfs</span></dd></div>
+      </dl>
+      <p class="links"><a href="https://github.com/vmactions/tribblix-vm"><span lang="en">Repository</span><span lang="zh">仓库</span></a><a href="https://github.com/anyvm-org/tribblix-builder"><span lang="en">Image builder</span><span lang="zh">镜像 builder</span></a></p>
+    </article>
+    <article class="card" data-os="haiku">
+      <h3><span class="dot"></span>Haiku</h3>
+      <p class="uses"><code>vmactions/haiku-vm@v1</code></p>
+      <dl>
+      <div class="row"><dt><span lang="en">Default release</span><span lang="zh">默认版本</span></dt><dd><code>r1beta5</code> <span class="dim">(1 <span lang="en">releases</span><span lang="zh">个版本</span>)</span></dd></div>
+      <div class="row"><dt><span lang="en">Architectures</span><span lang="zh">支持架构</span></dt><dd><code>x86_64</code></dd></div>
+      <div class="row"><dt><span lang="en">Sync</span><span lang="zh">同步方式</span></dt><dd><span class="sync"><code>x86_64</code> rsync, scp</span></dd></div>
+      <div class="row"><dt><span lang="en">prepare example</span><span lang="zh">prepare 示例</span></dt><dd><code>pkgman install -y curl</code></dd></div>
+      </dl>
+      <p class="links"><a href="https://github.com/vmactions/haiku-vm"><span lang="en">Repository</span><span lang="zh">仓库</span></a><a href="https://github.com/anyvm-org/haiku-builder"><span lang="en">Image builder</span><span lang="zh">镜像 builder</span></a></p>
+    </article>
+    <article class="card" data-os="hurd">
+      <h3><span class="dot"></span>GNU Hurd</h3>
+      <p class="uses"><code>vmactions/hurd-vm@v1</code></p>
+      <dl>
+      <div class="row"><dt><span lang="en">Default release</span><span lang="zh">默认版本</span></dt><dd><code>2025</code> <span class="dim">(1 <span lang="en">releases</span><span lang="zh">个版本</span>)</span></dd></div>
+      <div class="row"><dt><span lang="en">Architectures</span><span lang="zh">支持架构</span></dt><dd><code>x86_64</code> <code>i386</code></dd></div>
+      <div class="row"><dt><span lang="en">Sync</span><span lang="zh">同步方式</span></dt><dd><span class="sync"><code>x86_64</code> rsync, scp, nfs</span><span class="sync"><code>i386</code> rsync, scp, nfs</span></dd></div>
+      <div class="row"><dt><span lang="en">prepare example</span><span lang="zh">prepare 示例</span></dt><dd><code>apt-get install -y socat</code></dd></div>
+      </dl>
+      <p class="links"><a href="https://github.com/vmactions/hurd-vm"><span lang="en">Repository</span><span lang="zh">仓库</span></a><a href="https://github.com/anyvm-org/hurd-builder"><span lang="en">Image builder</span><span lang="zh">镜像 builder</span></a></p>
+    </article>
+    <article class="card" data-os="openeuler">
+      <h3><span class="dot"></span>openEuler</h3>
+      <p class="uses"><code>vmactions/openeuler-vm@v1</code></p>
+      <dl>
+      <div class="row"><dt><span lang="en">Default release</span><span lang="zh">默认版本</span></dt><dd><code>24.03-LTS-SP4</code> <span class="dim">(3 <span lang="en">releases</span><span lang="zh">个版本</span>)</span></dd></div>
+      <div class="row"><dt><span lang="en">Architectures</span><span lang="zh">支持架构</span></dt><dd><code>x86_64</code> <code>aarch64</code> <code>riscv64</code> <code>loongarch64</code></dd></div>
+      <div class="row"><dt><span lang="en">Sync</span><span lang="zh">同步方式</span></dt><dd><span class="sync"><code>x86_64</code> rsync, scp, sshfs, nfs</span><span class="sync"><code>aarch64</code> rsync, scp, sshfs, nfs</span><span class="sync"><code>riscv64</code> rsync, scp, nfs</span><span class="sync"><code>loongarch64</code> rsync, scp, sshfs, nfs</span></dd></div>
+      <div class="row"><dt><span lang="en">prepare example</span><span lang="zh">prepare 示例</span></dt><dd><code>dnf install -y curl</code></dd></div>
+      </dl>
+      <p class="links"><a href="https://github.com/vmactions/openeuler-vm"><span lang="en">Repository</span><span lang="zh">仓库</span></a><a href="https://github.com/anyvm-org/openeuler-builder"><span lang="en">Image builder</span><span lang="zh">镜像 builder</span></a></p>
+    </article>
+    <article class="card" data-os="blissos">
+      <h3><span class="dot"></span>BlissOS</h3>
+      <p class="uses"><code>vmactions/blissos-vm@v1</code></p>
+      <dl>
+      <div class="row"><dt><span lang="en">Default release</span><span lang="zh">默认版本</span></dt><dd><code>16</code> <span class="dim">(3 <span lang="en">releases</span><span lang="zh">个版本</span>)</span></dd></div>
+      <div class="row"><dt><span lang="en">Architectures</span><span lang="zh">支持架构</span></dt><dd><code>x86_64</code></dd></div>
+      <div class="row"><dt><span lang="en">Sync</span><span lang="zh">同步方式</span></dt><dd><span class="sync"><code>x86_64</code> scp</span></dd></div>
+      <div class="row"><dt><span lang="en">Shell</span><span lang="zh">默认 shell</span></dt><dd>The default shell in BlissOS is Android's <code>mksh</code> (<code>/system/bin/sh</code>). There is no <code>bash</code> in the VM.</dd></div>
+      <div class="row"><dt><span lang="en">prepare example</span><span lang="zh">prepare 示例</span></dt><dd><code>uname -a</code></dd></div>
+      </dl>
+      <p class="links"><a href="https://github.com/vmactions/blissos-vm"><span lang="en">Repository</span><span lang="zh">仓库</span></a><a href="https://github.com/anyvm-org/blissos-builder"><span lang="en">Image builder</span><span lang="zh">镜像 builder</span></a></p>
+    </article>
+<!-- END generated:cards -->
+    </div>
+  </div>
+</section>
+
+<section class="section" id="options">
+  <div class="wrap">
+    <p class="eyebrow"><span lang="en">Options</span><span lang="zh">可选项</span></p>
+    <h2 lang="en">What you can turn on</h2>
+    <h2 lang="zh">可以打开的开关</h2>
+
+    <div class="features">
+      <div class="feature">
+        <h3><a href="/docs/inputs.html#release">release</a> / <a href="/docs/inputs.html#arch">arch</a></h3>
+        <p lang="en">Choose the release and the CPU architecture. A leading part
+          such as <code>13</code> selects the newest <code>13.x</code>.</p>
+        <p lang="zh">选版本和 CPU 架构。只写前缀（比如 <code>13</code>）会选中最新的
+          <code>13.x</code>。</p>
+      </div>
+      <div class="feature">
+        <h3><a href="/docs/inputs.html#sync">sync</a></h3>
+        <p lang="en">Share the workspace over <code>rsync</code>,
+          <code>sshfs</code>, <code>nfs</code> or <code>scp</code> -- or not at
+          all.</p>
+        <p lang="zh">用 <code>rsync</code>、<code>sshfs</code>、<code>nfs</code>
+          或 <code>scp</code> 共享工作目录，也可以完全不共享。</p>
+      </div>
+      <div class="feature">
+        <h3><a href="/docs/inputs.html#envs">envs</a></h3>
+        <p lang="en">Name the environment variables and secrets that should
+          follow your code into the VM.</p>
+        <p lang="zh">指定哪些环境变量和 secret 跟着代码一起进虚拟机。</p>
+      </div>
+      <div class="feature">
+        <h3><a href="/docs/inputs.html#nat">nat</a></h3>
+        <p lang="en">Forward TCP and UDP ports between the runner and the guest.</p>
+        <p lang="zh">在 runner 和客户机之间转发 TCP / UDP 端口。</p>
+      </div>
+      <div class="feature">
+        <h3><a href="/docs/inputs.html#mem">mem</a> / <a href="/docs/inputs.html#cpu">cpu</a></h3>
+        <p lang="en">Size the machine. It takes every core of the host by
+          default.</p>
+        <p lang="zh">调整机器规格。默认会用满宿主机的所有核心。</p>
+      </div>
+      <div class="feature">
+        <h3><a href="/docs/inputs.html#custom-shell-name">custom shell</a></h3>
+        <p lang="en">Run later workflow steps straight inside the guest, with
+          the workspace kept in step on both sides.</p>
+        <p lang="zh">让后续的 workflow step 直接在客户机里跑，两边的工作目录保持同步。</p>
+      </div>
+      <div class="feature">
+        <h3><a href="/docs/inputs.html#cache-after-prepare">cache-after-prepare</a></h3>
+        <p lang="en">Cache the VM image once <code>prepare</code> has finished,
+          so later runs skip installing packages entirely.</p>
+        <p lang="zh">在 <code>prepare</code> 跑完后缓存虚拟机镜像，后续构建直接跳过装包。</p>
+      </div>
+      <div class="feature is-debug">
+        <h3><a href="/docs/inputs.html#debug-on-error">debug-on-error</a></h3>
+        <p lang="en">When a build fails, the action opens a VNC session and
+          waits for you, instead of throwing the machine away.</p>
+        <p lang="zh">构建失败时，action 会开一个 VNC 会话等你进去，而不是直接把机器扔掉。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-alt" id="skill">
+  <div class="wrap">
+    <div class="skill">
+      <div>
+        <p class="eyebrow"><span lang="en">AI ready</span><span lang="zh">AI 可用</span></p>
+        <h2 lang="en">Let the agent write the workflow</h2>
+        <h2 lang="zh">让 agent 帮你写 workflow</h2>
+        <p lang="en">
+          The <a href="https://github.com/vmactions/vmactions-skill">vmactions-ci
+          skill</a> teaches a coding agent the whole interface: the action names,
+          every input, the per-system default shell and package manager, and the
+          usual footguns. Ask for "tests on NetBSD aarch64" and you get a
+          workflow that runs.
+        </p>
+        <p lang="zh">
+          <a href="https://github.com/vmactions/vmactions-skill">vmactions-ci
+          skill</a> 把整套接口喂给编程 agent：action 名字、全部参数、每个系统的默认
+          shell 和包管理器，以及那些常见的坑。你说一句"在 NetBSD aarch64 上跑测试"，
+          它给你一份能跑的 workflow。
+        </p>
+      </div>
+      <div class="codeblock">
+        <div class="codeblock-head">
+          <span>install</span>
+          <button class="copy" type="button" data-copy="#skill-install">
+            <span lang="en">Copy</span><span lang="zh">复制</span>
+          </button>
+        </div>
+        <pre id="skill-install"><code># Claude Code
+git clone https://github.com/vmactions/vmactions-skill \
+  ~/.claude/skills/vmactions-ci
+
+# Codex / Copilot CLI / Gemini CLI
+git clone https://github.com/vmactions/vmactions-skill \
+  ~/.agents/skills/vmactions-ci</code></pre>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="footer">
+  <div class="footer-in">
+    <span lang="en">Virtual machines for GitHub Actions.</span>
+    <span lang="zh">给 GitHub Actions 用的虚拟机。</span>
+    <a href="https://github.com/vmactions">GitHub</a>
+    <a href="https://github.com/vmactions/.github/wiki/debug%E2%80%90on%E2%80%90error"><span lang="en">Debug on error</span><span lang="zh">失败调试</span></a>
+    <a href="https://github.com/vmactions/donate"><span lang="en">Donate</span><span lang="zh">赞助</span></a>
+    <span class="spacer" lang="en">Images built and booted by <a href="https://anyvm.org">AnyVM</a>.</span>
+    <span class="spacer" lang="zh">镜像由 <a href="https://anyvm.org">AnyVM</a> 构建和启动。</span>
+  </div>
+</footer>
+
+<script src="/assets/site.js" defer></script>
+</body>
+</html>
