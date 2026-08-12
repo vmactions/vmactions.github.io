@@ -92,7 +92,6 @@
       - uses: actions/checkout@v7
       - uses: vmactions/freebsd-vm@v1
         with:
-          usesh: true
           prepare: |
             pkg install -y gmake
           run: |
@@ -517,7 +516,7 @@
       <div class="row"><dt><span lang="en">Default release</span><span lang="zh">默认版本</span></dt><dd><code>15.1</code> <span class="dim">(12 <span lang="en">releases</span><span lang="zh">个版本</span>)</span></dd></div>
       <div class="row"><dt><span lang="en">Architectures</span><span lang="zh">支持架构</span></dt><dd><code>x86_64</code> <code>aarch64</code> <code>riscv64</code> <code>powerpc64</code></dd></div>
       <div class="row"><dt><span lang="en">Sync</span><span lang="zh">同步方式</span></dt><dd><span class="sync"><code>x86_64</code> rsync, scp, sshfs, nfs</span><span class="sync"><code>aarch64</code> rsync, scp, sshfs, nfs</span><span class="sync"><code>riscv64</code> nfs, scp</span><span class="sync"><code>powerpc64</code> nfs, scp</span></dd></div>
-      <div class="row"><dt><span lang="en">Shell</span><span lang="zh">默认 shell</span></dt><dd>The default shell in FreeBSD(before 14.0) is <code>tcsh</code>, if you want to use <code>sh</code> to execute the <code>run</code> script, please set <code>usesh</code> to <code>true</code>.  https://docs.freebsd.org/en/articles/linux-users/#shells</dd></div>
+      <div class="row"><dt><span lang="en">Shell</span><span lang="zh">默认 shell</span></dt><dd>The default login shell in FreeBSD(before 14.0) is <code>tcsh</code>.  https://docs.freebsd.org/en/articles/linux-users/#shells</dd></div>
       </dl>
       <p class="links"><a href="https://github.com/vmactions/freebsd-vm"><span lang="en">Repository</span><span lang="zh">仓库</span></a><a href="https://github.com/anyvm-org/freebsd-builder"><span lang="en">Image builder</span><span lang="zh">镜像 builder</span></a></p>
     </article>
@@ -528,7 +527,7 @@
       <div class="row"><dt><span lang="en">Default release</span><span lang="zh">默认版本</span></dt><dd><code>7.9</code> <span class="dim">(8 <span lang="en">releases</span><span lang="zh">个版本</span>)</span></dd></div>
       <div class="row"><dt><span lang="en">Architectures</span><span lang="zh">支持架构</span></dt><dd><code>x86_64</code> <code>aarch64</code> <code>riscv64</code> <code>sparc64</code></dd></div>
       <div class="row"><dt><span lang="en">Sync</span><span lang="zh">同步方式</span></dt><dd><span class="sync"><code>x86_64</code> rsync, scp, sshfs, nfs</span><span class="sync"><code>aarch64</code> rsync, scp, sshfs, nfs</span><span class="sync"><code>riscv64</code> rsync, scp, sshfs, nfs</span><span class="sync"><code>sparc64</code> rsync, scp, sshfs, nfs</span></dd></div>
-      <div class="row"><dt><span lang="en">Shell</span><span lang="zh">默认 shell</span></dt><dd>The default shell in OpenBSD is <code>ksh</code>, if you want to use <code>sh</code> to execute the <code>run</code> script, please set <code>usesh</code> to <code>true</code>.</dd></div>
+      <div class="row"><dt><span lang="en">Shell</span><span lang="zh">默认 shell</span></dt><dd>The default login shell in OpenBSD is <code>ksh</code>.</dd></div>
       <div class="row"><dt><span lang="en">prepare example</span><span lang="zh">prepare 示例</span></dt><dd><code>pkg_add curl</code></dd></div>
       </dl>
       <p class="links"><a href="https://github.com/vmactions/openbsd-vm"><span lang="en">Repository</span><span lang="zh">仓库</span></a><a href="https://github.com/anyvm-org/openbsd-builder"><span lang="en">Image builder</span><span lang="zh">镜像 builder</span></a></p>
@@ -573,7 +572,7 @@
       <div class="row"><dt><span lang="en">Default release</span><span lang="zh">默认版本</span></dt><dd><code>4.0.7</code> <span class="dim">(5 <span lang="en">releases</span><span lang="zh">个版本</span>)</span></dd></div>
       <div class="row"><dt><span lang="en">Architectures</span><span lang="zh">支持架构</span></dt><dd><code>x86_64</code></dd></div>
       <div class="row"><dt><span lang="en">Sync</span><span lang="zh">同步方式</span></dt><dd><span class="sync"><code>x86_64</code> rsync, scp, sshfs, nfs</span></dd></div>
-      <div class="row"><dt><span lang="en">Shell</span><span lang="zh">默认 shell</span></dt><dd>The default shell in MidnightBSD is <code>tcsh</code>, if you want to use <code>sh</code> to execute the <code>run</code> script, please set <code>usesh</code> to <code>true</code>.</dd></div>
+      <div class="row"><dt><span lang="en">Shell</span><span lang="zh">默认 shell</span></dt><dd>The default login shell in MidnightBSD is <code>tcsh</code>.</dd></div>
       <div class="row"><dt><span lang="en">prepare example</span><span lang="zh">prepare 示例</span></dt><dd><code>mport install curl || true</code></dd></div>
       </dl>
       <p class="links"><a href="https://github.com/vmactions/midnightbsd-vm"><span lang="en">Repository</span><span lang="zh">仓库</span></a><a href="https://github.com/anyvm-org/midnightbsd-builder"><span lang="en">Image builder</span><span lang="zh">镜像 builder</span></a></p>

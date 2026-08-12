@@ -87,14 +87,24 @@ const yml = fs.readFileSync(ACTION_YML, 'utf8');
 const inputsBlock = yml.slice(yml.indexOf('inputs:'), yml.indexOf('outputs:'));
 const declared = [...inputsBlock.matchAll(/^ {2}([a-z][a-z0-9-]*):$/gm)].map(m => m[1]);
 
+// Inputs that action.yml still declares only so that existing workflows do not
+// get an "Unexpected input(s)" warning from the runner. They do nothing, so the
+// site must NOT document them -- either direction is a failure below.
+const DEPRECATED = ['usesh'];
+
 const docIds = idsByPage['docs/inputs.html'];
-const missing = declared.filter(name => !docIds.has(name));
+const live = declared.filter(name => !DEPRECATED.includes(name));
+const missing = live.filter(name => !docIds.has(name));
+const resurrected = DEPRECATED.filter(name => docIds.has(name));
 const extra = [...docIds].filter(id =>
   !declared.includes(id) && !['outputs', 'custom-shell'].includes(id) &&
   !id.startsWith('lang-') && !id.startsWith('theme-'));
 
 if (missing.length) fail(`action.yml inputs never documented: ${missing.join(', ')}`);
-else ok(`all ${declared.length} action.yml inputs are documented`);
+else ok(`all ${live.length} action.yml inputs are documented`);
+
+if (resurrected.length) fail(`deprecated inputs must stay undocumented: ${resurrected.join(', ')}`);
+else ok(`${DEPRECATED.length} deprecated input(s) kept out of the docs`);
 
 if (extra.length) fail(`documented but not in action.yml: ${extra.join(', ')}`);
 else ok('no invented inputs');

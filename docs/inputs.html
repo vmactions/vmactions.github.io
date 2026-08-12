@@ -61,7 +61,6 @@
       <li><a href="#release">release</a></li>
       <li><a href="#arch">arch</a></li>
       <li><a href="#envs">envs</a></li>
-      <li><a href="#usesh">usesh</a></li>
       <li><a href="#sync">sync</a></li>
       <li><a href="#copyback">copyback</a></li>
       <li><a href="#nat">nat</a></li>
@@ -114,9 +113,11 @@
       <p class="opt-meta"><span>optional</span><span>no default</span></p>
       <p lang="en">The CI script, executed inside the VM. The working directory
         matches the host, so relative paths behave the same as in a normal
-        step.</p>
+        step. It always runs under <code>sh</code>, whatever the default login
+        shell of the guest is.</p>
       <p lang="zh">在虚拟机内执行的 CI 脚本。工作目录和宿主机一致，相对路径的行为
-        和普通 step 一样。</p>
+        和普通 step 一样。脚本始终由 <code>sh</code> 执行，与客户机的默认登录
+        shell 无关。</p>
 <pre><code>run: |
   ./configure
   gmake
@@ -167,21 +168,6 @@
 # ...
 with:
   envs: 'MYTOKEN MYTOKEN2'</code></pre>
-    </section>
-
-    <section class="opt" id="usesh">
-      <h3>usesh</h3>
-      <p class="opt-meta"><span>optional</span><span>false</span></p>
-      <p lang="en">Run the <code>run</code> script with <code>sh</code> instead
-        of the guest's default shell. Several systems default to something other
-        than a POSIX shell -- FreeBSD and MidnightBSD to <code>tcsh</code>,
-        OpenBSD to <code>ksh</code>, BlissOS to Android's <code>mksh</code> --
-        so a script written for <code>sh</code> needs this.</p>
-      <p lang="zh">用 <code>sh</code> 而不是客户机默认 shell 来跑 <code>run</code>
-        脚本。有几个系统的默认 shell 不是 POSIX shell —— FreeBSD 和 MidnightBSD 是
-        <code>tcsh</code>，OpenBSD 是 <code>ksh</code>，BlissOS 是 Android 的
-        <code>mksh</code> —— 按 <code>sh</code> 写的脚本需要打开它。</p>
-<pre><code>usesh: true</code></pre>
     </section>
 
     <section class="opt" id="sync">
