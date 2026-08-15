@@ -55,6 +55,6 @@ assert.strictEqual(parseConfName('README.md'), null);
 assert.ok(!ARCHES.includes('x86_64'),
   'x86_64 is implicit and must not be in the suffix whitelist');
 assert.deepStrictEqual(ARCHES,
-  ['aarch64', 'riscv64', 'powerpc64', 'sparc64', 'i386', 'loongarch64']);
+  ['aarch64', 'riscv64', 'powerpc64', 'sparc64', 'ppc64le', 's390x', 'i386', 'loongarch64', 'armv7']);
 
 console.log('parseConfName: all assertions passed');

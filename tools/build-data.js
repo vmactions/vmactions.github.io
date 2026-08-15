@@ -36,7 +36,7 @@ const SIBLINGS = path.resolve(__dirname, '..', '..');
 // is the implicit arch of a conf with no suffix, never a suffix itself.
 // Anything not in this list is part of the release name -- GhostBSD ships
 // "26.1-xfce", Solaris ships "11.4-gcc-14", and neither is an architecture.
-const ARCHES = ['aarch64', 'riscv64', 'powerpc64', 'sparc64', 'i386', 'loongarch64'];
+const ARCHES = ['aarch64', 'riscv64', 'powerpc64', 'sparc64', 'ppc64le', 's390x', 'i386', 'loongarch64', 'armv7'];
 
 // Columns of the matrix, x86_64 first.
 const COLUMNS = ['x86_64'].concat(ARCHES);
@@ -45,9 +45,10 @@ const COLUMNS = ['x86_64'].concat(ARCHES);
 // so a newly added *-vm still appears without editing this file.
 const ORDER = [
   'freebsd-vm', 'openbsd-vm', 'netbsd-vm', 'dragonflybsd-vm',
-  'ghostbsd-vm', 'midnightbsd-vm',
+  'ghostbsd-vm', 'midnightbsd-vm', 'nextbsd-vm',
   'solaris-vm', 'omnios-vm', 'openindiana-vm', 'tribblix-vm',
-  'haiku-vm', 'hurd-vm', 'openeuler-vm', 'blissos-vm',
+  'haiku-vm', 'hurd-vm', 'ubuntu-vm', 'openeuler-vm', 'blissos-vm',
+  'reactos-vm', 'redox-vm', 'riscos-vm',
 ];
 
 // VM_NAME in datafile.ini is written for the generated READMEs and does not
@@ -58,6 +59,8 @@ const DISPLAY_NAME = {
   'hurd-vm': 'GNU Hurd',
   'openeuler-vm': 'openEuler',
   'blissos-vm': 'BlissOS',
+  'redox-vm': 'Redox OS',
+  'riscos-vm': 'RISC OS',
 };
 
 // Bilingual labels used in the generated markup.

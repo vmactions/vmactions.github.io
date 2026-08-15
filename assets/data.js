@@ -59,6 +59,14 @@ window.VMACTIONS_DATA = {
       ]
     },
     {
+      "name": "NextBSD",
+      "os": "nextbsd",
+      "dir": "nextbsd-vm",
+      "arches": [
+        "x86_64"
+      ]
+    },
+    {
       "name": "Solaris",
       "os": "solaris",
       "dir": "solaris-vm",
@@ -108,6 +116,18 @@ window.VMACTIONS_DATA = {
       ]
     },
     {
+      "name": "Ubuntu",
+      "os": "ubuntu",
+      "dir": "ubuntu-vm",
+      "arches": [
+        "x86_64",
+        "aarch64",
+        "riscv64",
+        "ppc64le",
+        "s390x"
+      ]
+    },
+    {
       "name": "openEuler",
       "os": "openeuler",
       "dir": "openeuler-vm",
@@ -125,11 +145,35 @@ window.VMACTIONS_DATA = {
       "arches": [
         "x86_64"
       ]
+    },
+    {
+      "name": "ReactOS",
+      "os": "reactos",
+      "dir": "reactos-vm",
+      "arches": [
+        "i386"
+      ]
+    },
+    {
+      "name": "Redox OS",
+      "os": "redox",
+      "dir": "redox-vm",
+      "arches": [
+        "x86_64"
+      ]
+    },
+    {
+      "name": "RISC OS",
+      "os": "riscos",
+      "dir": "riscos-vm",
+      "arches": [
+        "armv7"
+      ]
     }
   ],
   "counts": {
-    "systems": 14,
-    "arches": 7,
-    "combos": 27
+    "systems": 19,
+    "arches": 10,
+    "combos": 36
   }
 };

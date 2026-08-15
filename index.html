@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>VM Actions -- run your CI on the systems GitHub does not offer</title>
-<meta name="description" content="GitHub Actions for FreeBSD, OpenBSD, NetBSD, Solaris, Haiku, GNU Hurd and more. Boot a real operating system under QEMU inside an ordinary ubuntu-latest runner, on x86_64, aarch64, riscv64, powerpc64, sparc64, i386 and loongarch64.">
+<meta name="description" content="GitHub Actions for FreeBSD, OpenBSD, NetBSD, Solaris, Haiku, GNU Hurd and more. Boot a real operating system under QEMU inside an ordinary ubuntu-latest runner, on x86_64, aarch64, riscv64, powerpc64, sparc64, ppc64le, s390x, i386, loongarch64 and armv7.">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect x='3' y='6' width='20' height='16' rx='3' fill='none' stroke='%23888' stroke-width='2'/%3E%3Crect x='11' y='12' width='18' height='14' rx='3' fill='%230f1418' stroke='%234fd489' stroke-width='2'/%3E%3Cpath d='M15 19l3 3 6-6' fill='none' stroke='%234fd489' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
 <link rel="stylesheet" href="/assets/style.css">
 <script>
@@ -42,6 +42,15 @@
       <a href="/docs/inputs.html"><span lang="en">Reference</span><span lang="zh">参数参考</span></a>
       <a href="https://github.com/vmactions">GitHub</a>
     </nav>
+
+    <a class="donate" href="https://github.com/vmactions/donate">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
+           stroke="currentColor" stroke-width="2" stroke-linecap="round"
+           stroke-linejoin="round" aria-hidden="true">
+        <path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8l1.1 1.1L12 21.2l7.7-7.7 1.1-1.1a5.5 5.5 0 0 0 0-7.8z"/>
+      </svg>
+      <span lang="en">Donate</span><span lang="zh">赞助</span>
+    </a>
 
     <div class="switches">
       <button class="switch" id="lang-switch" type="button">
@@ -103,7 +112,7 @@
       <div class="run" aria-hidden="true">
         <div class="run-head">
           <span>Actions</span>
-          <span class="dim" style="margin-left:auto">14 jobs</span>
+          <span class="dim" style="margin-left:auto">19 jobs</span>
         </div>
         <ul class="run-list" id="run-list">
 <!-- BEGIN generated:run -->
@@ -131,6 +140,10 @@
         <span class="tick">&#10003;</span>
         <code>vmactions/midnightbsd-vm@v1</code>
       </li>
+      <li data-os="nextbsd">
+        <span class="tick">&#10003;</span>
+        <code>vmactions/nextbsd-vm@v1</code>
+      </li>
       <li data-os="solaris">
         <span class="tick">&#10003;</span>
         <code>vmactions/solaris-vm@v1</code>
@@ -155,6 +168,10 @@
         <span class="tick">&#10003;</span>
         <code>vmactions/hurd-vm@v1</code>
       </li>
+      <li data-os="ubuntu">
+        <span class="tick">&#10003;</span>
+        <code>vmactions/ubuntu-vm@v1</code>
+      </li>
       <li data-os="openeuler">
         <span class="tick">&#10003;</span>
         <code>vmactions/openeuler-vm@v1</code>
@@ -162,6 +179,18 @@
       <li data-os="blissos">
         <span class="tick">&#10003;</span>
         <code>vmactions/blissos-vm@v1</code>
+      </li>
+      <li data-os="reactos">
+        <span class="tick">&#10003;</span>
+        <code>vmactions/reactos-vm@v1</code>
+      </li>
+      <li data-os="redox">
+        <span class="tick">&#10003;</span>
+        <code>vmactions/redox-vm@v1</code>
+      </li>
+      <li data-os="riscos">
+        <span class="tick">&#10003;</span>
+        <code>vmactions/riscos-vm@v1</code>
       </li>
 <!-- END generated:run -->
         </ul>
@@ -171,15 +200,15 @@
     <div class="stats">
 <!-- BEGIN generated:counts -->
     <div class="stat">
-      <span class="stat-n">14</span>
+      <span class="stat-n">19</span>
       <span class="stat-l"><span lang="en">systems</span><span lang="zh">个系统</span></span>
     </div>
     <div class="stat">
-      <span class="stat-n">7</span>
+      <span class="stat-n">10</span>
       <span class="stat-l"><span lang="en">architectures</span><span lang="zh">种架构</span></span>
     </div>
     <div class="stat">
-      <span class="stat-n">27</span>
+      <span class="stat-n">36</span>
       <span class="stat-l"><span lang="en">OS-arch combinations</span><span lang="zh">个系统-架构组合</span></span>
     </div>
 <!-- END generated:counts -->
@@ -341,8 +370,11 @@
           <th scope="col"><code>riscv64</code></th>
           <th scope="col"><code>powerpc64</code></th>
           <th scope="col"><code>sparc64</code></th>
+          <th scope="col"><code>ppc64le</code></th>
+          <th scope="col"><code>s390x</code></th>
           <th scope="col"><code>i386</code></th>
           <th scope="col"><code>loongarch64</code></th>
+          <th scope="col"><code>armv7</code></th>
         </tr>
       </thead>
       <tbody>
@@ -352,6 +384,9 @@
           <td class="yes"><code>rsync</code> <code>scp</code> <code>sshfs</code> <code>nfs</code></td>
           <td class="yes"><code>nfs</code> <code>scp</code></td>
           <td class="yes"><code>nfs</code> <code>scp</code></td>
+          <td class="no"><span aria-hidden="true">&middot;</span></td>
+          <td class="no"><span aria-hidden="true">&middot;</span></td>
+          <td class="no"><span aria-hidden="true">&middot;</span></td>
           <td class="no"><span aria-hidden="true">&middot;</span></td>
           <td class="no"><span aria-hidden="true">&middot;</span></td>
           <td class="no"><span aria-hidden="true">&middot;</span></td>
@@ -365,6 +400,9 @@
           <td class="yes"><code>rsync</code> <code>scp</code> <code>sshfs</code> <code>nfs</code></td>
           <td class="no"><span aria-hidden="true">&middot;</span></td>
           <td class="no"><span aria-hidden="true">&middot;</span></td>
+          <td class="no"><span aria-hidden="true">&middot;</span></td>
+          <td class="no"><span aria-hidden="true">&middot;</span></td>
+          <td class="no"><span aria-hidden="true">&middot;</span></td>
         </tr>
         <tr data-os="netbsd">
           <th scope="row"><span class="dot"></span>NetBSD</th>
@@ -375,10 +413,16 @@
           <td class="yes"><code>scp</code> <code>sshfs</code> <code>nfs</code></td>
           <td class="no"><span aria-hidden="true">&middot;</span></td>
           <td class="no"><span aria-hidden="true">&middot;</span></td>
+          <td class="no"><span aria-hidden="true">&middot;</span></td>
+          <td class="no"><span aria-hidden="true">&middot;</span></td>
+          <td class="no"><span aria-hidden="true">&middot;</span></td>
         </tr>
         <tr data-os="dragonflybsd">
           <th scope="row"><span class="dot"></span>DragonFly BSD</th>
           <td class="yes"><code>rsync</code> <code>scp</code> <code>nfs</code></td>
+          <td class="no"><span aria-hidden="true">&middot;</span></td>
+          <td class="no"><span aria-hidden="true">&middot;</span></td>
+          <td class="no"><span aria-hidden="true">&middot;</span></td>
           <td class="no"><span aria-hidden="true">&middot;</span></td>
           <td class="no"><span aria-hidden="true">&middot;</span></td>
           <td class="no"><span aria-hidden="true">&middot;</span></td>
@@ -395,10 +439,29 @@
           <td class="no"><span aria-hidden="true">&middot;</span></td>
           <td class="no"><span aria-hidden="true">&middot;</span></td>
           <td class="no"><span aria-hidden="true">&middot;</span></td>
+          <td class="no"><span aria-hidden="true">&middot;</span></td>
+          <td class="no"><span aria-hidden="true">&middot;</span></td>
+          <td class="no"><span aria-hidden="true">&middot;</span></td>
         </tr>
         <tr data-os="midnightbsd">
           <th scope="row"><span class="dot"></span>MidnightBSD</th>
           <td class="yes"><code>rsync</code> <code>scp</code> <code>sshfs</code> <code>nfs</code></td>
+          <td class="no"><span aria-hidden="true">&middot;</span></td>
+          <td class="no"><span aria-hidden="true">&middot;</span></td>
+          <td class="no"><span aria-hidden="true">&middot;</span></td>
+          <td class="no"><span aria-hidden="true">&middot;</span></td>
+          <td class="no"><span aria-hidden="true">&middot;</span></td>
+          <td class="no"><span aria-hidden="true">&middot;</span></td>
+          <td class="no"><span aria-hidden="true">&middot;</span></td>
+          <td class="no"><span aria-hidden="true">&middot;</span></td>
+          <td class="no"><span aria-hidden="true">&middot;</span></td>
+        </tr>
+        <tr data-os="nextbsd">
+          <th scope="row"><span class="dot"></span>NextBSD</th>
+          <td class="yes"><code>rsync</code> <code>scp</code> <code>nfs</code></td>
+          <td class="no"><span aria-hidden="true">&middot;</span></td>
+          <td class="no"><span aria-hidden="true">&middot;</span></td>
+          <td class="no"><span aria-hidden="true">&middot;</span></td>
           <td class="no"><span aria-hidden="true">&middot;</span></td>
           <td class="no"><span aria-hidden="true">&middot;</span></td>
           <td class="no"><span aria-hidden="true">&middot;</span></td>
@@ -415,10 +478,16 @@
           <td class="no"><span aria-hidden="true">&middot;</span></td>
           <td class="no"><span aria-hidden="true">&middot;</span></td>
           <td class="no"><span aria-hidden="true">&middot;</span></td>
+          <td class="no"><span aria-hidden="true">&middot;</span></td>
+          <td class="no"><span aria-hidden="true">&middot;</span></td>
+          <td class="no"><span aria-hidden="true">&middot;</span></td>
         </tr>
         <tr data-os="omnios">
           <th scope="row"><span class="dot"></span>OmniOS</th>
           <td class="yes"><code>rsync</code> <code>scp</code> <code>nfs</code></td>
+          <td class="no"><span aria-hidden="true">&middot;</span></td>
+          <td class="no"><span aria-hidden="true">&middot;</span></td>
+          <td class="no"><span aria-hidden="true">&middot;</span></td>
           <td class="no"><span aria-hidden="true">&middot;</span></td>
           <td class="no"><span aria-hidden="true">&middot;</span></td>
           <td class="no"><span aria-hidden="true">&middot;</span></td>
@@ -435,10 +504,16 @@
           <td class="no"><span aria-hidden="true">&middot;</span></td>
           <td class="no"><span aria-hidden="true">&middot;</span></td>
           <td class="no"><span aria-hidden="true">&middot;</span></td>
+          <td class="no"><span aria-hidden="true">&middot;</span></td>
+          <td class="no"><span aria-hidden="true">&middot;</span></td>
+          <td class="no"><span aria-hidden="true">&middot;</span></td>
         </tr>
         <tr data-os="tribblix">
           <th scope="row"><span class="dot"></span>Tribblix</th>
           <td class="yes"><code>rsync</code> <code>scp</code> <code>nfs</code></td>
+          <td class="no"><span aria-hidden="true">&middot;</span></td>
+          <td class="no"><span aria-hidden="true">&middot;</span></td>
+          <td class="no"><span aria-hidden="true">&middot;</span></td>
           <td class="no"><span aria-hidden="true">&middot;</span></td>
           <td class="no"><span aria-hidden="true">&middot;</span></td>
           <td class="no"><span aria-hidden="true">&middot;</span></td>
@@ -455,6 +530,9 @@
           <td class="no"><span aria-hidden="true">&middot;</span></td>
           <td class="no"><span aria-hidden="true">&middot;</span></td>
           <td class="no"><span aria-hidden="true">&middot;</span></td>
+          <td class="no"><span aria-hidden="true">&middot;</span></td>
+          <td class="no"><span aria-hidden="true">&middot;</span></td>
+          <td class="no"><span aria-hidden="true">&middot;</span></td>
         </tr>
         <tr data-os="hurd">
           <th scope="row"><span class="dot"></span>GNU Hurd</th>
@@ -463,7 +541,23 @@
           <td class="no"><span aria-hidden="true">&middot;</span></td>
           <td class="no"><span aria-hidden="true">&middot;</span></td>
           <td class="no"><span aria-hidden="true">&middot;</span></td>
+          <td class="no"><span aria-hidden="true">&middot;</span></td>
+          <td class="no"><span aria-hidden="true">&middot;</span></td>
           <td class="yes"><code>rsync</code> <code>scp</code> <code>nfs</code></td>
+          <td class="no"><span aria-hidden="true">&middot;</span></td>
+          <td class="no"><span aria-hidden="true">&middot;</span></td>
+        </tr>
+        <tr data-os="ubuntu">
+          <th scope="row"><span class="dot"></span>Ubuntu</th>
+          <td class="yes"><code>rsync</code> <code>scp</code> <code>sshfs</code> <code>nfs</code></td>
+          <td class="yes"><code>rsync</code> <code>scp</code> <code>sshfs</code> <code>nfs</code></td>
+          <td class="yes"><code>rsync</code> <code>scp</code> <code>nfs</code></td>
+          <td class="no"><span aria-hidden="true">&middot;</span></td>
+          <td class="no"><span aria-hidden="true">&middot;</span></td>
+          <td class="yes"><span class="warn">--</span></td>
+          <td class="yes"><span class="warn">--</span></td>
+          <td class="no"><span aria-hidden="true">&middot;</span></td>
+          <td class="no"><span aria-hidden="true">&middot;</span></td>
           <td class="no"><span aria-hidden="true">&middot;</span></td>
         </tr>
         <tr data-os="openeuler">
@@ -474,7 +568,10 @@
           <td class="no"><span aria-hidden="true">&middot;</span></td>
           <td class="no"><span aria-hidden="true">&middot;</span></td>
           <td class="no"><span aria-hidden="true">&middot;</span></td>
+          <td class="no"><span aria-hidden="true">&middot;</span></td>
+          <td class="no"><span aria-hidden="true">&middot;</span></td>
           <td class="yes"><code>rsync</code> <code>scp</code> <code>sshfs</code> <code>nfs</code></td>
+          <td class="no"><span aria-hidden="true">&middot;</span></td>
         </tr>
         <tr data-os="blissos">
           <th scope="row"><span class="dot"></span>BlissOS</th>
@@ -485,6 +582,48 @@
           <td class="no"><span aria-hidden="true">&middot;</span></td>
           <td class="no"><span aria-hidden="true">&middot;</span></td>
           <td class="no"><span aria-hidden="true">&middot;</span></td>
+          <td class="no"><span aria-hidden="true">&middot;</span></td>
+          <td class="no"><span aria-hidden="true">&middot;</span></td>
+          <td class="no"><span aria-hidden="true">&middot;</span></td>
+        </tr>
+        <tr data-os="reactos">
+          <th scope="row"><span class="dot"></span>ReactOS</th>
+          <td class="no"><span aria-hidden="true">&middot;</span></td>
+          <td class="no"><span aria-hidden="true">&middot;</span></td>
+          <td class="no"><span aria-hidden="true">&middot;</span></td>
+          <td class="no"><span aria-hidden="true">&middot;</span></td>
+          <td class="no"><span aria-hidden="true">&middot;</span></td>
+          <td class="no"><span aria-hidden="true">&middot;</span></td>
+          <td class="no"><span aria-hidden="true">&middot;</span></td>
+          <td class="yes"><span class="warn">--</span></td>
+          <td class="no"><span aria-hidden="true">&middot;</span></td>
+          <td class="no"><span aria-hidden="true">&middot;</span></td>
+        </tr>
+        <tr data-os="redox">
+          <th scope="row"><span class="dot"></span>Redox OS</th>
+          <td class="yes"><code>rsync</code> <code>scp</code> <code>nfs</code></td>
+          <td class="no"><span aria-hidden="true">&middot;</span></td>
+          <td class="no"><span aria-hidden="true">&middot;</span></td>
+          <td class="no"><span aria-hidden="true">&middot;</span></td>
+          <td class="no"><span aria-hidden="true">&middot;</span></td>
+          <td class="no"><span aria-hidden="true">&middot;</span></td>
+          <td class="no"><span aria-hidden="true">&middot;</span></td>
+          <td class="no"><span aria-hidden="true">&middot;</span></td>
+          <td class="no"><span aria-hidden="true">&middot;</span></td>
+          <td class="no"><span aria-hidden="true">&middot;</span></td>
+        </tr>
+        <tr data-os="riscos">
+          <th scope="row"><span class="dot"></span>RISC OS</th>
+          <td class="no"><span aria-hidden="true">&middot;</span></td>
+          <td class="no"><span aria-hidden="true">&middot;</span></td>
+          <td class="no"><span aria-hidden="true">&middot;</span></td>
+          <td class="no"><span aria-hidden="true">&middot;</span></td>
+          <td class="no"><span aria-hidden="true">&middot;</span></td>
+          <td class="no"><span aria-hidden="true">&middot;</span></td>
+          <td class="no"><span aria-hidden="true">&middot;</span></td>
+          <td class="no"><span aria-hidden="true">&middot;</span></td>
+          <td class="no"><span aria-hidden="true">&middot;</span></td>
+          <td class="yes"><span class="warn">--</span></td>
         </tr>
       </tbody>
     </table>
@@ -577,6 +716,17 @@
       </dl>
       <p class="links"><a href="https://github.com/vmactions/midnightbsd-vm"><span lang="en">Repository</span><span lang="zh">仓库</span></a><a href="https://github.com/anyvm-org/midnightbsd-builder"><span lang="en">Image builder</span><span lang="zh">镜像 builder</span></a></p>
     </article>
+    <article class="card" data-os="nextbsd">
+      <h3><span class="dot"></span>NextBSD</h3>
+      <p class="uses"><code>vmactions/nextbsd-vm@v1</code></p>
+      <dl>
+      <div class="row"><dt><span lang="en">Default release</span><span lang="zh">默认版本</span></dt><dd><code>continuous</code> <span class="dim">(1 <span lang="en">releases</span><span lang="zh">个版本</span>)</span></dd></div>
+      <div class="row"><dt><span lang="en">Architectures</span><span lang="zh">支持架构</span></dt><dd><code>x86_64</code></dd></div>
+      <div class="row"><dt><span lang="en">Sync</span><span lang="zh">同步方式</span></dt><dd><span class="sync"><code>x86_64</code> rsync, scp, nfs</span></dd></div>
+      <div class="row"><dt><span lang="en">prepare example</span><span lang="zh">prepare 示例</span></dt><dd><code>pkg install -y socat</code></dd></div>
+      </dl>
+      <p class="links"><a href="https://github.com/vmactions/nextbsd-vm"><span lang="en">Repository</span><span lang="zh">仓库</span></a><a href="https://github.com/anyvm-org/nextbsd-builder"><span lang="en">Image builder</span><span lang="zh">镜像 builder</span></a></p>
+    </article>
     <article class="card" data-os="solaris">
       <h3><span class="dot"></span>Solaris</h3>
       <p class="uses"><code>vmactions/solaris-vm@v1</code></p>
@@ -642,6 +792,17 @@
       </dl>
       <p class="links"><a href="https://github.com/vmactions/hurd-vm"><span lang="en">Repository</span><span lang="zh">仓库</span></a><a href="https://github.com/anyvm-org/hurd-builder"><span lang="en">Image builder</span><span lang="zh">镜像 builder</span></a></p>
     </article>
+    <article class="card" data-os="ubuntu">
+      <h3><span class="dot"></span>Ubuntu</h3>
+      <p class="uses"><code>vmactions/ubuntu-vm@v1</code></p>
+      <dl>
+      <div class="row"><dt><span lang="en">Default release</span><span lang="zh">默认版本</span></dt><dd><code>24.04</code> <span class="dim">(3 <span lang="en">releases</span><span lang="zh">个版本</span>)</span></dd></div>
+      <div class="row"><dt><span lang="en">Architectures</span><span lang="zh">支持架构</span></dt><dd><code>x86_64</code> <code>aarch64</code> <code>riscv64</code> <code>ppc64le</code> <code>s390x</code></dd></div>
+      <div class="row"><dt><span lang="en">Sync</span><span lang="zh">同步方式</span></dt><dd><span class="sync"><code>x86_64</code> rsync, scp, sshfs, nfs</span><span class="sync"><code>aarch64</code> rsync, scp, sshfs, nfs</span><span class="sync"><code>riscv64</code> rsync, scp, nfs</span><span class="sync"><code>ppc64le</code> --</span><span class="sync"><code>s390x</code> --</span></dd></div>
+      <div class="row"><dt><span lang="en">prepare example</span><span lang="zh">prepare 示例</span></dt><dd><code>apt-get install -y socat</code></dd></div>
+      </dl>
+      <p class="links"><a href="https://github.com/vmactions/ubuntu-vm"><span lang="en">Repository</span><span lang="zh">仓库</span></a><a href="https://github.com/anyvm-org/ubuntu-builder"><span lang="en">Image builder</span><span lang="zh">镜像 builder</span></a></p>
+    </article>
     <article class="card" data-os="openeuler">
       <h3><span class="dot"></span>openEuler</h3>
       <p class="uses"><code>vmactions/openeuler-vm@v1</code></p>
@@ -664,6 +825,39 @@
       <div class="row"><dt><span lang="en">prepare example</span><span lang="zh">prepare 示例</span></dt><dd><code>uname -a</code></dd></div>
       </dl>
       <p class="links"><a href="https://github.com/vmactions/blissos-vm"><span lang="en">Repository</span><span lang="zh">仓库</span></a><a href="https://github.com/anyvm-org/blissos-builder"><span lang="en">Image builder</span><span lang="zh">镜像 builder</span></a></p>
+    </article>
+    <article class="card" data-os="reactos">
+      <h3><span class="dot"></span>ReactOS</h3>
+      <p class="uses"><code>vmactions/reactos-vm@v1</code></p>
+      <dl>
+      <div class="row"><dt><span lang="en">Default release</span><span lang="zh">默认版本</span></dt><dd><code>0.4.15</code> <span class="dim">(1 <span lang="en">releases</span><span lang="zh">个版本</span>)</span></dd></div>
+      <div class="row"><dt><span lang="en">Architectures</span><span lang="zh">支持架构</span></dt><dd><code>i386</code></dd></div>
+      <div class="row"><dt><span lang="en">Sync</span><span lang="zh">同步方式</span></dt><dd><span class="sync"><code>i386</code> --</span></dd></div>
+      <div class="row"><dt><span lang="en">prepare example</span><span lang="zh">prepare 示例</span></dt><dd><code>ver</code></dd></div>
+      </dl>
+      <p class="links"><a href="https://github.com/vmactions/reactos-vm"><span lang="en">Repository</span><span lang="zh">仓库</span></a><a href="https://github.com/anyvm-org/reactos-builder"><span lang="en">Image builder</span><span lang="zh">镜像 builder</span></a></p>
+    </article>
+    <article class="card" data-os="redox">
+      <h3><span class="dot"></span>Redox OS</h3>
+      <p class="uses"><code>vmactions/redox-vm@v1</code></p>
+      <dl>
+      <div class="row"><dt><span lang="en">Default release</span><span lang="zh">默认版本</span></dt><dd><code>0.9.0</code> <span class="dim">(1 <span lang="en">releases</span><span lang="zh">个版本</span>)</span></dd></div>
+      <div class="row"><dt><span lang="en">Architectures</span><span lang="zh">支持架构</span></dt><dd><code>x86_64</code></dd></div>
+      <div class="row"><dt><span lang="en">Sync</span><span lang="zh">同步方式</span></dt><dd><span class="sync"><code>x86_64</code> rsync, scp, nfs</span></dd></div>
+      <div class="row"><dt><span lang="en">prepare example</span><span lang="zh">prepare 示例</span></dt><dd><code>uname -a</code></dd></div>
+      </dl>
+      <p class="links"><a href="https://github.com/vmactions/redox-vm"><span lang="en">Repository</span><span lang="zh">仓库</span></a><a href="https://github.com/anyvm-org/redox-builder"><span lang="en">Image builder</span><span lang="zh">镜像 builder</span></a></p>
+    </article>
+    <article class="card" data-os="riscos">
+      <h3><span class="dot"></span>RISC OS</h3>
+      <p class="uses"><code>vmactions/riscos-vm@v1</code></p>
+      <dl>
+      <div class="row"><dt><span lang="en">Default release</span><span lang="zh">默认版本</span></dt><dd><code>5.30</code> <span class="dim">(1 <span lang="en">releases</span><span lang="zh">个版本</span>)</span></dd></div>
+      <div class="row"><dt><span lang="en">Architectures</span><span lang="zh">支持架构</span></dt><dd><code>armv7</code></dd></div>
+      <div class="row"><dt><span lang="en">Sync</span><span lang="zh">同步方式</span></dt><dd><span class="sync"><code>armv7</code> --</span></dd></div>
+      <div class="row"><dt><span lang="en">prepare example</span><span lang="zh">prepare 示例</span></dt><dd><code>Echo anyvm</code></dd></div>
+      </dl>
+      <p class="links"><a href="https://github.com/vmactions/riscos-vm"><span lang="en">Repository</span><span lang="zh">仓库</span></a><a href="https://github.com/anyvm-org/riscos-builder"><span lang="en">Image builder</span><span lang="zh">镜像 builder</span></a></p>
     </article>
 <!-- END generated:cards -->
     </div>

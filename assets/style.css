@@ -101,14 +101,19 @@
   --os-dragonflybsd: #7a9c00;  /* logo disc small_logo.png #cfff22, darkened */
   --os-midnightbsd:  #7d88de;  /* DERIVED -- no published palette */
   --os-ghostbsd:     #009cb5;  /* site logo ghostbsd.png, as published */
+  --os-nextbsd:      #8795b0;  /* DERIVED -- site is greyscale; #93a0b8 darkened */
   --os-solaris:      #c74634;  /* oracle.com, as published */
   --os-omnios:       #d67800;  /* omnios.org app.css #ff8f00, darkened */
   --os-openindiana:  #6a9e1e;  /* oibird.svg #95d834, darkened */
   --os-tribblix:     #006600;  /* tribblix.css, as published */
   --os-haiku:        #cf7e00;  /* haiku-os.org accent #ff9c00, darkened */
   --os-hurd:         #9b84cb;  /* DERIVED -- logo is monochrome */
+  --os-ubuntu:       #e95420;  /* ubuntu.com styles.css, as-is (3.65:1 on white) */
   --os-openeuler:    #204bb9;  /* official logo png, as published */
   --os-blissos:      #0080ff;  /* blissos.org neon.css, as-is */
+  --os-reactos:      #467fbf;  /* reactos.org style.blue.css, as published */
+  --os-redox:        #21a973;  /* DERIVED -- Redox marks are black; #2fd694 darkened */
+  --os-riscos:       #ff44cd;  /* DERIVED -- #ffa2e6 (anyvm.org authored hue) darkened */
 }
 
 @media (prefers-color-scheme: dark) {
@@ -119,14 +124,19 @@
     --os-dragonflybsd: #cfff22;  /* as-is */
     --os-midnightbsd:  #7d88de;  /* DERIVED */
     --os-ghostbsd:     #22bcd4;  /* #009cb5 lifted */
+    --os-nextbsd:      #93a0b8;  /* DERIVED, as-is */
     --os-solaris:      #e05a48;  /* #c74634 lifted */
     --os-omnios:       #ff8f00;  /* as-is */
     --os-openindiana:  #95d834;  /* as-is */
     --os-tribblix:     #3fae3f;  /* #006600 lifted hard */
     --os-haiku:        #ff9c00;  /* as-is */
     --os-hurd:         #a48fd0;  /* DERIVED */
+    --os-ubuntu:       #e95420;  /* as-is */
     --os-openeuler:    #5b8cf0;  /* #204bb9 lifted */
     --os-blissos:      #0080ff;  /* as-is */
+    --os-reactos:      #5f9bdd;  /* #467fbf lifted */
+    --os-redox:        #2fd694;  /* DERIVED, as-is */
+    --os-riscos:       #ffa2e6;  /* DERIVED, as-is */
   }
 }
 
@@ -137,14 +147,19 @@
   --os-dragonflybsd: #7a9c00;
   --os-midnightbsd:  #7d88de;
   --os-ghostbsd:     #009cb5;
+  --os-nextbsd:      #8795b0;
   --os-solaris:      #c74634;
   --os-omnios:       #d67800;
   --os-openindiana:  #6a9e1e;
   --os-tribblix:     #006600;
   --os-haiku:        #cf7e00;
   --os-hurd:         #9b84cb;
+  --os-ubuntu:       #e95420;
   --os-openeuler:    #204bb9;
   --os-blissos:      #0080ff;
+  --os-reactos:      #467fbf;
+  --os-redox:        #21a973;
+  --os-riscos:       #ff44cd;
 }
 
 :root[data-theme="dark"] {
@@ -154,14 +169,19 @@
   --os-dragonflybsd: #cfff22;
   --os-midnightbsd:  #7d88de;
   --os-ghostbsd:     #22bcd4;
+  --os-nextbsd:      #93a0b8;
   --os-solaris:      #e05a48;
   --os-omnios:       #ff8f00;
   --os-openindiana:  #95d834;
   --os-tribblix:     #3fae3f;
   --os-haiku:        #ff9c00;
   --os-hurd:         #a48fd0;
+  --os-ubuntu:       #e95420;
   --os-openeuler:    #5b8cf0;
   --os-blissos:      #0080ff;
+  --os-reactos:      #5f9bdd;
+  --os-redox:        #2fd694;
+  --os-riscos:       #ffa2e6;
 }
 
 [data-os="freebsd"]      { --os-color: var(--os-freebsd); }
@@ -170,14 +190,19 @@
 [data-os="dragonflybsd"] { --os-color: var(--os-dragonflybsd); }
 [data-os="midnightbsd"]  { --os-color: var(--os-midnightbsd); }
 [data-os="ghostbsd"]     { --os-color: var(--os-ghostbsd); }
+[data-os="nextbsd"]      { --os-color: var(--os-nextbsd); }
 [data-os="solaris"]      { --os-color: var(--os-solaris); }
 [data-os="omnios"]       { --os-color: var(--os-omnios); }
 [data-os="openindiana"]  { --os-color: var(--os-openindiana); }
 [data-os="tribblix"]     { --os-color: var(--os-tribblix); }
 [data-os="haiku"]        { --os-color: var(--os-haiku); }
 [data-os="hurd"]         { --os-color: var(--os-hurd); }
+[data-os="ubuntu"]       { --os-color: var(--os-ubuntu); }
 [data-os="openeuler"]    { --os-color: var(--os-openeuler); }
 [data-os="blissos"]      { --os-color: var(--os-blissos); }
+[data-os="reactos"]      { --os-color: var(--os-reactos); }
+[data-os="redox"]        { --os-color: var(--os-redox); }
+[data-os="riscos"]       { --os-color: var(--os-riscos); }
 
 /* ------------------------------------------------------------ language
  *
@@ -336,8 +361,40 @@ pre code {
 
 .switch:hover { color: var(--ink); border-color: var(--ink-dim); }
 
+/* The nav donate pill. An anchor wearing the .switch clothes: same pill,
+   same neutral palette -- a coloured element always means one thing, and
+   this is not that thing. */
+.donate {
+  display: inline-flex;
+  align-items: center; gap: 6px;
+  font-family: var(--mono);
+  font-size: .78rem;
+  color: var(--ink-dim);
+  background: var(--surface);
+  border: 1px solid var(--rule);
+  border-radius: 999px;
+  padding: 4px 11px;
+  line-height: 1.5;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.donate:hover { color: var(--ink); border-color: var(--ink-dim); }
+
+.donate svg { display: block; flex: none; }
+
 @media (max-width: 720px) {
   .nav-links { display: none; }
+}
+
+@media (max-width: 480px) {
+  .donate { padding: 4px 8px; }
+  /* Icon only. Must beat the language rule
+     `html[data-lang="zh"] body [lang="zh"][lang] { display: revert }`
+     at (0,3,2) in BOTH languages: `revert` discards the author origin,
+     so an equal-specificity rule only wins by source order. html body +
+     span lifts this to (0,3,3), which wins outright. */
+  html body .donate span[lang][lang] { display: none; }
 }
 
 /* ------------------------------------------------------------ hero */
