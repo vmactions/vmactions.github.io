@@ -102,6 +102,7 @@
   --os-midnightbsd:  #7d88de;  /* DERIVED -- no published palette */
   --os-ghostbsd:     #009cb5;  /* site logo ghostbsd.png, as published */
   --os-nextbsd:      #8795b0;  /* DERIVED -- site is greyscale; #93a0b8 darkened */
+  --os-plan9:        #b38f00;  /* 9front.org style.css #ffd324, darkened */
   --os-solaris:      #c74634;  /* oracle.com, as published */
   --os-omnios:       #d67800;  /* omnios.org app.css #ff8f00, darkened */
   --os-openindiana:  #6a9e1e;  /* oibird.svg #95d834, darkened */
@@ -125,6 +126,7 @@
     --os-midnightbsd:  #7d88de;  /* DERIVED */
     --os-ghostbsd:     #22bcd4;  /* #009cb5 lifted */
     --os-nextbsd:      #93a0b8;  /* DERIVED, as-is */
+    --os-plan9:        #ffd324;  /* as-is */
     --os-solaris:      #e05a48;  /* #c74634 lifted */
     --os-omnios:       #ff8f00;  /* as-is */
     --os-openindiana:  #95d834;  /* as-is */
@@ -148,6 +150,7 @@
   --os-midnightbsd:  #7d88de;
   --os-ghostbsd:     #009cb5;
   --os-nextbsd:      #8795b0;
+  --os-plan9:        #b38f00;
   --os-solaris:      #c74634;
   --os-omnios:       #d67800;
   --os-openindiana:  #6a9e1e;
@@ -170,6 +173,7 @@
   --os-midnightbsd:  #7d88de;
   --os-ghostbsd:     #22bcd4;
   --os-nextbsd:      #93a0b8;
+  --os-plan9:        #ffd324;
   --os-solaris:      #e05a48;
   --os-omnios:       #ff8f00;
   --os-openindiana:  #95d834;
@@ -191,6 +195,7 @@
 [data-os="midnightbsd"]  { --os-color: var(--os-midnightbsd); }
 [data-os="ghostbsd"]     { --os-color: var(--os-ghostbsd); }
 [data-os="nextbsd"]      { --os-color: var(--os-nextbsd); }
+[data-os="plan9"]        { --os-color: var(--os-plan9); }
 [data-os="solaris"]      { --os-color: var(--os-solaris); }
 [data-os="omnios"]       { --os-color: var(--os-omnios); }
 [data-os="openindiana"]  { --os-color: var(--os-openindiana); }

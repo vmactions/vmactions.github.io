@@ -49,7 +49,7 @@ const ORDER = [
   'ghostbsd-vm', 'midnightbsd-vm', 'nextbsd-vm',
   'solaris-vm', 'omnios-vm', 'openindiana-vm', 'tribblix-vm',
   'haiku-vm', 'hurd-vm', 'ubuntu-vm', 'openeuler-vm', 'blissos-vm',
-  'reactos-vm', 'redox-vm', 'riscos-vm',
+  'reactos-vm', 'redox-vm', 'riscos-vm', 'plan9-vm',
 ];
 
 // VM_NAME in datafile.ini is written for the generated READMEs and does not
@@ -62,6 +62,7 @@ const DISPLAY_NAME = {
   'blissos-vm': 'BlissOS',
   'redox-vm': 'Redox OS',
   'riscos-vm': 'RISC OS',
+  'plan9-vm': 'Plan 9',
 };
 
 // Inner markup of the Feather icons named by each repo's VM_BRAND_ICON --
