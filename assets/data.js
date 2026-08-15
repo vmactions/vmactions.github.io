@@ -63,7 +63,8 @@ window.VMACTIONS_DATA = {
       "os": "nextbsd",
       "dir": "nextbsd-vm",
       "arches": [
-        "x86_64"
+        "x86_64",
+        "aarch64"
       ]
     },
     {
@@ -174,6 +175,6 @@ window.VMACTIONS_DATA = {
   "counts": {
     "systems": 19,
     "arches": 10,
-    "combos": 36
+    "combos": 37
   }
 };

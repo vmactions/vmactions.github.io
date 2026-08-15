@@ -193,8 +193,16 @@ function collect(root) {
       name: DISPLAY_NAME[dir] || ini.VM_NAME || dir,
       os: ini.VM_OS_NAME || dir.replace(/-vm$/, ''),
       icon: ini.VM_BRAND_ICON || '',
-      version: readFirstMatch(path.join(repo, 'README.md'),
-        new RegExp('uses: vmactions/' + dir + '@(v\\d+)')) || 'v1',
+      // A repo that has never been released still carries @v0 in its
+      // generated README (the version file starts at v0.0.0). v1 is the tag
+      // every action ships under, so v0 reads as "not released yet", not as
+      // a version anyone should type -- show v1 for it, same as when the
+      // README carries no usage line at all.
+      version: (function () {
+        const v = readFirstMatch(path.join(repo, 'README.md'),
+          new RegExp('uses: vmactions/' + dir + '@(v\\d+)'));
+        return (!v || v === 'v0') ? 'v1' : v;
+      })(),
       defaultRelease: readFirstMatch(
         path.join(repo, 'conf', 'default.release.conf'), /DEFAULT_RELEASE=(.*)/).trim(),
       releaseCount: releases.size,
