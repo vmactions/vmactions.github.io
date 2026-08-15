@@ -56,7 +56,7 @@ repository:
 | `conf/*.conf` filenames | which releases exist, and the arch of each |
 | `conf/default.release.conf` | the default release |
 | `.github/data/sync-map.json` | sync methods per arch |
-| `.github/data/datafile.ini` | display name, shell note, prepare example, upstream builder |
+| `.github/data/datafile.ini` | display name, shell note, prepare example, upstream builder, brand icon |
 | `README.md` | the action's major version |
 
 Run it after anything moves upstream:

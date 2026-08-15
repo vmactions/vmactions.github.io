@@ -609,6 +609,16 @@ html[data-lang="zh"] .stat-l { text-transform: none; letter-spacing: .02em; }
   display: none;
 }
 
+/* The repo's Marketplace icon (VM_BRAND_ICON), inlined by build-data.js.
+   Same colour as the row stripe: one system, one colour, two marks. */
+.matrix .os-icon {
+  width: 15px;
+  height: 15px;
+  margin-right: 8px;
+  vertical-align: -3px;
+  color: var(--os-color, var(--ink-dim));
+}
+
 .matrix td.yes code {
   background: transparent;
   border: 0;

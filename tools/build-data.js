@@ -18,7 +18,8 @@
 //   conf/default.release.conf      DEFAULT_RELEASE
 //   .github/data/sync-map.json     sync methods per arch
 //   .github/data/datafile.ini      display name, shell note, prepare example,
-//                                  and the upstream builder URL
+//                                  the upstream builder URL, and the brand
+//                                  icon (VM_BRAND_ICON)
 //   README.md                      the action's major version
 //
 // Nothing is typed in from memory. If a value is not in the repositories, it
@@ -61,6 +62,32 @@ const DISPLAY_NAME = {
   'blissos-vm': 'BlissOS',
   'redox-vm': 'Redox OS',
   'riscos-vm': 'RISC OS',
+};
+
+// Inner markup of the Feather icons named by each repo's VM_BRAND_ICON --
+// the same icon the action wears on the GitHub Marketplace. Copied verbatim
+// from the feather-icons dist icons.json (MIT, feathericons/feather on
+// GitHub), never written from memory: a hand-typed path renders as garbage,
+// not as an error. Rendered inline because the site loads no external
+// resources; the stroke takes the row's --os-color via currentColor.
+const FEATHER = {
+  server: '<rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect><rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect><line x1="6" y1="6" x2="6.01" y2="6"></line><line x1="6" y1="18" x2="6.01" y2="18"></line>',
+  shield: '<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>',
+  flag: '<path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"></path><line x1="4" y1="22" x2="4" y2="15"></line>',
+  wind: '<path d="M9.59 4.59A2 2 0 1 1 11 8H2m10.59 11.41A2 2 0 1 0 14 16H2m15.73-8.27A2.5 2.5 0 1 1 19.5 12H2"></path>',
+  cloud: '<path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"></path>',
+  moon: '<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>',
+  box: '<path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line>',
+  sun: '<circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>',
+  sunrise: '<path d="M17 18a5 5 0 0 0-10 0"></path><line x1="12" y1="2" x2="12" y2="9"></line><line x1="4.22" y1="10.22" x2="5.64" y2="11.64"></line><line x1="1" y1="18" x2="3" y2="18"></line><line x1="21" y1="18" x2="23" y2="18"></line><line x1="18.36" y1="11.64" x2="19.78" y2="10.22"></line><line x1="23" y1="22" x2="1" y2="22"></line><polyline points="8 6 12 2 16 6"></polyline>',
+  sunset: '<path d="M17 18a5 5 0 0 0-10 0"></path><line x1="12" y1="9" x2="12" y2="2"></line><line x1="4.22" y1="10.22" x2="5.64" y2="11.64"></line><line x1="1" y1="18" x2="3" y2="18"></line><line x1="21" y1="18" x2="23" y2="18"></line><line x1="18.36" y1="11.64" x2="19.78" y2="10.22"></line><line x1="23" y1="22" x2="1" y2="22"></line><polyline points="16 5 12 9 8 5"></polyline>',
+  compass: '<circle cx="12" cy="12" r="10"></circle><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"></polygon>',
+  feather: '<path d="M20.24 12.24a6 6 0 0 0-8.49-8.49L5 10.5V19h8.5z"></path><line x1="16" y1="8" x2="2" y2="22"></line><line x1="17.5" y1="15" x2="9" y2="15"></line>',
+  smartphone: '<rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect><line x1="12" y1="18" x2="12.01" y2="18"></line>',
+  layers: '<polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline>',
+  cpu: '<rect x="4" y="4" width="16" height="16" rx="2" ry="2"></rect><rect x="9" y="9" width="6" height="6"></rect><line x1="9" y1="1" x2="9" y2="4"></line><line x1="15" y1="1" x2="15" y2="4"></line><line x1="9" y1="20" x2="9" y2="23"></line><line x1="15" y1="20" x2="15" y2="23"></line><line x1="20" y1="9" x2="23" y2="9"></line><line x1="20" y1="14" x2="23" y2="14"></line><line x1="1" y1="9" x2="4" y2="9"></line><line x1="1" y1="14" x2="4" y2="14"></line>',
+  aperture: '<circle cx="12" cy="12" r="10"></circle><line x1="14.31" y1="8" x2="20.05" y2="17.94"></line><line x1="9.69" y1="8" x2="21.17" y2="8"></line><line x1="7.38" y1="12" x2="13.12" y2="2.06"></line><line x1="9.69" y1="16" x2="3.95" y2="6.06"></line><line x1="14.31" y1="16" x2="2.83" y2="16"></line><line x1="16.62" y1="12" x2="10.88" y2="21.94"></line>',
+  monitor: '<rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line>',
 };
 
 // Bilingual labels used in the generated markup.
@@ -165,6 +192,7 @@ function collect(root) {
       dir,
       name: DISPLAY_NAME[dir] || ini.VM_NAME || dir,
       os: ini.VM_OS_NAME || dir.replace(/-vm$/, ''),
+      icon: ini.VM_BRAND_ICON || '',
       version: readFirstMatch(path.join(repo, 'README.md'),
         new RegExp('uses: vmactions/' + dir + '@(v\\d+)')) || 'v1',
       defaultRelease: readFirstMatch(
@@ -247,8 +275,15 @@ function renderMatrix(systems) {
   lines.push('      <tbody>');
 
   for (const s of systems) {
+    // The repo's Marketplace icon, coloured like the row stripe. A repo whose
+    // datafile names no icon (or one we have no shape for) keeps the dot.
+    const mark = FEATHER[s.icon]
+      ? '<svg class="os-icon" viewBox="0 0 24 24" fill="none"' +
+        ' stroke="currentColor" stroke-width="2" stroke-linecap="round"' +
+        ` stroke-linejoin="round" aria-hidden="true">${FEATHER[s.icon]}</svg>`
+      : '<span class="dot"></span>';
     lines.push(`        <tr data-os="${esc(s.os)}">`);
-    lines.push(`          <th scope="row"><span class="dot"></span>${esc(s.name)}</th>`);
+    lines.push(`          <th scope="row">${mark}${esc(s.name)}</th>`);
     for (const col of columns) {
       if (!s.arches.includes(col)) {
         lines.push('          <td class="no"><span aria-hidden="true">&middot;</span></td>');
