@@ -188,6 +188,18 @@
   --os-riscos:       #ffa2e6;
 }
 
+/* The matrix is eleven columns wide and scrolls sideways. A guest with no
+ * x86_64 build (ReactOS is i386-only, RISC OS armv7-only) therefore shows an
+ * empty row until the reader scrolls, which reads as "unsupported" rather
+ * than "supported, further right" -- so its row header names the arch. */
+.row-arch {
+  font-family: var(--mono);
+  font-size: .74em;
+  color: var(--ink-dim);
+  font-weight: 400;
+  white-space: nowrap;
+}
+
 [data-os="freebsd"]      { --os-color: var(--os-freebsd); }
 [data-os="openbsd"]      { --os-color: var(--os-openbsd); }
 [data-os="netbsd"]       { --os-color: var(--os-netbsd); }

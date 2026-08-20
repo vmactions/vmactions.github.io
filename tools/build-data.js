@@ -292,7 +292,15 @@ function renderMatrix(systems) {
         ` stroke-linejoin="round" aria-hidden="true">${FEATHER[s.icon]}</svg>`
       : '<span class="dot"></span>';
     lines.push(`        <tr data-os="${esc(s.os)}">`);
-    lines.push(`          <th scope="row">${mark}${esc(s.name)}</th>`);
+    // Name the architectures in the row header when the system has no
+    // x86_64 build. The matrix is eleven columns wide and scrolls sideways,
+    // so a guest whose only column is i386 or armv7 reads as a completely
+    // empty row until the reader scrolls -- which looks like "not supported
+    // at all" rather than "supported, further right".
+    const archHint = s.arches.includes('x86_64')
+      ? ''
+      : ` <span class="row-arch">${esc(s.arches.join(' '))}</span>`;
+    lines.push(`          <th scope="row">${mark}${esc(s.name)}${archHint}</th>`);
     for (const col of columns) {
       if (!s.arches.includes(col)) {
         lines.push('          <td class="no"><span aria-hidden="true">&middot;</span></td>');
