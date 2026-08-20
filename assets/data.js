@@ -170,11 +170,19 @@ window.VMACTIONS_DATA = {
       "arches": [
         "armv7"
       ]
+    },
+    {
+      "name": "Plan 9",
+      "os": "plan9",
+      "dir": "plan9-vm",
+      "arches": [
+        "x86_64"
+      ]
     }
   ],
   "counts": {
-    "systems": 19,
+    "systems": 20,
     "arches": 10,
-    "combos": 37
+    "combos": 38
   }
 };

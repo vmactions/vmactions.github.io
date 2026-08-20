@@ -112,7 +112,7 @@
       <div class="run" aria-hidden="true">
         <div class="run-head">
           <span>Actions</span>
-          <span class="dim" style="margin-left:auto">19 jobs</span>
+          <span class="dim" style="margin-left:auto">20 jobs</span>
         </div>
         <ul class="run-list" id="run-list">
 <!-- BEGIN generated:run -->
@@ -192,6 +192,10 @@
         <span class="tick">&#10003;</span>
         <code>vmactions/riscos-vm@v1</code>
       </li>
+      <li data-os="plan9">
+        <span class="tick">&#10003;</span>
+        <code>vmactions/plan9-vm@v1</code>
+      </li>
 <!-- END generated:run -->
         </ul>
       </div>
@@ -200,7 +204,7 @@
     <div class="stats">
 <!-- BEGIN generated:counts -->
     <div class="stat">
-      <span class="stat-n">19</span>
+      <span class="stat-n">20</span>
       <span class="stat-l"><span lang="en">systems</span><span lang="zh">个系统</span></span>
     </div>
     <div class="stat">
@@ -208,7 +212,7 @@
       <span class="stat-l"><span lang="en">architectures</span><span lang="zh">种架构</span></span>
     </div>
     <div class="stat">
-      <span class="stat-n">37</span>
+      <span class="stat-n">38</span>
       <span class="stat-l"><span lang="en">OS-arch combinations</span><span lang="zh">个系统-架构组合</span></span>
     </div>
 <!-- END generated:counts -->
@@ -562,15 +566,15 @@
         </tr>
         <tr data-os="openeuler">
           <th scope="row"><svg class="os-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="2" ry="2"></rect><rect x="9" y="9" width="6" height="6"></rect><line x1="9" y1="1" x2="9" y2="4"></line><line x1="15" y1="1" x2="15" y2="4"></line><line x1="9" y1="20" x2="9" y2="23"></line><line x1="15" y1="20" x2="15" y2="23"></line><line x1="20" y1="9" x2="23" y2="9"></line><line x1="20" y1="14" x2="23" y2="14"></line><line x1="1" y1="9" x2="4" y2="9"></line><line x1="1" y1="14" x2="4" y2="14"></line></svg>openEuler</th>
-          <td class="yes"><code>rsync</code> <code>scp</code> <code>sshfs</code> <code>nfs</code></td>
-          <td class="yes"><code>rsync</code> <code>scp</code> <code>sshfs</code> <code>nfs</code></td>
-          <td class="yes"><code>rsync</code> <code>scp</code> <code>nfs</code></td>
+          <td class="yes"><code>rsync</code> <code>scp</code> <code>sshfs</code> <code>nfs</code> <code>tar</code></td>
+          <td class="yes"><code>rsync</code> <code>scp</code> <code>sshfs</code> <code>nfs</code> <code>tar</code></td>
+          <td class="yes"><code>rsync</code> <code>scp</code> <code>nfs</code> <code>tar</code></td>
           <td class="no"><span aria-hidden="true">&middot;</span></td>
           <td class="no"><span aria-hidden="true">&middot;</span></td>
           <td class="no"><span aria-hidden="true">&middot;</span></td>
           <td class="no"><span aria-hidden="true">&middot;</span></td>
           <td class="no"><span aria-hidden="true">&middot;</span></td>
-          <td class="yes"><code>rsync</code> <code>scp</code> <code>sshfs</code> <code>nfs</code></td>
+          <td class="yes"><code>rsync</code> <code>scp</code> <code>sshfs</code> <code>nfs</code> <code>tar</code></td>
           <td class="no"><span aria-hidden="true">&middot;</span></td>
         </tr>
         <tr data-os="blissos">
@@ -624,6 +628,19 @@
           <td class="no"><span aria-hidden="true">&middot;</span></td>
           <td class="no"><span aria-hidden="true">&middot;</span></td>
           <td class="yes"><code>tar</code></td>
+        </tr>
+        <tr data-os="plan9">
+          <th scope="row"><svg class="os-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>Plan 9</th>
+          <td class="yes"><code>9p</code></td>
+          <td class="no"><span aria-hidden="true">&middot;</span></td>
+          <td class="no"><span aria-hidden="true">&middot;</span></td>
+          <td class="no"><span aria-hidden="true">&middot;</span></td>
+          <td class="no"><span aria-hidden="true">&middot;</span></td>
+          <td class="no"><span aria-hidden="true">&middot;</span></td>
+          <td class="no"><span aria-hidden="true">&middot;</span></td>
+          <td class="no"><span aria-hidden="true">&middot;</span></td>
+          <td class="no"><span aria-hidden="true">&middot;</span></td>
+          <td class="no"><span aria-hidden="true">&middot;</span></td>
         </tr>
       </tbody>
     </table>
@@ -809,7 +826,7 @@
       <dl>
       <div class="row"><dt><span lang="en">Default release</span><span lang="zh">默认版本</span></dt><dd><code>24.03-LTS-SP4</code> <span class="dim">(3 <span lang="en">releases</span><span lang="zh">个版本</span>)</span></dd></div>
       <div class="row"><dt><span lang="en">Architectures</span><span lang="zh">支持架构</span></dt><dd><code>x86_64</code> <code>aarch64</code> <code>riscv64</code> <code>loongarch64</code></dd></div>
-      <div class="row"><dt><span lang="en">Sync</span><span lang="zh">同步方式</span></dt><dd><span class="sync"><code>x86_64</code> rsync, scp, sshfs, nfs</span><span class="sync"><code>aarch64</code> rsync, scp, sshfs, nfs</span><span class="sync"><code>riscv64</code> rsync, scp, nfs</span><span class="sync"><code>loongarch64</code> rsync, scp, sshfs, nfs</span></dd></div>
+      <div class="row"><dt><span lang="en">Sync</span><span lang="zh">同步方式</span></dt><dd><span class="sync"><code>x86_64</code> rsync, scp, sshfs, nfs, tar</span><span class="sync"><code>aarch64</code> rsync, scp, sshfs, nfs, tar</span><span class="sync"><code>riscv64</code> rsync, scp, nfs, tar</span><span class="sync"><code>loongarch64</code> rsync, scp, sshfs, nfs, tar</span></dd></div>
       <div class="row"><dt><span lang="en">prepare example</span><span lang="zh">prepare 示例</span></dt><dd><code>dnf install -y curl</code></dd></div>
       </dl>
       <p class="links"><a href="https://github.com/vmactions/openeuler-vm"><span lang="en">Repository</span><span lang="zh">仓库</span></a><a href="https://github.com/anyvm-org/openeuler-builder"><span lang="en">Image builder</span><span lang="zh">镜像 builder</span></a></p>
@@ -858,6 +875,17 @@
       <div class="row"><dt><span lang="en">prepare example</span><span lang="zh">prepare 示例</span></dt><dd><code>Echo anyvm</code></dd></div>
       </dl>
       <p class="links"><a href="https://github.com/vmactions/riscos-vm"><span lang="en">Repository</span><span lang="zh">仓库</span></a><a href="https://github.com/anyvm-org/riscos-builder"><span lang="en">Image builder</span><span lang="zh">镜像 builder</span></a></p>
+    </article>
+    <article class="card" data-os="plan9">
+      <h3><span class="dot"></span>Plan 9</h3>
+      <p class="uses"><code>vmactions/plan9-vm@v1</code></p>
+      <dl>
+      <div class="row"><dt><span lang="en">Default release</span><span lang="zh">默认版本</span></dt><dd><code>11952</code> <span class="dim">(2 <span lang="en">releases</span><span lang="zh">个版本</span>)</span></dd></div>
+      <div class="row"><dt><span lang="en">Architectures</span><span lang="zh">支持架构</span></dt><dd><code>x86_64</code></dd></div>
+      <div class="row"><dt><span lang="en">Sync</span><span lang="zh">同步方式</span></dt><dd><span class="sync"><code>x86_64</code> 9p</span></dd></div>
+      <div class="row"><dt><span lang="en">prepare example</span><span lang="zh">prepare 示例</span></dt><dd><code>echo anyvm</code></dd></div>
+      </dl>
+      <p class="links"><a href="https://github.com/vmactions/plan9-vm"><span lang="en">Repository</span><span lang="zh">仓库</span></a><a href="https://github.com/anyvm-org/plan9-builder"><span lang="en">Image builder</span><span lang="zh">镜像 builder</span></a></p>
     </article>
 <!-- END generated:cards -->
     </div>
