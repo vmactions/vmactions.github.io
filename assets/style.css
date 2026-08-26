@@ -102,6 +102,8 @@
   --os-midnightbsd:  #7d88de;  /* DERIVED -- no published palette */
   --os-ghostbsd:     #009cb5;  /* site logo ghostbsd.png, as published */
   --os-nextbsd:      #8795b0;  /* DERIVED -- site is greyscale; #93a0b8 darkened */
+  --os-hardenedbsd:  #0d98ca;  /* site header logo png #2fbef2, darkened */
+  --os-opnsense:     #c03e14;  /* logo-opnsense.svg / theme --color-orange, as published */
   --os-plan9:        #b38f00;  /* 9front.org style.css #ffd324, darkened */
   --os-solaris:      #c74634;  /* oracle.com, as published */
   --os-omnios:       #d67800;  /* omnios.org app.css #ff8f00, darkened */
@@ -110,6 +112,10 @@
   --os-haiku:        #cf7e00;  /* haiku-os.org accent #ff9c00, darkened */
   --os-hurd:         #9b84cb;  /* DERIVED -- logo is monochrome */
   --os-ubuntu:       #e95420;  /* ubuntu.com styles.css, as-is (3.65:1 on white) */
+  --os-debian:       #a80030;  /* debian.org openlogo-nd.svg, as published */
+  --os-alpine:       #0d597f;  /* alpinelinux-logo.svg, as published */
+  --os-almalinux:    #0069da;  /* almalinux.org images/logo.svg, as published */
+  --os-rocky:        #0e9f6f;  /* rockylinux.org images/logo.svg #10b981, darkened */
   --os-openeuler:    #204bb9;  /* official logo png, as published */
   --os-blissos:      #0080ff;  /* blissos.org neon.css, as-is */
   --os-reactos:      #467fbf;  /* reactos.org style.blue.css, as published */
@@ -126,6 +132,8 @@
     --os-midnightbsd:  #7d88de;  /* DERIVED */
     --os-ghostbsd:     #22bcd4;  /* #009cb5 lifted */
     --os-nextbsd:      #93a0b8;  /* DERIVED, as-is */
+    --os-hardenedbsd:  #2fbef2;  /* as-is */
+    --os-opnsense:     #c03e14;  /* as-is */
     --os-plan9:        #ffd324;  /* as-is */
     --os-solaris:      #e05a48;  /* #c74634 lifted */
     --os-omnios:       #ff8f00;  /* as-is */
@@ -134,6 +142,10 @@
     --os-haiku:        #ff9c00;  /* as-is */
     --os-hurd:         #a48fd0;  /* DERIVED */
     --os-ubuntu:       #e95420;  /* as-is */
+    --os-debian:       #db003f;  /* #a80030 lifted */
+    --os-alpine:       #1175a6;  /* #0d597f lifted */
+    --os-almalinux:    #0069da;  /* as-is */
+    --os-rocky:        #10b981;  /* as-is */
     --os-openeuler:    #5b8cf0;  /* #204bb9 lifted */
     --os-blissos:      #0080ff;  /* as-is */
     --os-reactos:      #5f9bdd;  /* #467fbf lifted */
@@ -150,6 +162,8 @@
   --os-midnightbsd:  #7d88de;
   --os-ghostbsd:     #009cb5;
   --os-nextbsd:      #8795b0;
+  --os-hardenedbsd:  #0d98ca;
+  --os-opnsense:     #c03e14;
   --os-plan9:        #b38f00;
   --os-solaris:      #c74634;
   --os-omnios:       #d67800;
@@ -158,6 +172,10 @@
   --os-haiku:        #cf7e00;
   --os-hurd:         #9b84cb;
   --os-ubuntu:       #e95420;
+  --os-debian:       #a80030;
+  --os-alpine:       #0d597f;
+  --os-almalinux:    #0069da;
+  --os-rocky:        #0e9f6f;
   --os-openeuler:    #204bb9;
   --os-blissos:      #0080ff;
   --os-reactos:      #467fbf;
@@ -173,6 +191,8 @@
   --os-midnightbsd:  #7d88de;
   --os-ghostbsd:     #22bcd4;
   --os-nextbsd:      #93a0b8;
+  --os-hardenedbsd:  #2fbef2;
+  --os-opnsense:     #c03e14;
   --os-plan9:        #ffd324;
   --os-solaris:      #e05a48;
   --os-omnios:       #ff8f00;
@@ -181,6 +201,10 @@
   --os-haiku:        #ff9c00;
   --os-hurd:         #a48fd0;
   --os-ubuntu:       #e95420;
+  --os-debian:       #db003f;
+  --os-alpine:       #1175a6;
+  --os-almalinux:    #0069da;
+  --os-rocky:        #10b981;
   --os-openeuler:    #5b8cf0;
   --os-blissos:      #0080ff;
   --os-reactos:      #5f9bdd;
@@ -207,6 +231,8 @@
 [data-os="midnightbsd"]  { --os-color: var(--os-midnightbsd); }
 [data-os="ghostbsd"]     { --os-color: var(--os-ghostbsd); }
 [data-os="nextbsd"]      { --os-color: var(--os-nextbsd); }
+[data-os="hardenedbsd"]  { --os-color: var(--os-hardenedbsd); }
+[data-os="opnsense"]     { --os-color: var(--os-opnsense); }
 [data-os="plan9"]        { --os-color: var(--os-plan9); }
 [data-os="solaris"]      { --os-color: var(--os-solaris); }
 [data-os="omnios"]       { --os-color: var(--os-omnios); }
@@ -215,6 +241,10 @@
 [data-os="haiku"]        { --os-color: var(--os-haiku); }
 [data-os="hurd"]         { --os-color: var(--os-hurd); }
 [data-os="ubuntu"]       { --os-color: var(--os-ubuntu); }
+[data-os="debian"]       { --os-color: var(--os-debian); }
+[data-os="alpine"]       { --os-color: var(--os-alpine); }
+[data-os="almalinux"]    { --os-color: var(--os-almalinux); }
+[data-os="rocky"]        { --os-color: var(--os-rocky); }
 [data-os="openeuler"]    { --os-color: var(--os-openeuler); }
 [data-os="blissos"]      { --os-color: var(--os-blissos); }
 [data-os="reactos"]      { --os-color: var(--os-reactos); }

@@ -68,6 +68,22 @@ window.VMACTIONS_DATA = {
       ]
     },
     {
+      "name": "HardenedBSD",
+      "os": "hardenedbsd",
+      "dir": "hardenedbsd-vm",
+      "arches": [
+        "x86_64"
+      ]
+    },
+    {
+      "name": "OPNsense",
+      "os": "opnsense",
+      "dir": "opnsense-vm",
+      "arches": [
+        "x86_64"
+      ]
+    },
+    {
       "name": "Solaris",
       "os": "solaris",
       "dir": "solaris-vm",
@@ -129,6 +145,48 @@ window.VMACTIONS_DATA = {
       ]
     },
     {
+      "name": "Debian",
+      "os": "debian",
+      "dir": "debian-vm",
+      "arches": [
+        "x86_64",
+        "aarch64",
+        "riscv64",
+        "ppc64le"
+      ]
+    },
+    {
+      "name": "Alpine Linux",
+      "os": "alpine",
+      "dir": "alpine-vm",
+      "arches": [
+        "x86_64",
+        "aarch64"
+      ]
+    },
+    {
+      "name": "AlmaLinux",
+      "os": "almalinux",
+      "dir": "almalinux-vm",
+      "arches": [
+        "x86_64",
+        "aarch64",
+        "ppc64le",
+        "s390x"
+      ]
+    },
+    {
+      "name": "Rocky Linux",
+      "os": "rocky",
+      "dir": "rocky-vm",
+      "arches": [
+        "x86_64",
+        "aarch64",
+        "ppc64le",
+        "s390x"
+      ]
+    },
+    {
       "name": "openEuler",
       "os": "openeuler",
       "dir": "openeuler-vm",
@@ -181,8 +239,8 @@ window.VMACTIONS_DATA = {
     }
   ],
   "counts": {
-    "systems": 20,
+    "systems": 26,
     "arches": 10,
-    "combos": 38
+    "combos": 54
   }
 };

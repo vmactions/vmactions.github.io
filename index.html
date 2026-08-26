@@ -144,6 +144,14 @@
         <span class="tick">&#10003;</span>
         <code>vmactions/nextbsd-vm@v1</code>
       </li>
+      <li data-os="hardenedbsd">
+        <span class="tick">&#10003;</span>
+        <code>vmactions/hardenedbsd-vm@v1</code>
+      </li>
+      <li data-os="opnsense">
+        <span class="tick">&#10003;</span>
+        <code>vmactions/opnsense-vm@v1</code>
+      </li>
       <li data-os="solaris">
         <span class="tick">&#10003;</span>
         <code>vmactions/solaris-vm@v1</code>
@@ -171,6 +179,22 @@
       <li data-os="ubuntu">
         <span class="tick">&#10003;</span>
         <code>vmactions/ubuntu-vm@v1</code>
+      </li>
+      <li data-os="debian">
+        <span class="tick">&#10003;</span>
+        <code>vmactions/debian-vm@v1</code>
+      </li>
+      <li data-os="alpine">
+        <span class="tick">&#10003;</span>
+        <code>vmactions/alpine-vm@v1</code>
+      </li>
+      <li data-os="almalinux">
+        <span class="tick">&#10003;</span>
+        <code>vmactions/almalinux-vm@v1</code>
+      </li>
+      <li data-os="rocky">
+        <span class="tick">&#10003;</span>
+        <code>vmactions/rocky-vm@v1</code>
       </li>
       <li data-os="openeuler">
         <span class="tick">&#10003;</span>
@@ -204,7 +228,7 @@
     <div class="stats">
 <!-- BEGIN generated:counts -->
     <div class="stat">
-      <span class="stat-n">20</span>
+      <span class="stat-n">26</span>
       <span class="stat-l"><span lang="en">systems</span><span lang="zh">个系统</span></span>
     </div>
     <div class="stat">
@@ -212,7 +236,7 @@
       <span class="stat-l"><span lang="en">architectures</span><span lang="zh">种架构</span></span>
     </div>
     <div class="stat">
-      <span class="stat-n">38</span>
+      <span class="stat-n">54</span>
       <span class="stat-l"><span lang="en">OS-arch combinations</span><span lang="zh">个系统-架构组合</span></span>
     </div>
 <!-- END generated:counts -->
@@ -384,10 +408,10 @@
       <tbody>
         <tr data-os="freebsd">
           <th scope="row"><svg class="os-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect><rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect><line x1="6" y1="6" x2="6.01" y2="6"></line><line x1="6" y1="18" x2="6.01" y2="18"></line></svg>FreeBSD</th>
-          <td class="yes"><code>rsync</code> <code>scp</code> <code>sshfs</code> <code>nfs</code></td>
-          <td class="yes"><code>rsync</code> <code>scp</code> <code>sshfs</code> <code>nfs</code></td>
-          <td class="yes"><code>nfs</code> <code>scp</code></td>
-          <td class="yes"><code>nfs</code> <code>scp</code></td>
+          <td class="yes"><code>rsync</code> <code>scp</code> <code>sshfs</code> <code>nfs</code> <code>tar</code></td>
+          <td class="yes"><code>rsync</code> <code>scp</code> <code>sshfs</code> <code>nfs</code> <code>tar</code></td>
+          <td class="yes"><code>nfs</code> <code>scp</code> <code>tar</code></td>
+          <td class="yes"><code>nfs</code> <code>scp</code> <code>tar</code></td>
           <td class="no"><span aria-hidden="true">&middot;</span></td>
           <td class="no"><span aria-hidden="true">&middot;</span></td>
           <td class="no"><span aria-hidden="true">&middot;</span></td>
@@ -473,6 +497,32 @@
           <td class="no"><span aria-hidden="true">&middot;</span></td>
           <td class="no"><span aria-hidden="true">&middot;</span></td>
         </tr>
+        <tr data-os="hardenedbsd">
+          <th scope="row"><svg class="os-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>HardenedBSD</th>
+          <td class="yes"><code>rsync</code> <code>scp</code> <code>sshfs</code> <code>nfs</code> <code>tar</code></td>
+          <td class="no"><span aria-hidden="true">&middot;</span></td>
+          <td class="no"><span aria-hidden="true">&middot;</span></td>
+          <td class="no"><span aria-hidden="true">&middot;</span></td>
+          <td class="no"><span aria-hidden="true">&middot;</span></td>
+          <td class="no"><span aria-hidden="true">&middot;</span></td>
+          <td class="no"><span aria-hidden="true">&middot;</span></td>
+          <td class="no"><span aria-hidden="true">&middot;</span></td>
+          <td class="no"><span aria-hidden="true">&middot;</span></td>
+          <td class="no"><span aria-hidden="true">&middot;</span></td>
+        </tr>
+        <tr data-os="opnsense">
+          <th scope="row"><svg class="os-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"></polygon></svg>OPNsense</th>
+          <td class="yes"><code>rsync</code> <code>scp</code> <code>nfs</code> <code>tar</code></td>
+          <td class="no"><span aria-hidden="true">&middot;</span></td>
+          <td class="no"><span aria-hidden="true">&middot;</span></td>
+          <td class="no"><span aria-hidden="true">&middot;</span></td>
+          <td class="no"><span aria-hidden="true">&middot;</span></td>
+          <td class="no"><span aria-hidden="true">&middot;</span></td>
+          <td class="no"><span aria-hidden="true">&middot;</span></td>
+          <td class="no"><span aria-hidden="true">&middot;</span></td>
+          <td class="no"><span aria-hidden="true">&middot;</span></td>
+          <td class="no"><span aria-hidden="true">&middot;</span></td>
+        </tr>
         <tr data-os="solaris">
           <th scope="row"><svg class="os-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>Solaris</th>
           <td class="yes"><code>rsync</code> <code>scp</code> <code>nfs</code></td>
@@ -514,7 +564,7 @@
         </tr>
         <tr data-os="tribblix">
           <th scope="row"><svg class="os-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 18a5 5 0 0 0-10 0"></path><line x1="12" y1="9" x2="12" y2="2"></line><line x1="4.22" y1="10.22" x2="5.64" y2="11.64"></line><line x1="1" y1="18" x2="3" y2="18"></line><line x1="21" y1="18" x2="23" y2="18"></line><line x1="18.36" y1="11.64" x2="19.78" y2="10.22"></line><line x1="23" y1="22" x2="1" y2="22"></line><polyline points="16 5 12 9 8 5"></polyline></svg>Tribblix</th>
-          <td class="yes"><code>rsync</code> <code>scp</code> <code>nfs</code></td>
+          <td class="yes"><code>rsync</code> <code>scp</code> <code>nfs</code> <code>tar</code></td>
           <td class="no"><span aria-hidden="true">&middot;</span></td>
           <td class="no"><span aria-hidden="true">&middot;</span></td>
           <td class="no"><span aria-hidden="true">&middot;</span></td>
@@ -560,6 +610,58 @@
           <td class="no"><span aria-hidden="true">&middot;</span></td>
           <td class="yes"><code>rsync</code> <code>scp</code> <code>sshfs</code> <code>nfs</code> <code>tar</code></td>
           <td class="yes"><code>rsync</code> <code>scp</code> <code>sshfs</code> <code>nfs</code> <code>tar</code></td>
+          <td class="no"><span aria-hidden="true">&middot;</span></td>
+          <td class="no"><span aria-hidden="true">&middot;</span></td>
+          <td class="no"><span aria-hidden="true">&middot;</span></td>
+        </tr>
+        <tr data-os="debian">
+          <th scope="row"><svg class="os-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>Debian</th>
+          <td class="yes"><code>rsync</code> <code>scp</code> <code>sshfs</code> <code>nfs</code> <code>tar</code></td>
+          <td class="yes"><code>rsync</code> <code>scp</code> <code>sshfs</code> <code>nfs</code> <code>tar</code></td>
+          <td class="yes"><code>rsync</code> <code>scp</code> <code>sshfs</code> <code>nfs</code> <code>tar</code></td>
+          <td class="no"><span aria-hidden="true">&middot;</span></td>
+          <td class="no"><span aria-hidden="true">&middot;</span></td>
+          <td class="yes"><code>rsync</code> <code>scp</code> <code>sshfs</code> <code>nfs</code> <code>tar</code></td>
+          <td class="no"><span aria-hidden="true">&middot;</span></td>
+          <td class="no"><span aria-hidden="true">&middot;</span></td>
+          <td class="no"><span aria-hidden="true">&middot;</span></td>
+          <td class="no"><span aria-hidden="true">&middot;</span></td>
+        </tr>
+        <tr data-os="alpine">
+          <th scope="row"><svg class="os-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 18a5 5 0 0 0-10 0"></path><line x1="12" y1="2" x2="12" y2="9"></line><line x1="4.22" y1="10.22" x2="5.64" y2="11.64"></line><line x1="1" y1="18" x2="3" y2="18"></line><line x1="21" y1="18" x2="23" y2="18"></line><line x1="18.36" y1="11.64" x2="19.78" y2="10.22"></line><line x1="23" y1="22" x2="1" y2="22"></line><polyline points="8 6 12 2 16 6"></polyline></svg>Alpine Linux</th>
+          <td class="yes"><code>rsync</code> <code>scp</code> <code>sshfs</code> <code>nfs</code> <code>tar</code></td>
+          <td class="yes"><code>rsync</code> <code>scp</code> <code>sshfs</code> <code>nfs</code> <code>tar</code></td>
+          <td class="no"><span aria-hidden="true">&middot;</span></td>
+          <td class="no"><span aria-hidden="true">&middot;</span></td>
+          <td class="no"><span aria-hidden="true">&middot;</span></td>
+          <td class="no"><span aria-hidden="true">&middot;</span></td>
+          <td class="no"><span aria-hidden="true">&middot;</span></td>
+          <td class="no"><span aria-hidden="true">&middot;</span></td>
+          <td class="no"><span aria-hidden="true">&middot;</span></td>
+          <td class="no"><span aria-hidden="true">&middot;</span></td>
+        </tr>
+        <tr data-os="almalinux">
+          <th scope="row"><svg class="os-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect><rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect><line x1="6" y1="6" x2="6.01" y2="6"></line><line x1="6" y1="18" x2="6.01" y2="18"></line></svg>AlmaLinux</th>
+          <td class="yes"><code>rsync</code> <code>scp</code> <code>nfs</code> <code>tar</code></td>
+          <td class="yes"><code>rsync</code> <code>scp</code> <code>nfs</code> <code>tar</code></td>
+          <td class="no"><span aria-hidden="true">&middot;</span></td>
+          <td class="no"><span aria-hidden="true">&middot;</span></td>
+          <td class="no"><span aria-hidden="true">&middot;</span></td>
+          <td class="yes"><code>rsync</code> <code>scp</code> <code>nfs</code> <code>tar</code></td>
+          <td class="yes"><code>rsync</code> <code>scp</code> <code>nfs</code> <code>tar</code></td>
+          <td class="no"><span aria-hidden="true">&middot;</span></td>
+          <td class="no"><span aria-hidden="true">&middot;</span></td>
+          <td class="no"><span aria-hidden="true">&middot;</span></td>
+        </tr>
+        <tr data-os="rocky">
+          <th scope="row"><svg class="os-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>Rocky Linux</th>
+          <td class="yes"><code>rsync</code> <code>scp</code> <code>nfs</code> <code>tar</code></td>
+          <td class="yes"><code>rsync</code> <code>scp</code> <code>nfs</code> <code>tar</code></td>
+          <td class="no"><span aria-hidden="true">&middot;</span></td>
+          <td class="no"><span aria-hidden="true">&middot;</span></td>
+          <td class="no"><span aria-hidden="true">&middot;</span></td>
+          <td class="yes"><code>rsync</code> <code>scp</code> <code>nfs</code> <code>tar</code></td>
+          <td class="yes"><code>rsync</code> <code>scp</code> <code>nfs</code> <code>tar</code></td>
           <td class="no"><span aria-hidden="true">&middot;</span></td>
           <td class="no"><span aria-hidden="true">&middot;</span></td>
           <td class="no"><span aria-hidden="true">&middot;</span></td>
@@ -631,7 +733,7 @@
         </tr>
         <tr data-os="plan9">
           <th scope="row"><svg class="os-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>Plan 9</th>
-          <td class="yes"><code>9p</code></td>
+          <td class="yes"><span class="warn">--</span></td>
           <td class="no"><span aria-hidden="true">&middot;</span></td>
           <td class="no"><span aria-hidden="true">&middot;</span></td>
           <td class="no"><span aria-hidden="true">&middot;</span></td>
@@ -671,7 +773,7 @@
       <dl>
       <div class="row"><dt><span lang="en">Default release</span><span lang="zh">默认版本</span></dt><dd><code>15.1</code> <span class="dim">(12 <span lang="en">releases</span><span lang="zh">个版本</span>)</span></dd></div>
       <div class="row"><dt><span lang="en">Architectures</span><span lang="zh">支持架构</span></dt><dd><code>x86_64</code> <code>aarch64</code> <code>riscv64</code> <code>powerpc64</code></dd></div>
-      <div class="row"><dt><span lang="en">Sync</span><span lang="zh">同步方式</span></dt><dd><span class="sync"><code>x86_64</code> rsync, scp, sshfs, nfs</span><span class="sync"><code>aarch64</code> rsync, scp, sshfs, nfs</span><span class="sync"><code>riscv64</code> nfs, scp</span><span class="sync"><code>powerpc64</code> nfs, scp</span></dd></div>
+      <div class="row"><dt><span lang="en">Sync</span><span lang="zh">同步方式</span></dt><dd><span class="sync"><code>x86_64</code> rsync, scp, sshfs, nfs, tar</span><span class="sync"><code>aarch64</code> rsync, scp, sshfs, nfs, tar</span><span class="sync"><code>riscv64</code> nfs, scp, tar</span><span class="sync"><code>powerpc64</code> nfs, scp, tar</span></dd></div>
       <div class="row"><dt><span lang="en">Shell</span><span lang="zh">默认 shell</span></dt><dd>The default login shell in FreeBSD(before 14.0) is <code>tcsh</code>.  https://docs.freebsd.org/en/articles/linux-users/#shells</dd></div>
       </dl>
       <p class="links"><a href="https://github.com/vmactions/freebsd-vm"><span lang="en">Repository</span><span lang="zh">仓库</span></a><a href="https://github.com/anyvm-org/freebsd-builder"><span lang="en">Image builder</span><span lang="zh">镜像 builder</span></a></p>
@@ -744,6 +846,28 @@
       </dl>
       <p class="links"><a href="https://github.com/vmactions/nextbsd-vm"><span lang="en">Repository</span><span lang="zh">仓库</span></a><a href="https://github.com/anyvm-org/nextbsd-builder"><span lang="en">Image builder</span><span lang="zh">镜像 builder</span></a></p>
     </article>
+    <article class="card" data-os="hardenedbsd">
+      <h3><span class="dot"></span>HardenedBSD</h3>
+      <p class="uses"><code>vmactions/hardenedbsd-vm@v1</code></p>
+      <dl>
+      <div class="row"><dt><span lang="en">Default release</span><span lang="zh">默认版本</span></dt><dd><code>15</code> <span class="dim">(1 <span lang="en">releases</span><span lang="zh">个版本</span>)</span></dd></div>
+      <div class="row"><dt><span lang="en">Architectures</span><span lang="zh">支持架构</span></dt><dd><code>x86_64</code></dd></div>
+      <div class="row"><dt><span lang="en">Sync</span><span lang="zh">同步方式</span></dt><dd><span class="sync"><code>x86_64</code> rsync, scp, sshfs, nfs, tar</span></dd></div>
+      <div class="row"><dt><span lang="en">prepare example</span><span lang="zh">prepare 示例</span></dt><dd><code>pkg install -y socat</code></dd></div>
+      </dl>
+      <p class="links"><a href="https://github.com/vmactions/hardenedbsd-vm"><span lang="en">Repository</span><span lang="zh">仓库</span></a><a href="https://github.com/anyvm-org/hardenedbsd-builder"><span lang="en">Image builder</span><span lang="zh">镜像 builder</span></a></p>
+    </article>
+    <article class="card" data-os="opnsense">
+      <h3><span class="dot"></span>OPNsense</h3>
+      <p class="uses"><code>vmactions/opnsense-vm@v1</code></p>
+      <dl>
+      <div class="row"><dt><span lang="en">Default release</span><span lang="zh">默认版本</span></dt><dd><code>26.7</code> <span class="dim">(1 <span lang="en">releases</span><span lang="zh">个版本</span>)</span></dd></div>
+      <div class="row"><dt><span lang="en">Architectures</span><span lang="zh">支持架构</span></dt><dd><code>x86_64</code></dd></div>
+      <div class="row"><dt><span lang="en">Sync</span><span lang="zh">同步方式</span></dt><dd><span class="sync"><code>x86_64</code> rsync, scp, nfs, tar</span></dd></div>
+      <div class="row"><dt><span lang="en">prepare example</span><span lang="zh">prepare 示例</span></dt><dd><code>pkg install -y socat</code></dd></div>
+      </dl>
+      <p class="links"><a href="https://github.com/vmactions/opnsense-vm"><span lang="en">Repository</span><span lang="zh">仓库</span></a><a href="https://github.com/anyvm-org/opnsense-builder"><span lang="en">Image builder</span><span lang="zh">镜像 builder</span></a></p>
+    </article>
     <article class="card" data-os="solaris">
       <h3><span class="dot"></span>Solaris</h3>
       <p class="uses"><code>vmactions/solaris-vm@v1</code></p>
@@ -781,9 +905,9 @@
       <h3><span class="dot"></span>Tribblix</h3>
       <p class="uses"><code>vmactions/tribblix-vm@v1</code></p>
       <dl>
-      <div class="row"><dt><span lang="en">Default release</span><span lang="zh">默认版本</span></dt><dd><code>0m40</code> <span class="dim">(2 <span lang="en">releases</span><span lang="zh">个版本</span>)</span></dd></div>
+      <div class="row"><dt><span lang="en">Default release</span><span lang="zh">默认版本</span></dt><dd><code>0m41</code> <span class="dim">(3 <span lang="en">releases</span><span lang="zh">个版本</span>)</span></dd></div>
       <div class="row"><dt><span lang="en">Architectures</span><span lang="zh">支持架构</span></dt><dd><code>x86_64</code></dd></div>
-      <div class="row"><dt><span lang="en">Sync</span><span lang="zh">同步方式</span></dt><dd><span class="sync"><code>x86_64</code> rsync, scp, nfs</span></dd></div>
+      <div class="row"><dt><span lang="en">Sync</span><span lang="zh">同步方式</span></dt><dd><span class="sync"><code>x86_64</code> rsync, scp, nfs, tar</span></dd></div>
       </dl>
       <p class="links"><a href="https://github.com/vmactions/tribblix-vm"><span lang="en">Repository</span><span lang="zh">仓库</span></a><a href="https://github.com/anyvm-org/tribblix-builder"><span lang="en">Image builder</span><span lang="zh">镜像 builder</span></a></p>
     </article>
@@ -819,6 +943,50 @@
       <div class="row"><dt><span lang="en">prepare example</span><span lang="zh">prepare 示例</span></dt><dd><code>apt-get install -y socat</code></dd></div>
       </dl>
       <p class="links"><a href="https://github.com/vmactions/ubuntu-vm"><span lang="en">Repository</span><span lang="zh">仓库</span></a><a href="https://github.com/anyvm-org/ubuntu-builder"><span lang="en">Image builder</span><span lang="zh">镜像 builder</span></a></p>
+    </article>
+    <article class="card" data-os="debian">
+      <h3><span class="dot"></span>Debian</h3>
+      <p class="uses"><code>vmactions/debian-vm@v1</code></p>
+      <dl>
+      <div class="row"><dt><span lang="en">Default release</span><span lang="zh">默认版本</span></dt><dd><code>13</code> <span class="dim">(2 <span lang="en">releases</span><span lang="zh">个版本</span>)</span></dd></div>
+      <div class="row"><dt><span lang="en">Architectures</span><span lang="zh">支持架构</span></dt><dd><code>x86_64</code> <code>aarch64</code> <code>riscv64</code> <code>ppc64le</code></dd></div>
+      <div class="row"><dt><span lang="en">Sync</span><span lang="zh">同步方式</span></dt><dd><span class="sync"><code>x86_64</code> rsync, scp, sshfs, nfs, tar</span><span class="sync"><code>aarch64</code> rsync, scp, sshfs, nfs, tar</span><span class="sync"><code>riscv64</code> rsync, scp, sshfs, nfs, tar</span><span class="sync"><code>ppc64le</code> rsync, scp, sshfs, nfs, tar</span></dd></div>
+      <div class="row"><dt><span lang="en">prepare example</span><span lang="zh">prepare 示例</span></dt><dd><code>apt-get install -y socat</code></dd></div>
+      </dl>
+      <p class="links"><a href="https://github.com/vmactions/debian-vm"><span lang="en">Repository</span><span lang="zh">仓库</span></a><a href="https://github.com/anyvm-org/debian-builder"><span lang="en">Image builder</span><span lang="zh">镜像 builder</span></a></p>
+    </article>
+    <article class="card" data-os="alpine">
+      <h3><span class="dot"></span>Alpine Linux</h3>
+      <p class="uses"><code>vmactions/alpine-vm@v1</code></p>
+      <dl>
+      <div class="row"><dt><span lang="en">Default release</span><span lang="zh">默认版本</span></dt><dd><code>3.24</code> <span class="dim">(2 <span lang="en">releases</span><span lang="zh">个版本</span>)</span></dd></div>
+      <div class="row"><dt><span lang="en">Architectures</span><span lang="zh">支持架构</span></dt><dd><code>x86_64</code> <code>aarch64</code></dd></div>
+      <div class="row"><dt><span lang="en">Sync</span><span lang="zh">同步方式</span></dt><dd><span class="sync"><code>x86_64</code> rsync, scp, sshfs, nfs, tar</span><span class="sync"><code>aarch64</code> rsync, scp, sshfs, nfs, tar</span></dd></div>
+      <div class="row"><dt><span lang="en">prepare example</span><span lang="zh">prepare 示例</span></dt><dd><code>apk add --no-cache socat</code></dd></div>
+      </dl>
+      <p class="links"><a href="https://github.com/vmactions/alpine-vm"><span lang="en">Repository</span><span lang="zh">仓库</span></a><a href="https://github.com/anyvm-org/alpine-builder"><span lang="en">Image builder</span><span lang="zh">镜像 builder</span></a></p>
+    </article>
+    <article class="card" data-os="almalinux">
+      <h3><span class="dot"></span>AlmaLinux</h3>
+      <p class="uses"><code>vmactions/almalinux-vm@v1</code></p>
+      <dl>
+      <div class="row"><dt><span lang="en">Default release</span><span lang="zh">默认版本</span></dt><dd><code>10</code> <span class="dim">(2 <span lang="en">releases</span><span lang="zh">个版本</span>)</span></dd></div>
+      <div class="row"><dt><span lang="en">Architectures</span><span lang="zh">支持架构</span></dt><dd><code>x86_64</code> <code>aarch64</code> <code>ppc64le</code> <code>s390x</code></dd></div>
+      <div class="row"><dt><span lang="en">Sync</span><span lang="zh">同步方式</span></dt><dd><span class="sync"><code>x86_64</code> rsync, scp, nfs, tar</span><span class="sync"><code>aarch64</code> rsync, scp, nfs, tar</span><span class="sync"><code>ppc64le</code> rsync, scp, nfs, tar</span><span class="sync"><code>s390x</code> rsync, scp, nfs, tar</span></dd></div>
+      <div class="row"><dt><span lang="en">prepare example</span><span lang="zh">prepare 示例</span></dt><dd><code>dnf install -y socat</code></dd></div>
+      </dl>
+      <p class="links"><a href="https://github.com/vmactions/almalinux-vm"><span lang="en">Repository</span><span lang="zh">仓库</span></a><a href="https://github.com/anyvm-org/almalinux-builder"><span lang="en">Image builder</span><span lang="zh">镜像 builder</span></a></p>
+    </article>
+    <article class="card" data-os="rocky">
+      <h3><span class="dot"></span>Rocky Linux</h3>
+      <p class="uses"><code>vmactions/rocky-vm@v1</code></p>
+      <dl>
+      <div class="row"><dt><span lang="en">Default release</span><span lang="zh">默认版本</span></dt><dd><code>10</code> <span class="dim">(2 <span lang="en">releases</span><span lang="zh">个版本</span>)</span></dd></div>
+      <div class="row"><dt><span lang="en">Architectures</span><span lang="zh">支持架构</span></dt><dd><code>x86_64</code> <code>aarch64</code> <code>ppc64le</code> <code>s390x</code></dd></div>
+      <div class="row"><dt><span lang="en">Sync</span><span lang="zh">同步方式</span></dt><dd><span class="sync"><code>x86_64</code> rsync, scp, nfs, tar</span><span class="sync"><code>aarch64</code> rsync, scp, nfs, tar</span><span class="sync"><code>ppc64le</code> rsync, scp, nfs, tar</span><span class="sync"><code>s390x</code> rsync, scp, nfs, tar</span></dd></div>
+      <div class="row"><dt><span lang="en">prepare example</span><span lang="zh">prepare 示例</span></dt><dd><code>dnf install -y socat</code></dd></div>
+      </dl>
+      <p class="links"><a href="https://github.com/vmactions/rocky-vm"><span lang="en">Repository</span><span lang="zh">仓库</span></a><a href="https://github.com/anyvm-org/rocky-builder"><span lang="en">Image builder</span><span lang="zh">镜像 builder</span></a></p>
     </article>
     <article class="card" data-os="openeuler">
       <h3><span class="dot"></span>openEuler</h3>
@@ -882,7 +1050,7 @@
       <dl>
       <div class="row"><dt><span lang="en">Default release</span><span lang="zh">默认版本</span></dt><dd><code>11952</code> <span class="dim">(2 <span lang="en">releases</span><span lang="zh">个版本</span>)</span></dd></div>
       <div class="row"><dt><span lang="en">Architectures</span><span lang="zh">支持架构</span></dt><dd><code>x86_64</code></dd></div>
-      <div class="row"><dt><span lang="en">Sync</span><span lang="zh">同步方式</span></dt><dd><span class="sync"><code>x86_64</code> 9p</span></dd></div>
+      <div class="row"><dt><span lang="en">Sync</span><span lang="zh">同步方式</span></dt><dd><span class="sync"><code>x86_64</code> --</span></dd></div>
       <div class="row"><dt><span lang="en">prepare example</span><span lang="zh">prepare 示例</span></dt><dd><code>echo anyvm</code></dd></div>
       </dl>
       <p class="links"><a href="https://github.com/vmactions/plan9-vm"><span lang="en">Repository</span><span lang="zh">仓库</span></a><a href="https://github.com/anyvm-org/plan9-builder"><span lang="en">Image builder</span><span lang="zh">镜像 builder</span></a></p>
