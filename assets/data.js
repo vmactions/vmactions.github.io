@@ -178,7 +178,7 @@ window.VMACTIONS_DATA = {
     {
       "name": "Rocky Linux",
       "os": "rocky",
-      "dir": "rocky-vm",
+      "dir": "rockylinux-vm",
       "arches": [
         "x86_64",
         "aarch64",

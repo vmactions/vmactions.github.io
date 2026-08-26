@@ -50,7 +50,7 @@ const ORDER = [
   'hardenedbsd-vm', 'opnsense-vm',
   'solaris-vm', 'omnios-vm', 'openindiana-vm', 'tribblix-vm',
   'haiku-vm', 'hurd-vm', 'ubuntu-vm', 'debian-vm', 'alpine-vm',
-  'almalinux-vm', 'rocky-vm', 'openeuler-vm', 'blissos-vm',
+  'almalinux-vm', 'rockylinux-vm', 'openeuler-vm', 'blissos-vm',
   'reactos-vm', 'redox-vm', 'riscos-vm', 'plan9-vm',
 ];
 
@@ -61,7 +61,7 @@ const DISPLAY_NAME = {
   'dragonflybsd-vm': 'DragonFly BSD',
   'hurd-vm': 'GNU Hurd',
   'openeuler-vm': 'openEuler',
-  'rocky-vm': 'Rocky Linux',
+  'rockylinux-vm': 'Rocky Linux',
   'alpine-vm': 'Alpine Linux',
   'blissos-vm': 'BlissOS',
   'redox-vm': 'Redox OS',
