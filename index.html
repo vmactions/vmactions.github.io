@@ -410,7 +410,7 @@
           <th scope="row"><svg class="os-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect><rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect><line x1="6" y1="6" x2="6.01" y2="6"></line><line x1="6" y1="18" x2="6.01" y2="18"></line></svg>FreeBSD</th>
           <td class="yes"><code>rsync</code> <code>scp</code> <code>sshfs</code> <code>nfs</code> <code>tar</code></td>
           <td class="yes"><code>rsync</code> <code>scp</code> <code>sshfs</code> <code>nfs</code> <code>tar</code></td>
-          <td class="yes"><code>nfs</code> <code>scp</code> <code>tar</code></td>
+          <td class="yes"><code>rsync</code> <code>scp</code> <code>sshfs</code> <code>nfs</code> <code>tar</code></td>
           <td class="yes"><code>nfs</code> <code>scp</code> <code>tar</code></td>
           <td class="no"><span aria-hidden="true">&middot;</span></td>
           <td class="no"><span aria-hidden="true">&middot;</span></td>
@@ -577,7 +577,7 @@
         </tr>
         <tr data-os="haiku">
           <th scope="row"><svg class="os-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.24 12.24a6 6 0 0 0-8.49-8.49L5 10.5V19h8.5z"></path><line x1="16" y1="8" x2="2" y2="22"></line><line x1="17.5" y1="15" x2="9" y2="15"></line></svg>Haiku</th>
-          <td class="yes"><code>rsync</code> <code>scp</code></td>
+          <td class="yes"><code>rsync</code> <code>scp</code> <code>nfs</code> <code>sshfs</code> <code>tar</code></td>
           <td class="no"><span aria-hidden="true">&middot;</span></td>
           <td class="no"><span aria-hidden="true">&middot;</span></td>
           <td class="no"><span aria-hidden="true">&middot;</span></td>
@@ -771,9 +771,9 @@
       <h3><span class="dot"></span>FreeBSD</h3>
       <p class="uses"><code>vmactions/freebsd-vm@v1</code></p>
       <dl>
-      <div class="row"><dt><span lang="en">Default release</span><span lang="zh">默认版本</span></dt><dd><code>15.1</code> <span class="dim">(12 <span lang="en">releases</span><span lang="zh">个版本</span>)</span></dd></div>
+      <div class="row"><dt><span lang="en">Default release</span><span lang="zh">默认版本</span></dt><dd><code>15.1</code> <span class="dim">(13 <span lang="en">releases</span><span lang="zh">个版本</span>)</span></dd></div>
       <div class="row"><dt><span lang="en">Architectures</span><span lang="zh">支持架构</span></dt><dd><code>x86_64</code> <code>aarch64</code> <code>riscv64</code> <code>powerpc64</code></dd></div>
-      <div class="row"><dt><span lang="en">Sync</span><span lang="zh">同步方式</span></dt><dd><span class="sync"><code>x86_64</code> rsync, scp, sshfs, nfs, tar</span><span class="sync"><code>aarch64</code> rsync, scp, sshfs, nfs, tar</span><span class="sync"><code>riscv64</code> nfs, scp, tar</span><span class="sync"><code>powerpc64</code> nfs, scp, tar</span></dd></div>
+      <div class="row"><dt><span lang="en">Sync</span><span lang="zh">同步方式</span></dt><dd><span class="sync"><code>x86_64</code> rsync, scp, sshfs, nfs, tar</span><span class="sync"><code>aarch64</code> rsync, scp, sshfs, nfs, tar</span><span class="sync"><code>riscv64</code> rsync, scp, sshfs, nfs, tar</span><span class="sync"><code>powerpc64</code> nfs, scp, tar</span></dd></div>
       <div class="row"><dt><span lang="en">Shell</span><span lang="zh">默认 shell</span></dt><dd>The default login shell in FreeBSD(before 14.0) is <code>tcsh</code>.  https://docs.freebsd.org/en/articles/linux-users/#shells</dd></div>
       </dl>
       <p class="links"><a href="https://github.com/vmactions/freebsd-vm"><span lang="en">Repository</span><span lang="zh">仓库</span></a><a href="https://github.com/anyvm-org/freebsd-builder"><span lang="en">Image builder</span><span lang="zh">镜像 builder</span></a></p>
@@ -794,7 +794,7 @@
       <h3><span class="dot"></span>NetBSD</h3>
       <p class="uses"><code>vmactions/netbsd-vm@v1</code></p>
       <dl>
-      <div class="row"><dt><span lang="en">Default release</span><span lang="zh">默认版本</span></dt><dd><code>11.0</code> <span class="dim">(8 <span lang="en">releases</span><span lang="zh">个版本</span>)</span></dd></div>
+      <div class="row"><dt><span lang="en">Default release</span><span lang="zh">默认版本</span></dt><dd><code>11.0</code> <span class="dim">(10 <span lang="en">releases</span><span lang="zh">个版本</span>)</span></dd></div>
       <div class="row"><dt><span lang="en">Architectures</span><span lang="zh">支持架构</span></dt><dd><code>x86_64</code> <code>aarch64</code> <code>riscv64</code> <code>sparc64</code></dd></div>
       <div class="row"><dt><span lang="en">Sync</span><span lang="zh">同步方式</span></dt><dd><span class="sync"><code>x86_64</code> rsync, scp, sshfs, nfs, tar</span><span class="sync"><code>aarch64</code> rsync, scp, sshfs, nfs, tar</span><span class="sync"><code>riscv64</code> rsync, scp, sshfs, nfs, tar</span><span class="sync"><code>sparc64</code> scp, sshfs, nfs, tar</span></dd></div>
       <div class="row"><dt><span lang="en">prepare example</span><span lang="zh">prepare 示例</span></dt><dd><code>/usr/sbin/pkg_add -u curl</code></dd></div>
@@ -915,9 +915,9 @@
       <h3><span class="dot"></span>Haiku</h3>
       <p class="uses"><code>vmactions/haiku-vm@v1</code></p>
       <dl>
-      <div class="row"><dt><span lang="en">Default release</span><span lang="zh">默认版本</span></dt><dd><code>r1beta5</code> <span class="dim">(1 <span lang="en">releases</span><span lang="zh">个版本</span>)</span></dd></div>
+      <div class="row"><dt><span lang="en">Default release</span><span lang="zh">默认版本</span></dt><dd><code>r1beta6</code> <span class="dim">(2 <span lang="en">releases</span><span lang="zh">个版本</span>)</span></dd></div>
       <div class="row"><dt><span lang="en">Architectures</span><span lang="zh">支持架构</span></dt><dd><code>x86_64</code></dd></div>
-      <div class="row"><dt><span lang="en">Sync</span><span lang="zh">同步方式</span></dt><dd><span class="sync"><code>x86_64</code> rsync, scp</span></dd></div>
+      <div class="row"><dt><span lang="en">Sync</span><span lang="zh">同步方式</span></dt><dd><span class="sync"><code>x86_64</code> rsync, scp, nfs, sshfs, tar</span></dd></div>
       <div class="row"><dt><span lang="en">prepare example</span><span lang="zh">prepare 示例</span></dt><dd><code>pkgman install -y curl</code></dd></div>
       </dl>
       <p class="links"><a href="https://github.com/vmactions/haiku-vm"><span lang="en">Repository</span><span lang="zh">仓库</span></a><a href="https://github.com/anyvm-org/haiku-builder"><span lang="en">Image builder</span><span lang="zh">镜像 builder</span></a></p>
