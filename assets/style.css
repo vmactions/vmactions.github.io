@@ -115,7 +115,7 @@
   --os-debian:       #a80030;  /* debian.org openlogo-nd.svg, as published */
   --os-alpine:       #0d597f;  /* alpinelinux-logo.svg, as published */
   --os-almalinux:    #0069da;  /* almalinux.org images/logo.svg, as published */
-  --os-rocky:        #0e9f6f;  /* rockylinux.org images/logo.svg #10b981, darkened */
+  --os-rockylinux:   #0e9f6f;  /* rockylinux.org images/logo.svg #10b981, darkened */
   --os-openeuler:    #204bb9;  /* official logo png, as published */
   --os-blissos:      #0080ff;  /* blissos.org neon.css, as-is */
   --os-reactos:      #467fbf;  /* reactos.org style.blue.css, as published */
@@ -145,7 +145,7 @@
     --os-debian:       #db003f;  /* #a80030 lifted */
     --os-alpine:       #1175a6;  /* #0d597f lifted */
     --os-almalinux:    #0069da;  /* as-is */
-    --os-rocky:        #10b981;  /* as-is */
+    --os-rockylinux:   #10b981;  /* as-is */
     --os-openeuler:    #5b8cf0;  /* #204bb9 lifted */
     --os-blissos:      #0080ff;  /* as-is */
     --os-reactos:      #5f9bdd;  /* #467fbf lifted */
@@ -175,7 +175,7 @@
   --os-debian:       #a80030;
   --os-alpine:       #0d597f;
   --os-almalinux:    #0069da;
-  --os-rocky:        #0e9f6f;
+  --os-rockylinux:   #0e9f6f;
   --os-openeuler:    #204bb9;
   --os-blissos:      #0080ff;
   --os-reactos:      #467fbf;
@@ -204,7 +204,7 @@
   --os-debian:       #db003f;
   --os-alpine:       #1175a6;
   --os-almalinux:    #0069da;
-  --os-rocky:        #10b981;
+  --os-rockylinux:   #10b981;
   --os-openeuler:    #5b8cf0;
   --os-blissos:      #0080ff;
   --os-reactos:      #5f9bdd;
@@ -244,7 +244,7 @@
 [data-os="debian"]       { --os-color: var(--os-debian); }
 [data-os="alpine"]       { --os-color: var(--os-alpine); }
 [data-os="almalinux"]    { --os-color: var(--os-almalinux); }
-[data-os="rocky"]        { --os-color: var(--os-rocky); }
+[data-os="rockylinux"]   { --os-color: var(--os-rockylinux); }
 [data-os="openeuler"]    { --os-color: var(--os-openeuler); }
 [data-os="blissos"]      { --os-color: var(--os-blissos); }
 [data-os="reactos"]      { --os-color: var(--os-reactos); }

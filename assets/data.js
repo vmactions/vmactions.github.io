@@ -161,7 +161,8 @@ window.VMACTIONS_DATA = {
       "dir": "alpine-vm",
       "arches": [
         "x86_64",
-        "aarch64"
+        "aarch64",
+        "riscv64"
       ]
     },
     {
@@ -177,7 +178,7 @@ window.VMACTIONS_DATA = {
     },
     {
       "name": "Rocky Linux",
-      "os": "rocky",
+      "os": "rockylinux",
       "dir": "rockylinux-vm",
       "arches": [
         "x86_64",
@@ -241,6 +242,6 @@ window.VMACTIONS_DATA = {
   "counts": {
     "systems": 26,
     "arches": 10,
-    "combos": 54
+    "combos": 55
   }
 };

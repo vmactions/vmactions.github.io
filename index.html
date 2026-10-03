@@ -192,7 +192,7 @@
         <span class="tick">&#10003;</span>
         <code>vmactions/almalinux-vm@v1</code>
       </li>
-      <li data-os="rocky">
+      <li data-os="rockylinux">
         <span class="tick">&#10003;</span>
         <code>vmactions/rockylinux-vm@v1</code>
       </li>
@@ -236,7 +236,7 @@
       <span class="stat-l"><span lang="en">architectures</span><span lang="zh">种架构</span></span>
     </div>
     <div class="stat">
-      <span class="stat-n">54</span>
+      <span class="stat-n">55</span>
       <span class="stat-l"><span lang="en">OS-arch combinations</span><span lang="zh">个系统-架构组合</span></span>
     </div>
 <!-- END generated:counts -->
@@ -631,7 +631,7 @@
           <th scope="row"><svg class="os-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 18a5 5 0 0 0-10 0"></path><line x1="12" y1="2" x2="12" y2="9"></line><line x1="4.22" y1="10.22" x2="5.64" y2="11.64"></line><line x1="1" y1="18" x2="3" y2="18"></line><line x1="21" y1="18" x2="23" y2="18"></line><line x1="18.36" y1="11.64" x2="19.78" y2="10.22"></line><line x1="23" y1="22" x2="1" y2="22"></line><polyline points="8 6 12 2 16 6"></polyline></svg>Alpine Linux</th>
           <td class="yes"><code>rsync</code> <code>scp</code> <code>sshfs</code> <code>nfs</code> <code>tar</code></td>
           <td class="yes"><code>rsync</code> <code>scp</code> <code>sshfs</code> <code>nfs</code> <code>tar</code></td>
-          <td class="no"><span aria-hidden="true">&middot;</span></td>
+          <td class="yes"><code>rsync</code> <code>scp</code> <code>sshfs</code> <code>nfs</code> <code>tar</code></td>
           <td class="no"><span aria-hidden="true">&middot;</span></td>
           <td class="no"><span aria-hidden="true">&middot;</span></td>
           <td class="no"><span aria-hidden="true">&middot;</span></td>
@@ -653,7 +653,7 @@
           <td class="no"><span aria-hidden="true">&middot;</span></td>
           <td class="no"><span aria-hidden="true">&middot;</span></td>
         </tr>
-        <tr data-os="rocky">
+        <tr data-os="rockylinux">
           <th scope="row"><svg class="os-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>Rocky Linux</th>
           <td class="yes"><code>rsync</code> <code>scp</code> <code>nfs</code> <code>tar</code></td>
           <td class="yes"><code>rsync</code> <code>scp</code> <code>nfs</code> <code>tar</code></td>
@@ -670,7 +670,7 @@
           <th scope="row"><svg class="os-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="2" ry="2"></rect><rect x="9" y="9" width="6" height="6"></rect><line x1="9" y1="1" x2="9" y2="4"></line><line x1="15" y1="1" x2="15" y2="4"></line><line x1="9" y1="20" x2="9" y2="23"></line><line x1="15" y1="20" x2="15" y2="23"></line><line x1="20" y1="9" x2="23" y2="9"></line><line x1="20" y1="14" x2="23" y2="14"></line><line x1="1" y1="9" x2="4" y2="9"></line><line x1="1" y1="14" x2="4" y2="14"></line></svg>openEuler</th>
           <td class="yes"><code>rsync</code> <code>scp</code> <code>sshfs</code> <code>nfs</code> <code>tar</code></td>
           <td class="yes"><code>rsync</code> <code>scp</code> <code>sshfs</code> <code>nfs</code> <code>tar</code></td>
-          <td class="yes"><code>rsync</code> <code>scp</code> <code>nfs</code> <code>tar</code></td>
+          <td class="yes"><code>rsync</code> <code>scp</code> <code>sshfs</code> <code>nfs</code> <code>tar</code></td>
           <td class="no"><span aria-hidden="true">&middot;</span></td>
           <td class="no"><span aria-hidden="true">&middot;</span></td>
           <td class="no"><span aria-hidden="true">&middot;</span></td>
@@ -771,7 +771,7 @@
       <h3><span class="dot"></span>FreeBSD</h3>
       <p class="uses"><code>vmactions/freebsd-vm@v1</code></p>
       <dl>
-      <div class="row"><dt><span lang="en">Default release</span><span lang="zh">默认版本</span></dt><dd><code>15.1</code> <span class="dim">(13 <span lang="en">releases</span><span lang="zh">个版本</span>)</span></dd></div>
+      <div class="row"><dt><span lang="en">Default release</span><span lang="zh">默认版本</span></dt><dd><code>15.1</code> <span class="dim">(15 <span lang="en">releases</span><span lang="zh">个版本</span>)</span></dd></div>
       <div class="row"><dt><span lang="en">Architectures</span><span lang="zh">支持架构</span></dt><dd><code>x86_64</code> <code>aarch64</code> <code>riscv64</code> <code>powerpc64</code></dd></div>
       <div class="row"><dt><span lang="en">Sync</span><span lang="zh">同步方式</span></dt><dd><span class="sync"><code>x86_64</code> rsync, scp, sshfs, nfs, tar</span><span class="sync"><code>aarch64</code> rsync, scp, sshfs, nfs, tar</span><span class="sync"><code>riscv64</code> rsync, scp, sshfs, nfs, tar</span><span class="sync"><code>powerpc64</code> nfs, scp, tar</span></dd></div>
       <div class="row"><dt><span lang="en">Shell</span><span lang="zh">默认 shell</span></dt><dd>The default login shell in FreeBSD(before 14.0) is <code>tcsh</code>.  https://docs.freebsd.org/en/articles/linux-users/#shells</dd></div>
@@ -794,7 +794,7 @@
       <h3><span class="dot"></span>NetBSD</h3>
       <p class="uses"><code>vmactions/netbsd-vm@v1</code></p>
       <dl>
-      <div class="row"><dt><span lang="en">Default release</span><span lang="zh">默认版本</span></dt><dd><code>11.0</code> <span class="dim">(10 <span lang="en">releases</span><span lang="zh">个版本</span>)</span></dd></div>
+      <div class="row"><dt><span lang="en">Default release</span><span lang="zh">默认版本</span></dt><dd><code>11.0</code> <span class="dim">(11 <span lang="en">releases</span><span lang="zh">个版本</span>)</span></dd></div>
       <div class="row"><dt><span lang="en">Architectures</span><span lang="zh">支持架构</span></dt><dd><code>x86_64</code> <code>aarch64</code> <code>riscv64</code> <code>sparc64</code></dd></div>
       <div class="row"><dt><span lang="en">Sync</span><span lang="zh">同步方式</span></dt><dd><span class="sync"><code>x86_64</code> rsync, scp, sshfs, nfs, tar</span><span class="sync"><code>aarch64</code> rsync, scp, sshfs, nfs, tar</span><span class="sync"><code>riscv64</code> rsync, scp, sshfs, nfs, tar</span><span class="sync"><code>sparc64</code> scp, sshfs, nfs, tar</span></dd></div>
       <div class="row"><dt><span lang="en">prepare example</span><span lang="zh">prepare 示例</span></dt><dd><code>/usr/sbin/pkg_add -u curl</code></dd></div>
@@ -827,7 +827,7 @@
       <h3><span class="dot"></span>MidnightBSD</h3>
       <p class="uses"><code>vmactions/midnightbsd-vm@v1</code></p>
       <dl>
-      <div class="row"><dt><span lang="en">Default release</span><span lang="zh">默认版本</span></dt><dd><code>4.0.7</code> <span class="dim">(5 <span lang="en">releases</span><span lang="zh">个版本</span>)</span></dd></div>
+      <div class="row"><dt><span lang="en">Default release</span><span lang="zh">默认版本</span></dt><dd><code>4.0.8</code> <span class="dim">(6 <span lang="en">releases</span><span lang="zh">个版本</span>)</span></dd></div>
       <div class="row"><dt><span lang="en">Architectures</span><span lang="zh">支持架构</span></dt><dd><code>x86_64</code></dd></div>
       <div class="row"><dt><span lang="en">Sync</span><span lang="zh">同步方式</span></dt><dd><span class="sync"><code>x86_64</code> rsync, scp, sshfs, nfs, tar</span></dd></div>
       <div class="row"><dt><span lang="en">Shell</span><span lang="zh">默认 shell</span></dt><dd>The default login shell in MidnightBSD is <code>tcsh</code>.</dd></div>
@@ -960,8 +960,8 @@
       <p class="uses"><code>vmactions/alpine-vm@v1</code></p>
       <dl>
       <div class="row"><dt><span lang="en">Default release</span><span lang="zh">默认版本</span></dt><dd><code>3.24</code> <span class="dim">(2 <span lang="en">releases</span><span lang="zh">个版本</span>)</span></dd></div>
-      <div class="row"><dt><span lang="en">Architectures</span><span lang="zh">支持架构</span></dt><dd><code>x86_64</code> <code>aarch64</code></dd></div>
-      <div class="row"><dt><span lang="en">Sync</span><span lang="zh">同步方式</span></dt><dd><span class="sync"><code>x86_64</code> rsync, scp, sshfs, nfs, tar</span><span class="sync"><code>aarch64</code> rsync, scp, sshfs, nfs, tar</span></dd></div>
+      <div class="row"><dt><span lang="en">Architectures</span><span lang="zh">支持架构</span></dt><dd><code>x86_64</code> <code>aarch64</code> <code>riscv64</code></dd></div>
+      <div class="row"><dt><span lang="en">Sync</span><span lang="zh">同步方式</span></dt><dd><span class="sync"><code>x86_64</code> rsync, scp, sshfs, nfs, tar</span><span class="sync"><code>aarch64</code> rsync, scp, sshfs, nfs, tar</span><span class="sync"><code>riscv64</code> rsync, scp, sshfs, nfs, tar</span></dd></div>
       <div class="row"><dt><span lang="en">prepare example</span><span lang="zh">prepare 示例</span></dt><dd><code>apk add --no-cache socat</code></dd></div>
       </dl>
       <p class="links"><a href="https://github.com/vmactions/alpine-vm"><span lang="en">Repository</span><span lang="zh">仓库</span></a><a href="https://github.com/anyvm-org/alpine-builder"><span lang="en">Image builder</span><span lang="zh">镜像 builder</span></a></p>
@@ -977,7 +977,7 @@
       </dl>
       <p class="links"><a href="https://github.com/vmactions/almalinux-vm"><span lang="en">Repository</span><span lang="zh">仓库</span></a><a href="https://github.com/anyvm-org/almalinux-builder"><span lang="en">Image builder</span><span lang="zh">镜像 builder</span></a></p>
     </article>
-    <article class="card" data-os="rocky">
+    <article class="card" data-os="rockylinux">
       <h3><span class="dot"></span>Rocky Linux</h3>
       <p class="uses"><code>vmactions/rockylinux-vm@v1</code></p>
       <dl>
@@ -986,15 +986,15 @@
       <div class="row"><dt><span lang="en">Sync</span><span lang="zh">同步方式</span></dt><dd><span class="sync"><code>x86_64</code> rsync, scp, nfs, tar</span><span class="sync"><code>aarch64</code> rsync, scp, nfs, tar</span><span class="sync"><code>ppc64le</code> rsync, scp, nfs, tar</span><span class="sync"><code>s390x</code> rsync, scp, nfs, tar</span></dd></div>
       <div class="row"><dt><span lang="en">prepare example</span><span lang="zh">prepare 示例</span></dt><dd><code>dnf install -y socat</code></dd></div>
       </dl>
-      <p class="links"><a href="https://github.com/vmactions/rockylinux-vm"><span lang="en">Repository</span><span lang="zh">仓库</span></a><a href="https://github.com/anyvm-org/rocky-builder"><span lang="en">Image builder</span><span lang="zh">镜像 builder</span></a></p>
+      <p class="links"><a href="https://github.com/vmactions/rockylinux-vm"><span lang="en">Repository</span><span lang="zh">仓库</span></a><a href="https://github.com/anyvm-org/rockylinux-builder"><span lang="en">Image builder</span><span lang="zh">镜像 builder</span></a></p>
     </article>
     <article class="card" data-os="openeuler">
       <h3><span class="dot"></span>openEuler</h3>
       <p class="uses"><code>vmactions/openeuler-vm@v1</code></p>
       <dl>
-      <div class="row"><dt><span lang="en">Default release</span><span lang="zh">默认版本</span></dt><dd><code>24.03-LTS-SP4</code> <span class="dim">(3 <span lang="en">releases</span><span lang="zh">个版本</span>)</span></dd></div>
+      <div class="row"><dt><span lang="en">Default release</span><span lang="zh">默认版本</span></dt><dd><code>26.09</code> <span class="dim">(4 <span lang="en">releases</span><span lang="zh">个版本</span>)</span></dd></div>
       <div class="row"><dt><span lang="en">Architectures</span><span lang="zh">支持架构</span></dt><dd><code>x86_64</code> <code>aarch64</code> <code>riscv64</code> <code>loongarch64</code></dd></div>
-      <div class="row"><dt><span lang="en">Sync</span><span lang="zh">同步方式</span></dt><dd><span class="sync"><code>x86_64</code> rsync, scp, sshfs, nfs, tar</span><span class="sync"><code>aarch64</code> rsync, scp, sshfs, nfs, tar</span><span class="sync"><code>riscv64</code> rsync, scp, nfs, tar</span><span class="sync"><code>loongarch64</code> rsync, scp, sshfs, nfs, tar</span></dd></div>
+      <div class="row"><dt><span lang="en">Sync</span><span lang="zh">同步方式</span></dt><dd><span class="sync"><code>x86_64</code> rsync, scp, sshfs, nfs, tar</span><span class="sync"><code>aarch64</code> rsync, scp, sshfs, nfs, tar</span><span class="sync"><code>riscv64</code> rsync, scp, sshfs, nfs, tar</span><span class="sync"><code>loongarch64</code> rsync, scp, sshfs, nfs, tar</span></dd></div>
       <div class="row"><dt><span lang="en">prepare example</span><span lang="zh">prepare 示例</span></dt><dd><code>dnf install -y curl</code></dd></div>
       </dl>
       <p class="links"><a href="https://github.com/vmactions/openeuler-vm"><span lang="en">Repository</span><span lang="zh">仓库</span></a><a href="https://github.com/anyvm-org/openeuler-builder"><span lang="en">Image builder</span><span lang="zh">镜像 builder</span></a></p>
@@ -1015,7 +1015,7 @@
       <h3><span class="dot"></span>ReactOS</h3>
       <p class="uses"><code>vmactions/reactos-vm@v1</code></p>
       <dl>
-      <div class="row"><dt><span lang="en">Default release</span><span lang="zh">默认版本</span></dt><dd><code>0.4.15</code> <span class="dim">(1 <span lang="en">releases</span><span lang="zh">个版本</span>)</span></dd></div>
+      <div class="row"><dt><span lang="en">Default release</span><span lang="zh">默认版本</span></dt><dd><code>0.4.16</code> <span class="dim">(2 <span lang="en">releases</span><span lang="zh">个版本</span>)</span></dd></div>
       <div class="row"><dt><span lang="en">Architectures</span><span lang="zh">支持架构</span></dt><dd><code>i386</code></dd></div>
       <div class="row"><dt><span lang="en">Sync</span><span lang="zh">同步方式</span></dt><dd><span class="sync"><code>i386</code> tar</span></dd></div>
       <div class="row"><dt><span lang="en">prepare example</span><span lang="zh">prepare 示例</span></dt><dd><code>ver</code></dd></div>
