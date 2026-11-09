@@ -76,6 +76,14 @@ window.VMACTIONS_DATA = {
       ]
     },
     {
+      "name": "HyprBSD",
+      "os": "hyprbsd",
+      "dir": "hyprbsd-vm",
+      "arches": [
+        "x86_64"
+      ]
+    },
+    {
       "name": "OPNsense",
       "os": "opnsense",
       "dir": "opnsense-vm",
@@ -240,8 +248,8 @@ window.VMACTIONS_DATA = {
     }
   ],
   "counts": {
-    "systems": 26,
+    "systems": 27,
     "arches": 10,
-    "combos": 55
+    "combos": 56
   }
 };

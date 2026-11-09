@@ -148,6 +148,10 @@
         <span class="tick">&#10003;</span>
         <code>vmactions/hardenedbsd-vm@v1</code>
       </li>
+      <li data-os="hyprbsd">
+        <span class="tick">&#10003;</span>
+        <code>vmactions/hyprbsd-vm@v1</code>
+      </li>
       <li data-os="opnsense">
         <span class="tick">&#10003;</span>
         <code>vmactions/opnsense-vm@v1</code>
@@ -228,7 +232,7 @@
     <div class="stats">
 <!-- BEGIN generated:counts -->
     <div class="stat">
-      <span class="stat-n">26</span>
+      <span class="stat-n">27</span>
       <span class="stat-l"><span lang="en">systems</span><span lang="zh">个系统</span></span>
     </div>
     <div class="stat">
@@ -236,7 +240,7 @@
       <span class="stat-l"><span lang="en">architectures</span><span lang="zh">种架构</span></span>
     </div>
     <div class="stat">
-      <span class="stat-n">55</span>
+      <span class="stat-n">56</span>
       <span class="stat-l"><span lang="en">OS-arch combinations</span><span lang="zh">个系统-架构组合</span></span>
     </div>
 <!-- END generated:counts -->
@@ -510,6 +514,19 @@
           <td class="no"><span aria-hidden="true">&middot;</span></td>
           <td class="no"><span aria-hidden="true">&middot;</span></td>
         </tr>
+        <tr data-os="hyprbsd">
+          <th scope="row"><svg class="os-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>HyprBSD</th>
+          <td class="yes"><code>rsync</code> <code>scp</code> <code>sshfs</code> <code>nfs</code> <code>tar</code></td>
+          <td class="no"><span aria-hidden="true">&middot;</span></td>
+          <td class="no"><span aria-hidden="true">&middot;</span></td>
+          <td class="no"><span aria-hidden="true">&middot;</span></td>
+          <td class="no"><span aria-hidden="true">&middot;</span></td>
+          <td class="no"><span aria-hidden="true">&middot;</span></td>
+          <td class="no"><span aria-hidden="true">&middot;</span></td>
+          <td class="no"><span aria-hidden="true">&middot;</span></td>
+          <td class="no"><span aria-hidden="true">&middot;</span></td>
+          <td class="no"><span aria-hidden="true">&middot;</span></td>
+        </tr>
         <tr data-os="opnsense">
           <th scope="row"><svg class="os-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"></polygon></svg>OPNsense</th>
           <td class="yes"><code>rsync</code> <code>scp</code> <code>nfs</code> <code>tar</code></td>
@@ -771,7 +788,7 @@
       <h3><span class="dot"></span>FreeBSD</h3>
       <p class="uses"><code>vmactions/freebsd-vm@v1</code></p>
       <dl>
-      <div class="row"><dt><span lang="en">Default release</span><span lang="zh">默认版本</span></dt><dd><code>15.1</code> <span class="dim">(15 <span lang="en">releases</span><span lang="zh">个版本</span>)</span></dd></div>
+      <div class="row"><dt><span lang="en">Default release</span><span lang="zh">默认版本</span></dt><dd><code>15.1</code> <span class="dim">(17 <span lang="en">releases</span><span lang="zh">个版本</span>)</span></dd></div>
       <div class="row"><dt><span lang="en">Architectures</span><span lang="zh">支持架构</span></dt><dd><code>x86_64</code> <code>aarch64</code> <code>riscv64</code> <code>powerpc64</code></dd></div>
       <div class="row"><dt><span lang="en">Sync</span><span lang="zh">同步方式</span></dt><dd><span class="sync"><code>x86_64</code> rsync, scp, sshfs, nfs, tar</span><span class="sync"><code>aarch64</code> rsync, scp, sshfs, nfs, tar</span><span class="sync"><code>riscv64</code> rsync, scp, sshfs, nfs, tar</span><span class="sync"><code>powerpc64</code> nfs, scp, tar</span></dd></div>
       <div class="row"><dt><span lang="en">Shell</span><span lang="zh">默认 shell</span></dt><dd>The default login shell in FreeBSD(before 14.0) is <code>tcsh</code>.  https://docs.freebsd.org/en/articles/linux-users/#shells</dd></div>
@@ -782,7 +799,7 @@
       <h3><span class="dot"></span>OpenBSD</h3>
       <p class="uses"><code>vmactions/openbsd-vm@v1</code></p>
       <dl>
-      <div class="row"><dt><span lang="en">Default release</span><span lang="zh">默认版本</span></dt><dd><code>7.9</code> <span class="dim">(8 <span lang="en">releases</span><span lang="zh">个版本</span>)</span></dd></div>
+      <div class="row"><dt><span lang="en">Default release</span><span lang="zh">默认版本</span></dt><dd><code>8.0</code> <span class="dim">(9 <span lang="en">releases</span><span lang="zh">个版本</span>)</span></dd></div>
       <div class="row"><dt><span lang="en">Architectures</span><span lang="zh">支持架构</span></dt><dd><code>x86_64</code> <code>aarch64</code> <code>riscv64</code> <code>sparc64</code></dd></div>
       <div class="row"><dt><span lang="en">Sync</span><span lang="zh">同步方式</span></dt><dd><span class="sync"><code>x86_64</code> rsync, scp, sshfs, nfs, tar</span><span class="sync"><code>aarch64</code> rsync, scp, sshfs, nfs, tar</span><span class="sync"><code>riscv64</code> rsync, scp, sshfs, nfs, tar</span><span class="sync"><code>sparc64</code> rsync, scp, sshfs, nfs, tar</span></dd></div>
       <div class="row"><dt><span lang="en">Shell</span><span lang="zh">默认 shell</span></dt><dd>The default login shell in OpenBSD is <code>ksh</code>.</dd></div>
@@ -794,7 +811,7 @@
       <h3><span class="dot"></span>NetBSD</h3>
       <p class="uses"><code>vmactions/netbsd-vm@v1</code></p>
       <dl>
-      <div class="row"><dt><span lang="en">Default release</span><span lang="zh">默认版本</span></dt><dd><code>11.0</code> <span class="dim">(11 <span lang="en">releases</span><span lang="zh">个版本</span>)</span></dd></div>
+      <div class="row"><dt><span lang="en">Default release</span><span lang="zh">默认版本</span></dt><dd><code>11.1</code> <span class="dim">(13 <span lang="en">releases</span><span lang="zh">个版本</span>)</span></dd></div>
       <div class="row"><dt><span lang="en">Architectures</span><span lang="zh">支持架构</span></dt><dd><code>x86_64</code> <code>aarch64</code> <code>riscv64</code> <code>sparc64</code></dd></div>
       <div class="row"><dt><span lang="en">Sync</span><span lang="zh">同步方式</span></dt><dd><span class="sync"><code>x86_64</code> rsync, scp, sshfs, nfs, tar</span><span class="sync"><code>aarch64</code> rsync, scp, sshfs, nfs, tar</span><span class="sync"><code>riscv64</code> rsync, scp, sshfs, nfs, tar</span><span class="sync"><code>sparc64</code> scp, sshfs, nfs, tar</span></dd></div>
       <div class="row"><dt><span lang="en">prepare example</span><span lang="zh">prepare 示例</span></dt><dd><code>/usr/sbin/pkg_add -u curl</code></dd></div>
@@ -816,7 +833,7 @@
       <h3><span class="dot"></span>GhostBSD</h3>
       <p class="uses"><code>vmactions/ghostbsd-vm@v1</code></p>
       <dl>
-      <div class="row"><dt><span lang="en">Default release</span><span lang="zh">默认版本</span></dt><dd><code>26.1</code> <span class="dim">(3 <span lang="en">releases</span><span lang="zh">个版本</span>)</span></dd></div>
+      <div class="row"><dt><span lang="en">Default release</span><span lang="zh">默认版本</span></dt><dd><code>26.2</code> <span class="dim">(5 <span lang="en">releases</span><span lang="zh">个版本</span>)</span></dd></div>
       <div class="row"><dt><span lang="en">Architectures</span><span lang="zh">支持架构</span></dt><dd><code>x86_64</code></dd></div>
       <div class="row"><dt><span lang="en">Sync</span><span lang="zh">同步方式</span></dt><dd><span class="sync"><code>x86_64</code> rsync, scp, sshfs, nfs, tar</span></dd></div>
       <div class="row"><dt><span lang="en">prepare example</span><span lang="zh">prepare 示例</span></dt><dd><code>pkg install -y socat</code></dd></div>
@@ -857,6 +874,17 @@
       </dl>
       <p class="links"><a href="https://github.com/vmactions/hardenedbsd-vm"><span lang="en">Repository</span><span lang="zh">仓库</span></a><a href="https://github.com/anyvm-org/hardenedbsd-builder"><span lang="en">Image builder</span><span lang="zh">镜像 builder</span></a></p>
     </article>
+    <article class="card" data-os="hyprbsd">
+      <h3><span class="dot"></span>HyprBSD</h3>
+      <p class="uses"><code>vmactions/hyprbsd-vm@v1</code></p>
+      <dl>
+      <div class="row"><dt><span lang="en">Default release</span><span lang="zh">默认版本</span></dt><dd><code>15.1</code> <span class="dim">(1 <span lang="en">releases</span><span lang="zh">个版本</span>)</span></dd></div>
+      <div class="row"><dt><span lang="en">Architectures</span><span lang="zh">支持架构</span></dt><dd><code>x86_64</code></dd></div>
+      <div class="row"><dt><span lang="en">Sync</span><span lang="zh">同步方式</span></dt><dd><span class="sync"><code>x86_64</code> rsync, scp, sshfs, nfs, tar</span></dd></div>
+      <div class="row"><dt><span lang="en">prepare example</span><span lang="zh">prepare 示例</span></dt><dd><code>pkg install -y socat</code></dd></div>
+      </dl>
+      <p class="links"><a href="https://github.com/vmactions/hyprbsd-vm"><span lang="en">Repository</span><span lang="zh">仓库</span></a><a href="https://github.com/anyvm-org/hyprbsd-builder"><span lang="en">Image builder</span><span lang="zh">镜像 builder</span></a></p>
+    </article>
     <article class="card" data-os="opnsense">
       <h3><span class="dot"></span>OPNsense</h3>
       <p class="uses"><code>vmactions/opnsense-vm@v1</code></p>
@@ -883,7 +911,7 @@
       <h3><span class="dot"></span>OmniOS</h3>
       <p class="uses"><code>vmactions/omnios-vm@v1</code></p>
       <dl>
-      <div class="row"><dt><span lang="en">Default release</span><span lang="zh">默认版本</span></dt><dd><code>r151058</code> <span class="dim">(7 <span lang="en">releases</span><span lang="zh">个版本</span>)</span></dd></div>
+      <div class="row"><dt><span lang="en">Default release</span><span lang="zh">默认版本</span></dt><dd><code>r151060</code> <span class="dim">(8 <span lang="en">releases</span><span lang="zh">个版本</span>)</span></dd></div>
       <div class="row"><dt><span lang="en">Architectures</span><span lang="zh">支持架构</span></dt><dd><code>x86_64</code></dd></div>
       <div class="row"><dt><span lang="en">Sync</span><span lang="zh">同步方式</span></dt><dd><span class="sync"><code>x86_64</code> rsync, scp, nfs, tar</span></dd></div>
       <div class="row"><dt><span lang="en">prepare example</span><span lang="zh">prepare 示例</span></dt><dd><code>pkg  install socat</code></dd></div>
@@ -894,7 +922,7 @@
       <h3><span class="dot"></span>OpenIndiana</h3>
       <p class="uses"><code>vmactions/openindiana-vm@v1</code></p>
       <dl>
-      <div class="row"><dt><span lang="en">Default release</span><span lang="zh">默认版本</span></dt><dd><code>202604</code> <span class="dim">(2 <span lang="en">releases</span><span lang="zh">个版本</span>)</span></dd></div>
+      <div class="row"><dt><span lang="en">Default release</span><span lang="zh">默认版本</span></dt><dd><code>202610</code> <span class="dim">(3 <span lang="en">releases</span><span lang="zh">个版本</span>)</span></dd></div>
       <div class="row"><dt><span lang="en">Architectures</span><span lang="zh">支持架构</span></dt><dd><code>x86_64</code></dd></div>
       <div class="row"><dt><span lang="en">Sync</span><span lang="zh">同步方式</span></dt><dd><span class="sync"><code>x86_64</code> rsync, scp, sshfs, nfs, tar</span></dd></div>
       <div class="row"><dt><span lang="en">prepare example</span><span lang="zh">prepare 示例</span></dt><dd><code>pkg install socat</code></dd></div>
@@ -905,7 +933,7 @@
       <h3><span class="dot"></span>Tribblix</h3>
       <p class="uses"><code>vmactions/tribblix-vm@v1</code></p>
       <dl>
-      <div class="row"><dt><span lang="en">Default release</span><span lang="zh">默认版本</span></dt><dd><code>0m41</code> <span class="dim">(3 <span lang="en">releases</span><span lang="zh">个版本</span>)</span></dd></div>
+      <div class="row"><dt><span lang="en">Default release</span><span lang="zh">默认版本</span></dt><dd><code>0m41.1</code> <span class="dim">(4 <span lang="en">releases</span><span lang="zh">个版本</span>)</span></dd></div>
       <div class="row"><dt><span lang="en">Architectures</span><span lang="zh">支持架构</span></dt><dd><code>x86_64</code></dd></div>
       <div class="row"><dt><span lang="en">Sync</span><span lang="zh">同步方式</span></dt><dd><span class="sync"><code>x86_64</code> rsync, scp, nfs, tar</span></dd></div>
       </dl>

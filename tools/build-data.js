@@ -47,7 +47,7 @@ const COLUMNS = ['x86_64'].concat(ARCHES);
 const ORDER = [
   'freebsd-vm', 'openbsd-vm', 'netbsd-vm', 'dragonflybsd-vm',
   'ghostbsd-vm', 'midnightbsd-vm', 'nextbsd-vm',
-  'hardenedbsd-vm', 'opnsense-vm',
+  'hardenedbsd-vm', 'hyprbsd-vm', 'opnsense-vm',
   'solaris-vm', 'omnios-vm', 'openindiana-vm', 'tribblix-vm',
   'haiku-vm', 'hurd-vm', 'ubuntu-vm', 'debian-vm', 'alpine-vm',
   'almalinux-vm', 'rockylinux-vm', 'openeuler-vm', 'blissos-vm',

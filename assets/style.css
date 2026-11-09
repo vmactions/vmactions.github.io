@@ -103,6 +103,7 @@
   --os-ghostbsd:     #009cb5;  /* site logo ghostbsd.png, as published */
   --os-nextbsd:      #8795b0;  /* DERIVED -- site is greyscale; #93a0b8 darkened */
   --os-hardenedbsd:  #0d98ca;  /* site header logo png #2fbef2, darkened */
+  --os-hyprbsd:      #24938a;  /* hyprbsd.org style.css --teal #3cc0b0, darkened */
   --os-opnsense:     #c03e14;  /* logo-opnsense.svg / theme --color-orange, as published */
   --os-plan9:        #b38f00;  /* 9front.org style.css #ffd324, darkened */
   --os-solaris:      #c74634;  /* oracle.com, as published */
@@ -133,6 +134,7 @@
     --os-ghostbsd:     #22bcd4;  /* #009cb5 lifted */
     --os-nextbsd:      #93a0b8;  /* DERIVED, as-is */
     --os-hardenedbsd:  #2fbef2;  /* as-is */
+    --os-hyprbsd:      #3cc0b0;  /* as-is */
     --os-opnsense:     #c03e14;  /* as-is */
     --os-plan9:        #ffd324;  /* as-is */
     --os-solaris:      #e05a48;  /* #c74634 lifted */
@@ -163,6 +165,7 @@
   --os-ghostbsd:     #009cb5;
   --os-nextbsd:      #8795b0;
   --os-hardenedbsd:  #0d98ca;
+  --os-hyprbsd:      #24938a;
   --os-opnsense:     #c03e14;
   --os-plan9:        #b38f00;
   --os-solaris:      #c74634;
@@ -192,6 +195,7 @@
   --os-ghostbsd:     #22bcd4;
   --os-nextbsd:      #93a0b8;
   --os-hardenedbsd:  #2fbef2;
+  --os-hyprbsd:      #3cc0b0;
   --os-opnsense:     #c03e14;
   --os-plan9:        #ffd324;
   --os-solaris:      #e05a48;
@@ -232,6 +236,7 @@
 [data-os="ghostbsd"]     { --os-color: var(--os-ghostbsd); }
 [data-os="nextbsd"]      { --os-color: var(--os-nextbsd); }
 [data-os="hardenedbsd"]  { --os-color: var(--os-hardenedbsd); }
+[data-os="hyprbsd"]      { --os-color: var(--os-hyprbsd); }
 [data-os="opnsense"]     { --os-color: var(--os-opnsense); }
 [data-os="plan9"]        { --os-color: var(--os-plan9); }
 [data-os="solaris"]      { --os-color: var(--os-solaris); }
