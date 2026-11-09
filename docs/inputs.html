@@ -78,9 +78,11 @@
       <li><a href="#sync-time">sync-time</a></li>
       <li><a href="#disable-cache">disable-cache</a></li>
       <li><a href="#cache-after-prepare">cache-after-prepare</a></li>
+      <li><a href="#cache-after-prepare-key-suffix">cache-after-prepare-key-suffix</a></li>
       <li><a href="#debug-on-error">debug-on-error</a></li>
       <li><a href="#vnc-password">vnc-password</a></li>
       <li><a href="#custom-shell-name">custom-shell-name</a></li>
+      <li><a href="#token">token</a></li>
       <li><a href="#data-dir">data-dir</a></li>
       <li><a href="#cache-dir">cache-dir</a></li>
       <li><a href="#debug">debug</a></li>
@@ -288,6 +290,33 @@ prepare: |
   pkg install -y gmake</code></pre>
     </section>
 
+    <section class="opt" id="cache-after-prepare-key-suffix">
+      <h3>cache-after-prepare-key-suffix</h3>
+      <p class="opt-meta"><span>optional</span><span lang="en">empty</span><span lang="zh">空</span></p>
+      <p lang="en">An extra value appended to the
+        <a href="#cache-after-prepare">cache-after-prepare</a> cache key; a
+        different value means a different cache. The key already follows the
+        <code>prepare</code> text, but not a script that <code>prepare</code>
+        runs from your repository, so a change to that script would not rebuild
+        the prepared image. Bump a fixed string by hand
+        (<code>v2</code>), or use a hash of the files <code>prepare</code>
+        depends on.</p>
+      <p lang="zh">追加到 <a href="#cache-after-prepare">cache-after-prepare</a>
+        缓存 key 末尾的额外值，值不同就是另一份缓存。key 本身只跟着
+        <code>prepare</code> 的文本走，不包括 <code>prepare</code> 调用的仓库里的脚本，
+        所以那个脚本改了也不会重建已准备好的镜像。可以手动改一个固定字符串
+        （<code>v2</code>），也可以用 <code>prepare</code> 所依赖文件的哈希。</p>
+      <p lang="en"><code>hashFiles()</code> is evaluated relative to the
+        workspace, so the checkout must come first. It returns an empty string
+        when no file matches, and the key then no longer follows the file.</p>
+      <p lang="zh"><code>hashFiles()</code> 相对工作目录求值，所以 checkout 必须在前面。
+        没有文件匹配时它返回空字符串，key 也就不再跟着文件变，路径要核对清楚。</p>
+<pre><code>cache-after-prepare: true
+cache-after-prepare-key-suffix: deps-${{ hashFiles('ci/install-deps.sh') }}
+prepare: |
+  sh ci/install-deps.sh</code></pre>
+    </section>
+
     <section class="opt" id="debug-on-error">
       <h3>debug-on-error</h3>
       <p class="opt-meta"><span>optional</span><span>false</span></p>
@@ -324,6 +353,21 @@ vnc-password: ${{ secrets.VNC_PASSWORD }}</code></pre>
       <p lang="zh">给那个让后续 workflow step 在虚拟机里执行的 shell 包装脚本命名。
         见 <a href="#custom-shell">自定义 shell</a>。</p>
 <pre><code>custom-shell-name: vmsh</code></pre>
+    </section>
+
+    <section class="opt" id="token">
+      <h3>token</h3>
+      <p class="opt-meta"><span>optional</span><span><code>${{ github.token }}</code></span></p>
+      <p lang="en">The GitHub token for the GitHub API requests that locate the
+        VM image (the builder's release list, used when the direct image URL
+        does not answer). Defaults to the workflow's own token. Unauthenticated
+        API requests share a small rate limit with every other job on the same
+        runner IP, and an exhausted limit used to fail the job as
+        "Unsupported OS". There is normally no reason to set it.</p>
+      <p lang="zh">用来定位虚拟机镜像的 GitHub API 请求所用的 token（直接的镜像地址
+        没有响应时，会去查 builder 的 release 列表）。默认是 workflow 自己的 token。
+        不带认证的 API 请求和同一个 runner IP 上的所有任务共用一个很小的频率限制，
+        限额用完时任务曾经以 “Unsupported OS” 失败。一般不需要设置。</p>
     </section>
 
     <section class="opt" id="data-dir">
